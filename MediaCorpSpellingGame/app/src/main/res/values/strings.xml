@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MediaCorpSpellingGame</string>
+
+    <string name="abc_next">Next</string>
 </resources>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tvId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/etAnswer"
+        android:layout_alignTop="@+id/etAnswer"
+        android:gravity="center"
+        tools:text="1." />
+
+    <EditText
+        android:id="@+id/etAnswer"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/tvId"
+        tools:text="Pineapple" />
+
+    <TextView
+        android:id="@+id/tvResult"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/etAnswer"
+        android:layout_below="@+id/etAnswer"
+
+        tools:text="Papaya" />
+
+</merge>
