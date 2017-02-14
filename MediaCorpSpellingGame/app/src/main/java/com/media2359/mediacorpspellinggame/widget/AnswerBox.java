@@ -1,9 +1,11 @@
-package com.media2359.mediacorpspellinggame.game;
+package com.media2359.mediacorpspellinggame.widget;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.res.TypedArray;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -22,6 +24,14 @@ public class AnswerBox extends RelativeLayout {
     private EditText etAnswer;
 
     private TextView tvResult;
+
+    private boolean isCorrect = false;
+
+    private Question question;
+
+    private AnswerListener answerListener;
+
+    private boolean overrideAnswer = false;
 
     public AnswerBox(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -65,9 +75,25 @@ public class AnswerBox extends RelativeLayout {
         }
     }
 
+    public void setQuestion(Question question) {
+        this.question = question;
+    }
+
     public void checkAnswer(Question question) {
         // lock the input
-        etAnswer.setEnabled(false);
+        lockInputField(true);
+
+        if (overrideAnswer && answerListener != null){
+
+            if (isCorrect)
+                answerListener.onCorrect(question.getScore());
+            else
+                answerListener.onError(30);
+
+            return;
+        }
+
+        this.question = question;
         // get the input
         String actualAnswer = etAnswer.getText().toString().trim();
 
@@ -86,6 +112,7 @@ public class AnswerBox extends RelativeLayout {
     }
 
     private void markAsCorrect(int score) {
+        isCorrect = true;
         // change text color to green
         tvResult.setTextColor(getResources().getColor(R.color.green));
         // show green tick
@@ -93,14 +120,59 @@ public class AnswerBox extends RelativeLayout {
         // show the awarded score
         String display = "+ " + score + " pts";
         tvResult.setText(display);
+
+        if (answerListener != null)
+            answerListener.onCorrect(score);
     }
 
     private void markAsWrong(String correctAnswer) {
+        isCorrect = false;
         // change text color to red
         tvResult.setTextColor(getResources().getColor(R.color.red));
         // show red cross
         tvResult.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_cross, 0);
         // show the correct answer
         tvResult.setText(correctAnswer);
+
+        if (answerListener != null)
+            answerListener.onError(30);
+    }
+
+    public void enableEditMode(boolean enable) {
+
+        if (enable){
+            overrideAnswer = true;
+            tvResult.setOnClickListener(onClickToggleResult);
+            tvResult.setClickable(true);
+        }else{
+            tvResult.setOnClickListener(null);
+            tvResult.setClickable(false);
+        }
+    }
+
+    private OnClickListener onClickToggleResult = new OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if (!isCorrect)
+                markAsCorrect(question.getScore());
+            else
+                markAsWrong(question.getCorrectAnswer());
+        }
+    };
+
+    public void lockInputField(boolean lock) {
+        etAnswer.setEnabled(!lock);
+    }
+
+    public void setAnswerListener(AnswerListener answerListener) {
+        this.answerListener = answerListener;
+    }
+
+    public interface AnswerListener {
+
+        void onError(int time);
+
+        void onCorrect(int score);
+
     }
 }

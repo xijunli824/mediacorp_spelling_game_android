@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/white_bg"
+    android:padding="@dimen/medium_margin">
+
+    <TextView
+        android:id="@+id/tvQuestionCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        tools:text="QUESTION: 1/4" />
+
+    <TextView
+        android:id="@+id/tvCurrentScoreText"
+        android:layout_width="wrap_content"
+        android:text="CURRENT SCORE"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_alignParentEnd="true"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/tvCurrentScore"
+        tools:text="10"
+        android:textStyle="bold"
+        android:textSize="100sp"
+        android:textColor="@color/light_purple"
+        android:layout_below="@id/tvCurrentScoreText"
+        android:layout_alignParentEnd="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/tvResultInstruction"
+        tools:text="Congratulations!\n You’ve gotten the correct answer."
+        android:gravity="center"
+        android:layout_centerInParent="true"
+        android:textStyle="bold"
+        android:textSize="45sp"
+        android:textColor="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <com.media2359.mediacorpspellinggame.widget.SecondsClockView
+        android:id="@+id/clockView"
+        android:layout_above="@+id/tvResultInstruction"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/medium_margin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <com.media2359.mediacorpspellinggame.widget.AnswerBox
+        android:id="@+id/answerBox"
+        android:layout_below="@+id/tvResultInstruction"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/medium_margin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/btnNext"
+        style="@style/NextButton"
+        android:text="NEXT"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>

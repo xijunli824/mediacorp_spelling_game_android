@@ -11,9 +11,9 @@ import java.util.List;
  * Created by xijunli on 13/2/17.
  */
 
-public class DataRepo {
+public class GameRepo {
 
-    private static DataRepo INSTANCE;
+    private static GameRepo INSTANCE;
 
     private String schoolName;
 
@@ -27,7 +27,7 @@ public class DataRepo {
 
     private LoadQuestionsAsyncTask questionsAsyncTask;
 
-    private DataRepo() {
+    private GameRepo() {
         results = new ArrayList<>();
         totalScore = 0;
         gameTypeList = new ArrayList<>();
@@ -38,9 +38,9 @@ public class DataRepo {
         gameTypeList.add(new GameType(2, R.drawable.ic_game_b, "GAME C", "Let's test your hearing"));
     }
 
-    public static DataRepo getInstance() {
+    public static GameRepo getInstance() {
         if (INSTANCE == null) {
-            INSTANCE = new DataRepo();
+            INSTANCE = new GameRepo();
         }
         return INSTANCE;
     }
@@ -51,6 +51,10 @@ public class DataRepo {
 
     public void increaseScore(int increment) {
         totalScore = totalScore + increment;
+    }
+
+    public int getTotalScore() {
+        return totalScore;
     }
 
     public void addResult(Result result) {

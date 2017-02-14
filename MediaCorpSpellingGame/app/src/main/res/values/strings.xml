@@ -2,4 +2,7 @@
     <string name="app_name">MediaCorpSpellingGame</string>
 
     <string name="abc_next">Next</string>
+
+    <string name="game_a_error">Sorry, you’ve got the wrong answer.</string>
+    <string name="game_a_correct">"Congratulations!\n You’ve gotten the correct answer."</string>
 </resources>

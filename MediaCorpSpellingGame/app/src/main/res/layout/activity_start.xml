@@ -2,32 +2,50 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/purple_bg"
     android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/centerAnchor"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="@dimen/medium_margin"
+        android:scaleType="fitCenter"
+        android:src="@drawable/logo_big" />
+
+    <View
+        android:id="@+id/centerAnchor"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_centerInParent="true" />
 
     <TextView
         android:id="@+id/tvSchool"
         style="@style/TextAppearance.AppCompat.Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/etSchoolName"
+        android:layout_marginTop="@dimen/medium_margin"
+        android:layout_below="@+id/centerAnchor"
         android:layout_centerHorizontal="true"
+        android:text="Enter The Name of Your School"
         android:textColor="@color/white"
-        android:text="Enter The Name of Your School" />
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/etSchoolName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:layout_below="@+id/tvSchool"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/medium_margin"
         android:layout_marginTop="@dimen/medium_margin"
-        android:textColor="@color/white"
-        android:textColorHint="@color/grey"
-        android:maxLines="1"
-        android:inputType="textCapWords"
         android:hint="School Name"
-        android:minWidth="200dp" />
+        android:inputType="textCapWords"
+        android:maxLines="1"
+        android:minWidth="200dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/grey" />
 
     <Button
         android:id="@+id/btnNext"
