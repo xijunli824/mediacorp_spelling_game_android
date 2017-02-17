@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="sessions">
+        <item>Morning</item>
+        <item>Afternoon</item>
+    </array>
+</resources>

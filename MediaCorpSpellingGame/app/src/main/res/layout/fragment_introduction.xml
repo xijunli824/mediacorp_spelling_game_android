@@ -8,9 +8,9 @@
 
     <ImageView
         android:id="@+id/ivGameIcon"
-        android:layout_width="400dp"
-        android:layout_height="400dp"
-        android:layout_above="@+id/tvGameType"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_above="@+id/centerAnchor"
         android:layout_centerHorizontal="true"
         android:src="@drawable/logo_big_purple" />
 
@@ -28,7 +28,7 @@
         android:layout_below="@+id/centerAnchor"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/large_margin"
-        android:textSize="45sp"
+        android:textSize="35sp"
         tools:text="Game A" />
 
     <TextView
@@ -40,7 +40,7 @@
         android:layout_marginBottom="@dimen/medium_margin"
         android:layout_marginTop="@dimen/medium_margin"
         android:textColor="@color/black"
-        android:textSize="45sp"
+        android:textSize="35sp"
         tools:text="Let's test your hearing" />
 
     <Button
@@ -50,7 +50,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/tvGameHint"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/large_margin"
+        android:layout_marginTop="@dimen/medium_margin"
         android:text="Start GAME" />
 
 </RelativeLayout>

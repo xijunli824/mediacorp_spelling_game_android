@@ -14,7 +14,9 @@ import com.media2359.mediacorpspellinggame.data.Question;
 import com.media2359.mediacorpspellinggame.factory.GameProgressManager;
 import com.media2359.mediacorpspellinggame.factory.GameRepo;
 import com.media2359.mediacorpspellinggame.game.typeA.SingleQuestionFragment;
+import com.media2359.mediacorpspellinggame.game.typeA.TypeAWaitingFragment;
 import com.media2359.mediacorpspellinggame.game.typeB.GridQuestionsFragment;
+import com.media2359.mediacorpspellinggame.game.typeB.TypeBWaitingFragment;
 import com.media2359.mediacorpspellinggame.utils.ActivityUtils;
 
 import butterknife.ButterKnife;
@@ -51,17 +53,20 @@ public class GameActivity extends BaseActivity {
         GameProgressManager.getInstance().setLastAttemptedGamePos(currentGame.getGameId());
         GameProgressManager.getInstance().setLastAttemptedQuestionPos(-1);
 
+        sectionScore = 0;
+        sectionTime = 0;
+
         GameIntroFragment gameIntroFragment = GameIntroFragment.newInstance(currentGame);
         ActivityUtils.addFragmentToActivity(getFragmentManager(), gameIntroFragment, R.id.container, false, false);
     }
 
-    private void replaceFragment(Fragment fragment) {
+    public void replaceFragment(Fragment fragment) {
         ActivityUtils.replaceFragmentInActivity(getFragmentManager(), fragment, R.id.container, false, true);
     }
 
-    public void showNextMultipleQuestionFragment() {
+    private void showNextMultipleQuestionFragment() {
         if (GameProgressManager.getInstance().getLastAttemptedQuestionPos() < 0){
-            replaceFragment(GridQuestionsFragment.newInstance(currentGame.getGameId()));
+            replaceFragment(TypeBWaitingFragment.newInstance(currentGame.getGameId()));
             GameProgressManager.getInstance().setLastAttemptedQuestionPos(currentGame.getQuestionCount());
         }else {
             startNextGame();
@@ -69,7 +74,16 @@ public class GameActivity extends BaseActivity {
 
     }
 
-    public void showNextSingleQuestionFragment() {
+    public void showNextQuestion() {
+        if (getCurrentGame().getType().equalsIgnoreCase("B")){
+            showNextMultipleQuestionFragment();
+        }else {
+            showNextSingleQuestionFragment();
+        }
+    }
+
+
+    private void showNextSingleQuestionFragment() {
 
         int nextQuestionPos = getNextQuestionPosition();
 
@@ -80,7 +94,7 @@ public class GameActivity extends BaseActivity {
         }
 
         Question question = GameRepo.getInstance().getQuestion(currentGame.getQuestionIdList()[nextQuestionPos]);
-        replaceFragment(SingleQuestionFragment.newInstance(question));
+        replaceFragment(TypeAWaitingFragment.newInstance(question));
 
         GameProgressManager.getInstance().setLastAttemptedQuestionPos(nextQuestionPos);
     }
@@ -128,6 +142,22 @@ public class GameActivity extends BaseActivity {
         }else {
             throw new IllegalArgumentException("last attempted game id: " + lastAttemptedGameId + " is not the same as current game id: " + currentGame.getGameId());
         }
+    }
+
+    public int getSectionScore() {
+        return sectionScore;
+    }
+
+    public void setSectionScore(int sectionScore) {
+        this.sectionScore = sectionScore;
+    }
+
+    public int getSectionTime() {
+        return sectionTime;
+    }
+
+    public void setSectionTime(int sectionTime) {
+        this.sectionTime = sectionTime;
     }
 
     @NonNull

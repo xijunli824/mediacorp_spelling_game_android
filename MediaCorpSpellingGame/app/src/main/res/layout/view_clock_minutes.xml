@@ -12,7 +12,7 @@
         clock:backgroundColor="@color/black"
         clock:padding="@dimen/medium_margin"
         clock:textColor="@color/white"
-        clock:textSize="100sp" />
+        clock:textSize="80sp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -31,7 +31,7 @@
         clock:backgroundColor="@color/black"
         clock:padding="@dimen/medium_margin"
         clock:textColor="@color/white"
-        clock:textSize="100sp" />
+        clock:textSize="80sp" />
 
     <com.xenione.digit.TabDigit
         android:id="@+id/charLowSecond"
@@ -40,6 +40,6 @@
         clock:backgroundColor="@color/black"
         clock:padding="@dimen/medium_margin"
         clock:textColor="@color/white"
-        clock:textSize="100sp" />
+        clock:textSize="80sp" />
 
 </merge>

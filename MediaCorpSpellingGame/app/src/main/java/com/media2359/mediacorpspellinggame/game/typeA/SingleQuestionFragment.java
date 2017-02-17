@@ -116,20 +116,20 @@ public class SingleQuestionFragment extends Fragment implements AnswerBox.Answer
             @Override
             public void onClick(View v) {
                 clockView.pause();
-                GameProgressManager.getInstance().increaseTime((int) clockView.getElapsedTime());
-                answerBox.checkAnswer(question);
+
+                CommonUtils.makeHoldOnAlertDialog(getActivity(), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        answerBox.checkAnswer(question);
+                    }
+                }).show();
             }
         });
 
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CommonUtils.makeHoldOnAlertDialog(getActivity(), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        ((GameActivity) getActivity()).showNextSingleQuestionFragment();
-                    }
-                }).show();
+                ((GameActivity) getActivity()).showNextQuestion();
             }
         });
 
@@ -140,11 +140,11 @@ public class SingleQuestionFragment extends Fragment implements AnswerBox.Answer
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        clockView.resume();
+
         question = getArguments().getParcelable(ARGS_QUESTION_ENTITY);
 
         initViews();
-
-        clockView.resume();
     }
 
     private void showPlayView() {
@@ -181,6 +181,8 @@ public class SingleQuestionFragment extends Fragment implements AnswerBox.Answer
     public void onError(int time) {
         tvResultInstruction.setText(getString(R.string.game_a_error));
 
+        GameProgressManager.getInstance().increaseTime(time);
+
         showScoreView();
     }
 
@@ -189,6 +191,8 @@ public class SingleQuestionFragment extends Fragment implements AnswerBox.Answer
         tvResultInstruction.setText(getString(R.string.game_a_correct));
 
         GameProgressManager.getInstance().increaseScore(question.getScore());
+
+        GameProgressManager.getInstance().increaseTime((int) clockView.getElapsedTime());
 
         showScoreView();
     }

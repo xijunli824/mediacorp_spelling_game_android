@@ -148,7 +148,7 @@ public class AnswerBoxAdapter extends RecyclerView.Adapter<AnswerBoxAdapter.Answ
 
         void bind(Question question, int adapterPos) {
             answerBox.setQuestion(question);
-            answerBox.setId(adapterPos + 1);
+            answerBox.setLeftId(adapterPos + 1);
         }
 
         void setAnswerListener (AnswerBox.AnswerListener answerListener) {

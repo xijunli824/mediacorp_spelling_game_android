@@ -46,7 +46,7 @@ public class PasswordDialogFragment extends DialogFragment {
         View v = inflater.inflate(R.layout.fragment_password_dialog, container, false);
         ButterKnife.bind(this, v);
 
-        setStyle(DialogFragment.STYLE_NO_FRAME, android.R.style.Theme_DeviceDefault_Dialog_MinWidth);
+        setStyle(DialogFragment.STYLE_NORMAL, android.R.style.Theme_DeviceDefault_Dialog_MinWidth);
         setCancelable(true);
         getDialog().setTitle("Edit Answer");
 

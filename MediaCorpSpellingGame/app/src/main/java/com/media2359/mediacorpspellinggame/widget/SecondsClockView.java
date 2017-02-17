@@ -66,15 +66,13 @@ public class SecondsClockView extends LinearLayout implements Runnable{
 
         /* seconds*/
         int seconds = (int) elapsedTime;
-        int highSecond = seconds / 10;
+        int highSecond = (seconds % 60) / 10;
         mCharHighSecond.setChar(highSecond);
 
-        int lowSecond = (seconds - highSecond * 10);
+        int lowSecond = (seconds%60 - highSecond * 10);
         mCharLowSecond.setChar(lowSecond);
 
-        elapsedTime = lowSecond + highSecond * 10;
-
-        ViewCompat.postOnAnimationDelayed(mClock, this, 1000);
+        ViewCompat.postOnAnimationDelayed(mClock, this, 100);
     }
 
     public void setTimeListener(TimeListener timeListener) {
@@ -85,7 +83,7 @@ public class SecondsClockView extends LinearLayout implements Runnable{
         mCharHighSecond.setBackgroundColor(getResources().getColor(R.color.red));
 
         int seconds = (int) elapsedTime;
-        int highSecond = seconds / 10;
+        int highSecond = (seconds % 60) / 10;
         mCharHighSecond.setChar(highSecond);
 
         mCharLowSecond.setBackgroundColor(getResources().getColor(R.color.red));

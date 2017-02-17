@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/white_bg"
+    android:padding="@dimen/medium_margin">
+
+    <TextView
+        android:id="@+id/tvQuestionCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        tools:text="QUESTION: 1/4" />
+
+    <TextView
+        android:id="@+id/tvCurrentScoreText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:text="CURRENT SCORE"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvCurrentScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/tvCurrentScoreText"
+        android:textColor="@color/light_purple"
+        android:textSize="100sp"
+        android:textStyle="bold"
+        tools:text="10" />
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_above="@+id/centerAnchor"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/logo_big_purple" />
+
+    <View
+        android:id="@+id/centerAnchor"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_centerInParent="true" />
+
+    <TextView
+        android:id="@+id/tvInstruction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/centerAnchor"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/large_margin"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="34sp"
+        tools:text="Congratulations!\n You’ve gotten the correct answer." />
+
+    <Button
+        android:id="@+id/btnGo"
+        style="@style/NextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvInstruction"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/large_margin"
+        android:text="Go!" />
+
+
+</RelativeLayout>

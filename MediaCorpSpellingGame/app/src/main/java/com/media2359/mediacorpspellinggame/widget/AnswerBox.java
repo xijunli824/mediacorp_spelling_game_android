@@ -1,7 +1,6 @@
 package com.media2359.mediacorpspellinggame.widget;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.res.TypedArray;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -59,14 +58,14 @@ public class AnswerBox extends RelativeLayout {
 
         try {
             int id = a.getInt(R.styleable.AnswerBox_id, -1);
-            setId(id);
+            setLeftId(id);
         } finally {
             a.recycle();
         }
 
     }
 
-    public void setId(int id) {
+    public void setLeftId(int id) {
         if (id < 0){
             tvId.setVisibility(GONE);
         }else {

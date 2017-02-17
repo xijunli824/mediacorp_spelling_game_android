@@ -1,11 +1,16 @@
 package com.media2359.mediacorpspellinggame.factory;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.widget.Toast;
 
+import com.media2359.mediacorpspellinggame.data.Game;
+import com.media2359.mediacorpspellinggame.game.GameActivity;
 import com.media2359.mediacorpspellinggame.utils.PreferenceUtils;
+
+import java.util.IllegalFormatException;
 
 /**
  * Created by xijunli on 15/2/17.
@@ -157,6 +162,26 @@ public class GameProgressManager {
             context.startActivity(intent);
         } else {
             Toast.makeText(context, "Error: No Email App Found", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void increaseSectionScore(Activity activity, int score){
+        if (activity instanceof GameActivity){
+            GameActivity gameActivity = (GameActivity) activity;
+            int sectionScore = gameActivity.getSectionScore() + score;
+            gameActivity.setSectionScore(sectionScore);
+        }else {
+            throw new IllegalArgumentException("Activity is not Game Activity");
+        }
+    }
+
+    public void increaseSectionTime(Activity activity, int time){
+        if (activity instanceof GameActivity){
+            GameActivity gameActivity = (GameActivity) activity;
+            int sectionTime = gameActivity.getSectionTime() + time;
+            gameActivity.setSectionTime(sectionTime);
+        }else {
+            throw new IllegalArgumentException("Activity is not Game Activity");
         }
     }
 }

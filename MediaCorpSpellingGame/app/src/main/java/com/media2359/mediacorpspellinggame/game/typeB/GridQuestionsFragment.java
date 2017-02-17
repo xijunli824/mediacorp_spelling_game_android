@@ -155,10 +155,10 @@ public class GridQuestionsFragment extends Fragment implements AnswerBoxAdapter.
 
         clockView.resume();
 
-        clockView.setTimeListener(new SecondsClockView.TimeListener() {
+        clockView.setTimeListener(new MinutesClockView.TimeListener() {
             @Override
             public void onSecond(long seconds) {
-                if (seconds == 160)
+                if (seconds == 165)
                     clockView.showAlertClock();
 
                 if (seconds >= 180){
@@ -176,6 +176,8 @@ public class GridQuestionsFragment extends Fragment implements AnswerBoxAdapter.
 
         tvCardScore.setText(String.valueOf(gameScore));
         tvCardTime.setText(GameProgressManager.getInstance().getTimeTakenString());
+
+        tvResultInstruction.setText("You have answered " + correctAnswers + "/" + totalQuestions + " questions correctly");
 
         showScoreView();
     }
@@ -217,15 +219,11 @@ public class GridQuestionsFragment extends Fragment implements AnswerBoxAdapter.
     }
 
     private void finishThisGame() {
-        CommonUtils.makeHoldOnAlertDialog(getActivity(), new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
 
-                GameProgressManager.getInstance().setTotalScore(gameScore);
 
-                ((GameActivity) getActivity()).startNextGame();
-            }
-        }).show();
+        GameProgressManager.getInstance().setTotalScore(gameScore);
+
+        ((GameActivity) getActivity()).startNextGame();
     }
 
     private void onSubmitButtonClick() {
@@ -233,12 +231,18 @@ public class GridQuestionsFragment extends Fragment implements AnswerBoxAdapter.
 
         GameProgressManager.getInstance().increaseTime((int) clockView.getElapsedTime());
 
-        adapter.reset();
+        CommonUtils.makeHoldOnAlertDialog(getActivity(), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                adapter.reset();
 
-        for (int i=0; i<adapter.getItemCount(); i++){
-            AnswerBoxAdapter.AnswerBoxViewHolder viewHolder = (AnswerBoxAdapter.AnswerBoxViewHolder) recyclerView.findViewHolderForAdapterPosition(i);
-            viewHolder.checkAnswer(questionList.get(i));
-        }
+                for (int i=0; i<adapter.getItemCount(); i++){
+                    AnswerBoxAdapter.AnswerBoxViewHolder viewHolder = (AnswerBoxAdapter.AnswerBoxViewHolder) recyclerView.findViewHolderForAdapterPosition(i);
+                    viewHolder.checkAnswer(questionList.get(i));
+                }
+
+            }
+        }).show();
     }
 
     private void showPasswordDialog() {

@@ -66,11 +66,7 @@ public class GameIntroFragment extends Fragment {
         btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (game.getType().equalsIgnoreCase("B")){
-                    ((GameActivity) getActivity()).showNextMultipleQuestionFragment();
-                }else {
-                    ((GameActivity) getActivity()).showNextSingleQuestionFragment();
-                }
+                ((GameActivity) getActivity()).showNextQuestion();
             }
         });
     }

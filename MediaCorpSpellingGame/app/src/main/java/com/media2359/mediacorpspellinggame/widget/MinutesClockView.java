@@ -29,7 +29,7 @@ public class MinutesClockView extends LinearLayout implements Runnable{
 
     private static final char[] SEXAGISIMAL = new char[]{'0', '1', '2', '3', '4', '5'};
 
-    private SecondsClockView.TimeListener timeListener;
+    private TimeListener timeListener;
 
     public MinutesClockView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -68,7 +68,7 @@ public class MinutesClockView extends LinearLayout implements Runnable{
 
         int seconds = (int) elapsedTime;
 
-        int highSecond = seconds / 10;
+        int highSecond = (seconds % 60) / 10;
         
         mCharHighSecond.setBackgroundColor(getResources().getColor(R.color.red));
         mCharHighSecond.setChar(highSecond);
@@ -79,7 +79,6 @@ public class MinutesClockView extends LinearLayout implements Runnable{
 
         mCharLowMinute.setBackgroundColor(getResources().getColor(R.color.red));
         mCharLowMinute.setChar(lowMinute);
-
     }
 
     public void resume() {
@@ -87,10 +86,10 @@ public class MinutesClockView extends LinearLayout implements Runnable{
 
         /* seconds*/
         int seconds = (int) elapsedTime;
-        int highSecond = seconds / 10;
+        int highSecond = (seconds % 60) / 10;
         mCharHighSecond.setChar(highSecond);
 
-        int lowSecond = (seconds - highSecond * 10);
+        int lowSecond = (seconds % 60) - highSecond * 10;
         mCharLowSecond.setChar(lowSecond);
 
         int minutes = (int) Math.floor(elapsedTime / 60);
@@ -98,10 +97,10 @@ public class MinutesClockView extends LinearLayout implements Runnable{
 
         //elapsedTime = lowSecond + highSecond * 10;
 
-        ViewCompat.postOnAnimationDelayed(mClock, this, 1000);
+        ViewCompat.postOnAnimationDelayed(mClock, this, 100);
     }
 
-    public void setTimeListener(SecondsClockView.TimeListener timeListener) {
+    public void setTimeListener(TimeListener timeListener) {
         this.timeListener = timeListener;
     }
 

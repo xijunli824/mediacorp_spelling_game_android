@@ -10,6 +10,7 @@ import android.text.TextWatcher;
 import android.util.SparseArray;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.media2359.mediacorpspellinggame.R;
 import com.media2359.mediacorpspellinggame.base.BaseActivity;
@@ -18,6 +19,7 @@ import com.media2359.mediacorpspellinggame.data.Question;
 import com.media2359.mediacorpspellinggame.factory.GameProgressManager;
 import com.media2359.mediacorpspellinggame.factory.GameRepo;
 import com.media2359.mediacorpspellinggame.game.GameActivity;
+import com.media2359.mediacorpspellinggame.widget.SessionSelectionFragment;
 
 import java.util.List;
 
@@ -49,33 +51,28 @@ public class StartActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
         ButterKnife.bind(this);
-        prepareData();
 
-        btnNext.setEnabled(false);
+        GameProgressManager.getInstance().newGame();
 
-
-        etSchoolName.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                if (s.toString().length() > 1){
-                    btnNext.setEnabled(true);
-                }else
-                    btnNext.setEnabled(false);
-            }
-        });
+        selectSession();
     }
 
-    private void prepareData() {
+    private void selectSession() {
+        SessionSelectionFragment dialogFragment = SessionSelectionFragment.newInstance();
+
+        dialogFragment.setCancelable(false);
+
+        dialogFragment.setCallback(new SessionSelectionFragment.SessionSelectCallback() {
+            @Override
+            public void onSessionSelected(int sessionId) {
+                prepareData(sessionId);
+            }
+        });
+
+        dialogFragment.show(getFragmentManager(), "session");
+    }
+
+    private void prepareData(int sessionId) {
         if (!GameRepo.getInstance().isDataReady()) {
 
             final ProgressDialog dialog = ProgressDialog.show(this, "Preparing...", "Please wait...", true, false);
