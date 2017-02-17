@@ -1,46 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:padding="@dimen/medium_margin"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/white_bg"
+    android:padding="@dimen/medium_margin">
 
     <ImageView
         android:id="@+id/ivGameIcon"
-        tools:src="@drawable/ic_game_a"
-        android:layout_centerHorizontal="true"
+        android:layout_width="400dp"
+        android:layout_height="400dp"
         android:layout_above="@+id/tvGameType"
-        android:layout_width="200dp"
-        android:layout_height="200dp" />
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/logo_big_purple" />
+
+    <View
+        android:id="@+id/centerAnchor"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_centerInParent="true" />
 
     <TextView
         android:id="@+id/tvGameType"
         style="@style/TextAppearance.AppCompat.Title"
-        tools:text="Game A"
-        android:textSize="45sp"
-        android:layout_marginTop="@dimen/medium_margin"
-        android:layout_centerInParent="true"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/centerAnchor"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/large_margin"
+        android:textSize="45sp"
+        tools:text="Game A" />
 
     <TextView
         android:id="@+id/tvGameHint"
-        tools:text="Let's test your hearing"
-        android:layout_below="@id/tvGameType"
-        android:layout_marginTop="@dimen/medium_margin"
-        android:layout_centerHorizontal="true"
-        android:textSize="45sp"
-        android:textColor="@color/black"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvGameType"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/medium_margin"
+        android:layout_marginTop="@dimen/medium_margin"
+        android:textColor="@color/black"
+        android:textSize="45sp"
+        tools:text="Let's test your hearing" />
 
     <Button
         android:id="@+id/btnStart"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
         style="@style/NextButton"
-        android:text="Start Now"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvGameHint"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/large_margin"
+        android:text="Start GAME" />
 
 </RelativeLayout>

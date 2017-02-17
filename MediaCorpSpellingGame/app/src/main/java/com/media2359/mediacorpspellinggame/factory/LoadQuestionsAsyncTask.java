@@ -1,9 +1,10 @@
-package com.media2359.mediacorpspellinggame.data;
+package com.media2359.mediacorpspellinggame.factory;
 
 import android.os.AsyncTask;
 
 import com.google.gson.reflect.TypeToken;
 import com.media2359.mediacorpspellinggame.R;
+import com.media2359.mediacorpspellinggame.data.Question;
 import com.media2359.mediacorpspellinggame.injection.Injection;
 
 import java.io.InputStream;

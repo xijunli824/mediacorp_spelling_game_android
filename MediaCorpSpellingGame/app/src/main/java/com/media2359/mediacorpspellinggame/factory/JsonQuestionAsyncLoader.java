@@ -1,10 +1,11 @@
-package com.media2359.mediacorpspellinggame.data;
+package com.media2359.mediacorpspellinggame.factory;
 
 import android.content.AsyncTaskLoader;
 import android.content.Context;
 
 import com.google.gson.reflect.TypeToken;
 import com.media2359.mediacorpspellinggame.R;
+import com.media2359.mediacorpspellinggame.data.Question;
 import com.media2359.mediacorpspellinggame.injection.Injection;
 
 import java.io.InputStream;
@@ -41,7 +42,7 @@ public class JsonQuestionAsyncLoader extends AsyncTaskLoader<List<Question>> {
     @Override
     public List<Question> loadInBackground() {
 
-        InputStream input = getContext().getResources().openRawResource(R.raw.questions);
+        InputStream input = getContext().getResources().openRawResource(R.raw.questions_mock);
 
         List<Question> data = new ArrayList<>();
 

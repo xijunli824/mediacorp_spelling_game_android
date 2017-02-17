@@ -1,8 +1,12 @@
 package com.media2359.mediacorpspellinggame.utils;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 
 import com.media2359.mediacorpspellinggame.R;
@@ -46,6 +50,20 @@ public class CommonUtils {
         tv.setTextColor(Color.WHITE);
         snack.show();
         return snack;
+    }
+
+    public static AlertDialog makeHoldOnAlertDialog(Context context, DialogInterface.OnClickListener onPositiveClick) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle("Hold On");
+        builder.setMessage(context.getString(R.string.hold_on_message));
+        builder.setPositiveButton("PROCEED", onPositiveClick);
+        builder.setCancelable(false);
+        return builder.create();
+    }
+
+    public static void dismissKeyboard(View view) {
+        InputMethodManager imm = (InputMethodManager)view.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
 }

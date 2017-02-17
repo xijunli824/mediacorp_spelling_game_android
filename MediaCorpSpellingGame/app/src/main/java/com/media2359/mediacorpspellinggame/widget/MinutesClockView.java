@@ -130,6 +130,10 @@ public class MinutesClockView extends LinearLayout implements Runnable{
         ViewCompat.postOnAnimationDelayed(mClock, this, 1000);
     }
 
+    public long getElapsedTime() {
+        return elapsedTime;
+    }
+
     public interface TimeListener {
         void onSecond(long seconds);
     }

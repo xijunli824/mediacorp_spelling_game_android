@@ -17,57 +17,88 @@
     <TextView
         android:id="@+id/tvCurrentScoreText"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
         android:text="CURRENT SCORE"
         android:textColor="@color/black"
-        android:textStyle="bold"
-        android:layout_alignParentEnd="true"
-        android:layout_height="wrap_content" />
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/tvCurrentScore"
-        tools:text="10"
-        android:textStyle="bold"
-        android:textSize="100sp"
-        android:textColor="@color/light_purple"
-        android:layout_below="@id/tvCurrentScoreText"
-        android:layout_alignParentEnd="true"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/tvCurrentScoreText"
+        android:textColor="@color/light_purple"
+        android:textSize="100sp"
+        android:textStyle="bold"
+        tools:text="10" />
 
     <TextView
         android:id="@+id/tvResultInstruction"
-        tools:text="Congratulations!\n You’ve gotten the correct answer."
-        android:gravity="center"
-        android:layout_centerInParent="true"
-        android:textStyle="bold"
-        android:textSize="45sp"
-        android:textColor="@color/black"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/answerBox"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        tools:text="Congratulations!\n You’ve gotten the correct answer." />
 
     <com.media2359.mediacorpspellinggame.widget.SecondsClockView
         android:id="@+id/clockView"
-        android:layout_above="@+id/tvResultInstruction"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="@dimen/medium_margin"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tvQuestionCount"
+        android:layout_marginTop="@dimen/medium_margin" />
+
+    <ImageView
+        android:id="@+id/logo"
+        android:src="@drawable/logo_big"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/tvResultInstruction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
     <com.media2359.mediacorpspellinggame.widget.AnswerBox
         android:id="@+id/answerBox"
-        android:layout_below="@+id/tvResultInstruction"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/medium_margin"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="@dimen/medium_margin"
+        android:layout_marginTop="@dimen/medium_margin" />
+
+    <FrameLayout
+        android:id="@+id/flScoreCard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/answerBox"
+        android:layout_centerHorizontal="true">
+
+        <include layout="@layout/view_score_card" />
+
+    </FrameLayout>
+
+    <Button
+        android:id="@+id/btnSubmit"
+        style="@style/NextButton"
+        android:text="@string/abc_submit"
+        android:layout_marginTop="@dimen/large_margin"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/answerBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
 
     <Button
         android:id="@+id/btnNext"
         style="@style/NextButton"
-        android:text="NEXT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:text="NEXT" />
 
 </RelativeLayout>

@@ -19,7 +19,9 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/tvId"
         android:maxLines="1"
+        android:freezesText="true"
         android:inputType="textNoSuggestions"
+        android:imeOptions="actionDone"
         tools:text="Pineapple" />
 
     <TextView

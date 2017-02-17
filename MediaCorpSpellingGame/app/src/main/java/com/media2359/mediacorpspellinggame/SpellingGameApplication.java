@@ -14,8 +14,7 @@ public class SpellingGameApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        context = this;
-
+        context = getApplicationContext();
     }
 
     public static Context getContext() {

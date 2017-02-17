@@ -1,15 +1,25 @@
 package com.media2359.mediacorpspellinggame.start;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.util.SparseArray;
 import android.widget.Button;
 import android.widget.EditText;
 
 import com.media2359.mediacorpspellinggame.R;
-import com.media2359.mediacorpspellinggame.data.GameRepo;
-import com.media2359.mediacorpspellinggame.game.MainActivity;
+import com.media2359.mediacorpspellinggame.base.BaseActivity;
+import com.media2359.mediacorpspellinggame.data.Game;
+import com.media2359.mediacorpspellinggame.data.Question;
+import com.media2359.mediacorpspellinggame.factory.GameProgressManager;
+import com.media2359.mediacorpspellinggame.factory.GameRepo;
+import com.media2359.mediacorpspellinggame.game.GameActivity;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -19,7 +29,7 @@ import butterknife.OnClick;
  * Created by xijunli on 13/2/17.
  */
 
-public class StartActivity extends Activity {
+public class StartActivity extends BaseActivity {
 
     @BindView(R.id.etSchoolName)
     EditText etSchoolName;
@@ -27,12 +37,56 @@ public class StartActivity extends Activity {
     @BindView(R.id.btnNext)
     Button btnNext;
 
+    public static void startNewGame(Activity activity) {
+        Intent intent = new Intent(activity, StartActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        activity.startActivity(intent);
+        activity.finish();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
         ButterKnife.bind(this);
+        prepareData();
 
+        btnNext.setEnabled(false);
+
+
+        etSchoolName.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (s.toString().length() > 1){
+                    btnNext.setEnabled(true);
+                }else
+                    btnNext.setEnabled(false);
+            }
+        });
+    }
+
+    private void prepareData() {
+        if (!GameRepo.getInstance().isDataReady()) {
+
+            final ProgressDialog dialog = ProgressDialog.show(this, "Preparing...", "Please wait...", true, false);
+
+            GameRepo.getInstance().loadData(this, new GameRepo.GameDataCallback() {
+                @Override
+                public void onLoadingFinished(List<Game> games, List<Question> questions) {
+                    dialog.dismiss();
+                }
+            });
+        }
     }
 
     @Override
@@ -42,10 +96,15 @@ public class StartActivity extends Activity {
 
     @OnClick(R.id.btnNext)
     public void onNextClick() {
-        if (validateSchoolName()){
-            GameRepo.getInstance().setSchoolName(etSchoolName.getText().toString().trim());
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
+        if (validateSchoolName()) {
+            // save school name
+            GameProgressManager.getInstance().setSchoolName(etSchoolName.getText().toString().trim());
+
+            // start the first game
+            Game firstGame = GameRepo.getInstance().getGame(0);
+            GameActivity.startGameActivity(this, firstGame);
+
+            // finish this activity
             finish();
         }
     }
@@ -53,7 +112,7 @@ public class StartActivity extends Activity {
     private boolean validateSchoolName() {
         String schoolName = etSchoolName.getText().toString();
 
-        if (TextUtils.isEmpty(schoolName) || schoolName.length() < 2){
+        if (TextUtils.isEmpty(schoolName) || schoolName.length() < 2) {
             etSchoolName.setError("Please enter your school name here");
             return false;
         }

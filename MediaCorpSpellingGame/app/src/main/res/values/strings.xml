@@ -2,7 +2,10 @@
     <string name="app_name">MediaCorpSpellingGame</string>
 
     <string name="abc_next">Next</string>
+    <string name="abc_submit">Submit</string>
 
     <string name="game_a_error">Sorry, you’ve got the wrong answer.</string>
     <string name="game_a_correct">"Congratulations!\n You’ve gotten the correct answer."</string>
+
+    <string name="hold_on_message">You have to wait for the other team to submit their answer before proceeding. (Only the coordinator is allowed to tap on proceed)</string>
 </resources>

@@ -6,11 +6,12 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.media2359.mediacorpspellinggame.R;
-import com.media2359.mediacorpspellinggame.data.GameType;
+import com.media2359.mediacorpspellinggame.data.Game;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -32,12 +33,15 @@ public class GameIntroFragment extends Fragment {
     @BindView(R.id.tvGameHint)
     TextView tvGameHint;
 
-    private GameType gameType;
+    @BindView(R.id.btnStart)
+    Button btnStart;
 
-    public static GameIntroFragment newInstance(GameType gameType) {
+    private Game game;
+
+    public static GameIntroFragment newInstance(Game game) {
 
         Bundle args = new Bundle();
-        args.putParcelable(ARGS_GAME_TYPE, gameType);
+        args.putParcelable(ARGS_GAME_TYPE, game);
         GameIntroFragment fragment = new GameIntroFragment();
         fragment.setArguments(args);
         return fragment;
@@ -46,7 +50,7 @@ public class GameIntroFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        gameType = getArguments().getParcelable(ARGS_GAME_TYPE);
+        game = getArguments().getParcelable(ARGS_GAME_TYPE);
     }
 
     @Nullable
@@ -59,7 +63,16 @@ public class GameIntroFragment extends Fragment {
     }
 
     private void initViews() {
-
+        btnStart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (game.getType().equalsIgnoreCase("B")){
+                    ((GameActivity) getActivity()).showNextMultipleQuestionFragment();
+                }else {
+                    ((GameActivity) getActivity()).showNextSingleQuestionFragment();
+                }
+            }
+        });
     }
 
     @Override
@@ -69,8 +82,27 @@ public class GameIntroFragment extends Fragment {
     }
 
     private void bind() {
-        ivGameIcon.setImageResource(gameType.getIconResId());
-        tvGameType.setText(gameType.getGameName());
-        tvGameHint.setText(gameType.getGameHint());
+        String type = "GAME " + game.getType();
+
+//        if (type.equalsIgnoreCase("A")) {
+//            tvGameType.setText("GAME A");
+//            //ivGameIcon.setImageResource(R.drawable.ic_game_a);
+//        } else if (type.equalsIgnoreCase("B")) {
+//            tvGameType.setText("GAME B");
+//            //ivGameIcon.setImageResource(R.drawable.ic_game_b);
+//        } else if (type.equalsIgnoreCase("C")) {
+//            tvGameType.setText("GAME C");
+//            //ivGameIcon.setImageResource(R.drawable.ic_game_c);
+//        } else if (type.equalsIgnoreCase("D")) {
+//            tvGameType.setText("GAME D");
+//            //ivGameIcon.setImageResource(R.drawable.ic_game_c);
+//        } else if (type.equalsIgnoreCase("E")) {
+//            tvGameType.setText("GAME E");
+//            //ivGameIcon.setImageResource(R.drawable.ic_game_c);
+//        }
+
+        tvGameType.setText(type);
+        tvGameHint.setText(game.getGameInstruction());
+
     }
 }

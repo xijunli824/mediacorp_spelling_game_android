@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.TypedArray;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.EditText;
@@ -77,6 +78,18 @@ public class AnswerBox extends RelativeLayout {
 
     public void setQuestion(Question question) {
         this.question = question;
+    }
+
+    public void setAnswer(String answer) {
+        etAnswer.setText(answer);
+    }
+
+    public void forceChangeResult(boolean isCorrect) {
+        this.isCorrect = isCorrect;
+        if (isCorrect)
+            answerListener.onCorrect(question.getScore());
+        else
+            answerListener.onError(30);
     }
 
     public void checkAnswer(Question question) {
@@ -166,6 +179,10 @@ public class AnswerBox extends RelativeLayout {
 
     public void setAnswerListener(AnswerListener answerListener) {
         this.answerListener = answerListener;
+    }
+
+    public void addTextWatcher(TextWatcher textWatcher) {
+        etAnswer.addTextChangedListener(textWatcher);
     }
 
     public interface AnswerListener {

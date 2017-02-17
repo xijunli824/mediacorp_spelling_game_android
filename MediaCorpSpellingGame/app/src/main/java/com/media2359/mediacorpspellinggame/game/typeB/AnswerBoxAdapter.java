@@ -1,4 +1,4 @@
-package com.media2359.mediacorpspellinggame.game;
+package com.media2359.mediacorpspellinggame.game.typeB;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -53,6 +53,8 @@ public class AnswerBoxAdapter extends RecyclerView.Adapter<AnswerBoxAdapter.Answ
     public AnswerBoxViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_answer_box, parent, false);
+        AnswerBoxViewHolder holder = new AnswerBoxViewHolder(v);
+        holder.setAnswerListener(this);
         return new AnswerBoxViewHolder(v);
     }
 
@@ -61,11 +63,10 @@ public class AnswerBoxAdapter extends RecyclerView.Adapter<AnswerBoxAdapter.Answ
         Question question = questionList.get(position);
         holder.bind(question, position);
 
-        holder.setAnswerListener(this);
         holder.enableEditMode(isEditMode);
 
-        if (isChecking)
-            holder.checkAnswer(question);
+//        if (isChecking)
+//            holder.checkAnswer(question);
     }
 
     @Override
@@ -76,7 +77,7 @@ public class AnswerBoxAdapter extends RecyclerView.Adapter<AnswerBoxAdapter.Answ
     public void enableEditMode(boolean enable) {
         isEditMode = enable;
         reset();
-        notifyDataSetChanged();
+        //notifyDataSetChanged();
     }
 
     @Override
@@ -97,7 +98,7 @@ public class AnswerBoxAdapter extends RecyclerView.Adapter<AnswerBoxAdapter.Answ
             reportToListener();
     }
 
-    private void reset() {
+    public void reset() {
         totalQuestions = 0;
         totalScore = 0;
         correctAnswers = 0;
@@ -116,7 +117,13 @@ public class AnswerBoxAdapter extends RecyclerView.Adapter<AnswerBoxAdapter.Answ
         reset();
         // there is no turning back
         isChecking = true;
-        notifyDataSetChanged();
+
+        //notifyDataSetChanged();
+        notifyItemRangeChanged(0, getItemCount());
+    }
+
+    public void setEditMode(boolean editMode) {
+        isEditMode = editMode;
     }
 
     public void setResultListener(ResultListener listener) {
@@ -141,7 +148,7 @@ public class AnswerBoxAdapter extends RecyclerView.Adapter<AnswerBoxAdapter.Answ
 
         void bind(Question question, int adapterPos) {
             answerBox.setQuestion(question);
-            answerBox.setId(adapterPos);
+            answerBox.setId(adapterPos + 1);
         }
 
         void setAnswerListener (AnswerBox.AnswerListener answerListener) {

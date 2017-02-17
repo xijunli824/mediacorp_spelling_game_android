@@ -21,6 +21,8 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.support.annotation.NonNull;
 
+import com.media2359.mediacorpspellinggame.R;
+
 import static com.google.gson.internal.$Gson$Preconditions.checkNotNull;
 
 /**
@@ -38,13 +40,13 @@ public class ActivityUtils {
         checkNotNull(fragment);
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         if (withAnim) {
-//            transaction.setCustomAnimations(
-//                    R.anim.slide_in_right,
-//                    R.anim.slide_out_left,
-//                    R.anim.slide_in_left,
-//                    R.anim.slide_out_right
-//            );
-            transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+            transaction.setCustomAnimations(
+                    R.animator.slide_in_right,
+                    R.animator.slide_out_left,
+                    R.animator.slide_in_left,
+                    R.animator.slide_out_right
+            );
+            //transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
         }
 
         transaction.add(frameId, fragment);
@@ -64,13 +66,13 @@ public class ActivityUtils {
 
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         if (withAnim) {
-//            transaction.setCustomAnimations(
-//                    R.anim.slide_in_right,
-//                    R.anim.slide_out_left,
-//                    R.anim.slide_in_left,
-//                    R.anim.slide_out_right
-//            );
-            transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+            transaction.setCustomAnimations(
+                    R.animator.slide_in_right,
+                    R.animator.slide_out_left,
+                    R.animator.slide_in_left,
+                    R.animator.slide_out_right
+            );
+            //transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
         }
         transaction.replace(frameId, fragment);
         if (addToBackStack)

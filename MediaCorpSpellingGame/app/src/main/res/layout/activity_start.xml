@@ -6,7 +6,7 @@
     android:orientation="vertical">
 
     <ImageView
-        android:layout_width="300dp"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_above="@+id/centerAnchor"
         android:layout_centerHorizontal="true"
@@ -25,16 +25,16 @@
         style="@style/TextAppearance.AppCompat.Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="34sp"
         android:layout_marginTop="@dimen/medium_margin"
         android:layout_below="@+id/centerAnchor"
         android:layout_centerHorizontal="true"
         android:text="Enter The Name of Your School"
-        android:textColor="@color/white"
-        android:textStyle="bold" />
+        android:textColor="@color/white" />
 
     <EditText
         android:id="@+id/etSchoolName"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvSchool"
         android:layout_centerHorizontal="true"
@@ -43,17 +43,17 @@
         android:hint="School Name"
         android:inputType="textCapWords"
         android:maxLines="1"
-        android:minWidth="200dp"
         android:textColor="@color/white"
-        android:textColorHint="@color/grey" />
+        android:textColorHint="#60ffffff" />
 
     <Button
         android:id="@+id/btnNext"
         style="@style/NextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@id/etSchoolName"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/large_margin"
         android:layout_below="@id/etSchoolName"
-        android:text="@string/abc_next" />
+        android:text="BEGIN" />
 
 </RelativeLayout>
