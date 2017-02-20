@@ -87,10 +87,11 @@ public class AnswerBox extends RelativeLayout {
 
     public void forceChangeResult(boolean isCorrect) {
         this.isCorrect = isCorrect;
-        if (isCorrect)
-            answerListener.onCorrect(question.getScore());
-        else
-            answerListener.onError(30);
+        if (isCorrect){
+            markAsCorrect(question.getScore());
+        } else {
+            markAsWrong(question.getCorrectAnswers().get(0));
+        }
     }
 
     public void checkAnswer(Question question) {

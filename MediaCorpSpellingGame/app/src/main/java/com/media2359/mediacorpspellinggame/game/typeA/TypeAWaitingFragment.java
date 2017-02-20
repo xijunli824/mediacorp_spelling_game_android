@@ -40,7 +40,7 @@ public class TypeAWaitingFragment extends Fragment {
     TextView tvQuestionCount;
 
     private Question question;
-    
+
     public static TypeAWaitingFragment newInstance(Question question) {
 
         Bundle args = new Bundle();

@@ -32,6 +32,10 @@ public class GameProgressManager {
 
     private String sessionId;
 
+    private int[] sectionScores;
+
+    private int[] sectionTimes;
+
     private GameProgressManager() {
         newGame();
     }
@@ -50,6 +54,8 @@ public class GameProgressManager {
         lastAttemptedGamePos = -1;
         lastAttemptedQuestionPos = -1;
         sessionId = "";
+        sectionScores = new int[] {0, 0, 0, 0, 0}; // According to plan, there will be a maximum of 5 games
+        sectionTimes = new int[] {0, 0, 0, 0, 0};
     }
 
     public void saveCurrentGame() {
@@ -168,8 +174,9 @@ public class GameProgressManager {
     public void increaseSectionScore(Activity activity, int score){
         if (activity instanceof GameActivity){
             GameActivity gameActivity = (GameActivity) activity;
-            int sectionScore = gameActivity.getSectionScore() + score;
-            gameActivity.setSectionScore(sectionScore);
+            int gameId = gameActivity.getCurrentGame().getGameId();
+            int sectionScore = sectionScores[gameId] + score;
+            sectionScores[gameId] = sectionScore;
         }else {
             throw new IllegalArgumentException("Activity is not Game Activity");
         }
@@ -178,10 +185,27 @@ public class GameProgressManager {
     public void increaseSectionTime(Activity activity, int time){
         if (activity instanceof GameActivity){
             GameActivity gameActivity = (GameActivity) activity;
-            int sectionTime = gameActivity.getSectionTime() + time;
-            gameActivity.setSectionTime(sectionTime);
+            int gameId = gameActivity.getCurrentGame().getGameId();
+            int sectionTime = sectionTimes[gameId] + time;
+            sectionTimes[gameId] = sectionTime;
         }else {
             throw new IllegalArgumentException("Activity is not Game Activity");
         }
+    }
+
+    public int getSectionScore(int sectionId) {
+        return sectionScores[sectionId];
+    }
+
+    public String getSectionScoreText(int sectionId) {
+        return String.valueOf(sectionScores[sectionId]);
+    }
+
+    public int getSectionTime(int sectionId) {
+        return sectionTimes[sectionId];
+    }
+
+    public String getSectionTimeText(int sectionId) {
+        return String.valueOf(sectionTimes[sectionId]);
     }
 }

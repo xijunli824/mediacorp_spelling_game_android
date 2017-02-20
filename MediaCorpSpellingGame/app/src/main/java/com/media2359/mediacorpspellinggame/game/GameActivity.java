@@ -32,10 +32,6 @@ public class GameActivity extends BaseActivity {
     @NonNull
     private Game currentGame;
 
-    private int sectionScore;
-
-    private int sectionTime;
-
     public static void startGameActivity(Activity activity, @NonNull Game game){
         Intent intent = new Intent(activity, GameActivity.class);
         intent.putExtra(EXTRA_GAME, game);
@@ -52,9 +48,6 @@ public class GameActivity extends BaseActivity {
 
         GameProgressManager.getInstance().setLastAttemptedGamePos(currentGame.getGameId());
         GameProgressManager.getInstance().setLastAttemptedQuestionPos(-1);
-
-        sectionScore = 0;
-        sectionTime = 0;
 
         GameIntroFragment gameIntroFragment = GameIntroFragment.newInstance(currentGame);
         ActivityUtils.addFragmentToActivity(getFragmentManager(), gameIntroFragment, R.id.container, false, false);
@@ -142,22 +135,6 @@ public class GameActivity extends BaseActivity {
         }else {
             throw new IllegalArgumentException("last attempted game id: " + lastAttemptedGameId + " is not the same as current game id: " + currentGame.getGameId());
         }
-    }
-
-    public int getSectionScore() {
-        return sectionScore;
-    }
-
-    public void setSectionScore(int sectionScore) {
-        this.sectionScore = sectionScore;
-    }
-
-    public int getSectionTime() {
-        return sectionTime;
-    }
-
-    public void setSectionTime(int sectionTime) {
-        this.sectionTime = sectionTime;
     }
 
     @NonNull

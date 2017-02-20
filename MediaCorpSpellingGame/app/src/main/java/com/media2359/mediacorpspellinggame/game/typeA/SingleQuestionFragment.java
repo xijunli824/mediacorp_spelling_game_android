@@ -63,6 +63,12 @@ public class SingleQuestionFragment extends Fragment implements AnswerBox.Answer
     @BindView(R.id.tvCardTime)
     TextView tvCardTime;
 
+    @BindView(R.id.tvSectionScoreText)
+    TextView tvSectionScoreText;
+
+    @BindView(R.id.tvSectionTimeText)
+    TextView tvSectionTimeText;
+
     @BindView(R.id.btnSubmit)
     Button btnSubmit;
 
@@ -93,6 +99,7 @@ public class SingleQuestionFragment extends Fragment implements AnswerBox.Answer
     private void initViews() {
 
         answerBox.setAnswerListener(this);
+        answerBox.setQuestion(question);
 
         clockView.setTimeListener(new SecondsClockView.TimeListener() {
             @Override
@@ -102,8 +109,9 @@ public class SingleQuestionFragment extends Fragment implements AnswerBox.Answer
 
                 if (seconds >= 30) {
                     clockView.pause();
-                    GameProgressManager.getInstance().increaseTime(30);
-                    onError(30);
+                    answerBox.forceChangeResult(false);
+                    //GameProgressManager.getInstance().increaseTime(30);
+                    //onError(30);
                 }
             }
         });
@@ -135,6 +143,13 @@ public class SingleQuestionFragment extends Fragment implements AnswerBox.Answer
                 ((GameActivity) getActivity()).showNextQuestion();
             }
         });
+
+        String gameType = ((GameActivity) getActivity()).getCurrentGame().getType();
+        String sectionScoreText = "SECTION " + gameType + " SCORE";
+        String sectionTimeText = "SECTION " + gameType + " TIME";
+
+        tvSectionScoreText.setText(sectionScoreText);
+        tvSectionTimeText.setText(sectionTimeText);
 
         showPlayView();
     }
@@ -172,8 +187,10 @@ public class SingleQuestionFragment extends Fragment implements AnswerBox.Answer
         tvCurrentScore.setVisibility(View.GONE);
         tvCurrentScoreText.setVisibility(View.GONE);
 
-        tvCardScore.setText(GameProgressManager.getInstance().getTotalScoreString());
-        tvCardTime.setText(GameProgressManager.getInstance().getTimeTakenString());
+        int gameId = ((GameActivity) getActivity()).getCurrentGame().getGameId();
+
+        tvCardScore.setText(GameProgressManager.getInstance().getSectionScoreText(gameId));
+        tvCardTime.setText(GameProgressManager.getInstance().getSectionTimeText(gameId));
 
         btnSubmit.setVisibility(View.GONE);
         btnNext.setVisibility(View.VISIBLE);
@@ -186,6 +203,7 @@ public class SingleQuestionFragment extends Fragment implements AnswerBox.Answer
         tvResultInstruction.setText(getString(R.string.game_a_error));
 
         GameProgressManager.getInstance().increaseTime(time);
+        GameProgressManager.getInstance().increaseSectionTime(getActivity(), time);
 
         showScoreView();
     }
@@ -194,9 +212,13 @@ public class SingleQuestionFragment extends Fragment implements AnswerBox.Answer
     public void onCorrect(int score) {
         tvResultInstruction.setText(getString(R.string.game_a_correct));
 
+        // update the total score/time
         GameProgressManager.getInstance().increaseScore(question.getScore());
-
         GameProgressManager.getInstance().increaseTime((int) clockView.getElapsedTime());
+
+        // update the section score/time
+        GameProgressManager.getInstance().increaseSectionScore(getActivity(), question.getScore());
+        GameProgressManager.getInstance().increaseSectionTime(getActivity(), (int) clockView.getElapsedTime());
 
         showScoreView();
     }

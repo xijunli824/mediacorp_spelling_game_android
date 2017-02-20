@@ -65,6 +65,12 @@ public class GridQuestionsFragment extends Fragment implements AnswerBoxAdapter.
     @BindView(R.id.tvCardTime)
     TextView tvCardTime;
 
+    @BindView(R.id.tvSectionScoreText)
+    TextView tvSectionScoreText;
+
+    @BindView(R.id.tvSectionTimeText)
+    TextView tvSectionTimeText;
+
     @BindView(R.id.btnEdit)
     Button btnEdit;
 
@@ -80,7 +86,7 @@ public class GridQuestionsFragment extends Fragment implements AnswerBoxAdapter.
 
     private int initialScore;
 
-    private int gameScore;
+    private int sectionScore;
 
     public static GridQuestionsFragment newInstance(int gameIndex) {
 
@@ -145,6 +151,14 @@ public class GridQuestionsFragment extends Fragment implements AnswerBoxAdapter.
 
         btnEdit.setVisibility(View.INVISIBLE);
 
+        String gameType = ((GameActivity) getActivity()).getCurrentGame().getType();
+
+        String sectionScoreText = "SECTION " + gameType + " SCORE";
+        String sectionTimeText = "SECTION " + gameType + " TIME";
+
+        tvSectionScoreText.setText(sectionScoreText);
+        tvSectionTimeText.setText(sectionTimeText);
+
         showPlayView();
 
     }
@@ -172,10 +186,12 @@ public class GridQuestionsFragment extends Fragment implements AnswerBoxAdapter.
     @Override
     public void onResultSubmit(int correctAnswers, int totalQuestions, int totalScore) {
 
-        gameScore = initialScore + totalScore;
+        sectionScore = totalScore;
 
-        tvCardScore.setText(String.valueOf(gameScore));
-        tvCardTime.setText(GameProgressManager.getInstance().getTimeTakenString());
+        int gameId = ((GameActivity) getActivity()).getCurrentGame().getGameId();
+
+        tvCardScore.setText(String.valueOf(totalScore));
+        tvCardTime.setText(GameProgressManager.getInstance().getSectionTimeText(gameId));
 
         tvResultInstruction.setText("You have answered " + correctAnswers + "/" + totalQuestions + " questions correctly");
 
@@ -220,8 +236,8 @@ public class GridQuestionsFragment extends Fragment implements AnswerBoxAdapter.
 
     private void finishThisGame() {
 
-
-        GameProgressManager.getInstance().setTotalScore(gameScore);
+        GameProgressManager.getInstance().increaseSectionScore(getActivity(), sectionScore);
+        GameProgressManager.getInstance().setTotalScore(sectionScore + initialScore);
 
         ((GameActivity) getActivity()).startNextGame();
     }
@@ -229,7 +245,10 @@ public class GridQuestionsFragment extends Fragment implements AnswerBoxAdapter.
     private void onSubmitButtonClick() {
         clockView.pause();
 
-        GameProgressManager.getInstance().increaseTime((int) clockView.getElapsedTime());
+        int timeSpent = (int) clockView.getElapsedTime();
+
+        GameProgressManager.getInstance().increaseSectionTime(getActivity(), timeSpent);
+        GameProgressManager.getInstance().increaseTime(timeSpent);
 
         CommonUtils.makeHoldOnAlertDialog(getActivity(), new DialogInterface.OnClickListener() {
             @Override

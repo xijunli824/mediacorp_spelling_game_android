@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:padding="@dimen/medium_margin"
     android:background="@drawable/bg_rounded_corner_pink"
-    android:layout_width="360dp"
+    android:layout_width="400dp"
     android:layout_height="wrap_content">
 
     <LinearLayout
@@ -14,11 +14,12 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:layout_width="140dp"
+            android:id="@+id/tvSectionScoreText"
+            android:layout_width="170dp"
             android:layout_height="wrap_content"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:text="TOTAL SCORE"/>
+            tools:text="SECTION A SCORE"/>
 
         <TextView
             android:text=":"
@@ -46,11 +47,12 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:layout_width="140dp"
+            android:id="@+id/tvSectionTimeText"
+            android:layout_width="170dp"
             android:layout_height="wrap_content"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:text="TOTAL TIME"/>
+            tools:text="SECTION A TIME"/>
 
         <TextView
             android:text=":"
