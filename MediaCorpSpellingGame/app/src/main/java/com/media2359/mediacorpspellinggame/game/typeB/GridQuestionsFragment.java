@@ -15,14 +15,13 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.media2359.mediacorpspellinggame.R;
+import com.media2359.mediacorpspellinggame.data.Question;
 import com.media2359.mediacorpspellinggame.factory.GameProgressManager;
 import com.media2359.mediacorpspellinggame.factory.GameRepo;
-import com.media2359.mediacorpspellinggame.data.Question;
 import com.media2359.mediacorpspellinggame.game.GameActivity;
 import com.media2359.mediacorpspellinggame.utils.CommonUtils;
 import com.media2359.mediacorpspellinggame.widget.MinutesClockView;
 import com.media2359.mediacorpspellinggame.widget.PasswordDialogFragment;
-import com.media2359.mediacorpspellinggame.widget.SecondsClockView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -175,9 +174,8 @@ public class GridQuestionsFragment extends Fragment implements AnswerBoxAdapter.
                 if (seconds == 165)
                     clockView.showAlertClock();
 
-                if (seconds >= 180){
-                    clockView.pause();
-                    adapter.checkAnswers();
+                if (seconds >= 20) {
+                    onTimeExpired();
                 }
             }
         });
@@ -255,13 +253,29 @@ public class GridQuestionsFragment extends Fragment implements AnswerBoxAdapter.
             public void onClick(DialogInterface dialog, int which) {
                 adapter.reset();
 
-                for (int i=0; i<adapter.getItemCount(); i++){
+                for (int i = 0; i < adapter.getItemCount(); i++) {
                     AnswerBoxAdapter.AnswerBoxViewHolder viewHolder = (AnswerBoxAdapter.AnswerBoxViewHolder) recyclerView.findViewHolderForAdapterPosition(i);
                     viewHolder.checkAnswer(questionList.get(i));
                 }
 
             }
         }).show();
+    }
+
+    private void onTimeExpired() {
+        clockView.pause();
+
+        int timeSpent = (int) clockView.getElapsedTime();
+
+        GameProgressManager.getInstance().increaseSectionTime(getActivity(), timeSpent);
+        GameProgressManager.getInstance().increaseTime(timeSpent);
+
+        adapter.reset();
+
+        for (int i = 0; i < adapter.getItemCount(); i++) {
+            AnswerBoxAdapter.AnswerBoxViewHolder viewHolder = (AnswerBoxAdapter.AnswerBoxViewHolder) recyclerView.findViewHolderForAdapterPosition(i);
+            viewHolder.checkAnswer(questionList.get(i));
+        }
     }
 
     private void showPasswordDialog() {
@@ -294,7 +308,7 @@ public class GridQuestionsFragment extends Fragment implements AnswerBoxAdapter.
 
         btnEdit.setEnabled(false);
 
-        for (int i=0; i<adapter.getItemCount(); i++){
+        for (int i = 0; i < adapter.getItemCount(); i++) {
             AnswerBoxAdapter.AnswerBoxViewHolder viewHolder = (AnswerBoxAdapter.AnswerBoxViewHolder) recyclerView.findViewHolderForAdapterPosition(i);
             viewHolder.enableEditMode(true);
         }
@@ -309,7 +323,7 @@ public class GridQuestionsFragment extends Fragment implements AnswerBoxAdapter.
             @Override
             public void onClick(View v) {
                 adapter.enableEditMode(false);
-                for (int i=0; i<adapter.getItemCount(); i++){
+                for (int i = 0; i < adapter.getItemCount(); i++) {
                     AnswerBoxAdapter.AnswerBoxViewHolder viewHolder = (AnswerBoxAdapter.AnswerBoxViewHolder) recyclerView.findViewHolderForAdapterPosition(i);
                     viewHolder.enableEditMode(false);
                     viewHolder.checkAnswer(questionList.get(i));
