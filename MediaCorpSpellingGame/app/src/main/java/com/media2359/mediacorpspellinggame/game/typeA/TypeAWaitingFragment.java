@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.media2359.mediacorpspellinggame.R;
+import com.media2359.mediacorpspellinggame.data.Game;
 import com.media2359.mediacorpspellinggame.data.Question;
 import com.media2359.mediacorpspellinggame.factory.GameProgressManager;
 import com.media2359.mediacorpspellinggame.game.GameActivity;
@@ -39,7 +40,7 @@ public class TypeAWaitingFragment extends Fragment {
     TextView tvQuestionCount;
 
     private Question question;
-
+    
     public static TypeAWaitingFragment newInstance(Question question) {
 
         Bundle args = new Bundle();
@@ -53,6 +54,7 @@ public class TypeAWaitingFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         question = getArguments().getParcelable(ARGS_QUESTION);
+
     }
 
     @Nullable
@@ -70,18 +72,22 @@ public class TypeAWaitingFragment extends Fragment {
     }
 
     private void bind() {
-        tvInstruction.setText(question.getInstruction());
+
 
         tvCurrentScore.setText(String.valueOf(GameProgressManager.getInstance().getTotalScore()));
 
         int qid = GameProgressManager.getInstance().getLastAttemptedQuestionPos() + 1;
-        tvQuestionCount.setText("Question: " + qid + "/" + ((GameActivity) getActivity()).getCurrentGame().getQuestionCount());
+        final Game game = ((GameActivity) getActivity()).getCurrentGame();
+
+        tvQuestionCount.setText("Question: " + qid + "/" + game.getQuestionCount());
+
+        tvInstruction.setText(game.getQuestionInstruction());
 
 
         btnGo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((GameActivity)getActivity()).replaceFragment(SingleQuestionFragment.newInstance(question));
+                ((GameActivity)getActivity()).replaceFragment(SingleQuestionFragment.newInstance(question, game.getQuestionInstruction()));
             }
         });
     }

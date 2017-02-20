@@ -149,7 +149,7 @@ public class GameProgressManager {
 
         String bodyText = bodyBuilder.toString();
 
-        String[] addresses = {"xijun.li@2359media.com"};
+        String[] addresses = {"dummyEmail@2359media.com"};
 
 
         Intent intent = new Intent(Intent.ACTION_SENDTO);

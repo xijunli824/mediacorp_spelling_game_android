@@ -31,6 +31,9 @@ public class SummaryActivity extends BaseActivity {
     @BindView(R.id.btnComplete)
     Button btnComplete;
 
+    @BindView(R.id.btnSendEmail)
+    Button btnSendEmail;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +53,13 @@ public class SummaryActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 StartActivity.startNewGame(SummaryActivity.this);
+            }
+        });
+
+        btnSendEmail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GameProgressManager.getInstance().sendCurrentGameProgressAsEmail(SummaryActivity.this);
             }
         });
     }

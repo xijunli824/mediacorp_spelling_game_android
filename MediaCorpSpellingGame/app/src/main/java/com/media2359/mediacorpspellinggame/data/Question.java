@@ -5,6 +5,8 @@ import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 /**
  * Created by xijunli on 13/2/17.
  */
@@ -22,28 +24,30 @@ public final class Question implements Parcelable {
             return new Question[size];
         }
     };
+
     private int id;
     @SerializedName("question")
     private String theQuestion;
-    @SerializedName("answer")
-    private String correctAnswer;
+    @SerializedName("answers")
+    private List<String> correctAnswers;
     private int score;
-    private String instruction;
+    @SerializedName("additions")
+    private List<String> additions;
 
-    public Question(int id, String theQuestion, String correctAnswer, int score, String instruction) {
+    public Question(int id, String theQuestion, List<String> correctAnswers, int score, List<String> additions) {
         this.id = id;
         this.theQuestion = theQuestion;
-        this.correctAnswer = correctAnswer;
+        this.correctAnswers = correctAnswers;
         this.score = score;
-        this.instruction = instruction;
+        this.additions = additions;
     }
 
     protected Question(Parcel in) {
         id = in.readInt();
         theQuestion = in.readString();
-        correctAnswer = in.readString();
+        in.readStringList(correctAnswers);
         score = in.readInt();
-        instruction = in.readString();
+        in.readStringList(additions);
     }
 
     public int getId() {
@@ -54,16 +58,17 @@ public final class Question implements Parcelable {
         return theQuestion;
     }
 
-    public String getCorrectAnswer() {
-        return correctAnswer;
+    public List<String> getCorrectAnswers() {
+        return correctAnswers;
     }
 
     public int getScore() {
         return score;
     }
 
-    public String getInstruction() {
-        return instruction;
+
+    public List<String> getAdditions() {
+        return additions;
     }
 
     @Override
@@ -98,8 +103,9 @@ public final class Question implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(id);
         dest.writeString(theQuestion);
-        dest.writeString(correctAnswer);
+        dest.writeStringList(correctAnswers);
         dest.writeInt(score);
-        dest.writeString(instruction);
+        dest.writeStringList(additions);
     }
+
 }

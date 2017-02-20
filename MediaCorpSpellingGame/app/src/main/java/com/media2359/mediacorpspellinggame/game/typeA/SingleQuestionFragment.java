@@ -31,6 +31,7 @@ import butterknife.ButterKnife;
 public class SingleQuestionFragment extends Fragment implements AnswerBox.AnswerListener {
 
     private static final String ARGS_QUESTION_ENTITY = "args_question";
+    private static final String ARGS_QUESTION_INSTRUCTION = "instruction";
 
     @BindView(R.id.tvQuestionCount)
     TextView tvQuestionCount;
@@ -69,11 +70,13 @@ public class SingleQuestionFragment extends Fragment implements AnswerBox.Answer
     ImageView logo;
 
     private Question question;
+    private String instruction;
 
-    public static SingleQuestionFragment newInstance(@NonNull Question question) {
+    public static SingleQuestionFragment newInstance(@NonNull Question question, @NonNull String instruction) {
 
         Bundle args = new Bundle();
         args.putParcelable(ARGS_QUESTION_ENTITY, question);
+        args.putString(ARGS_QUESTION_INSTRUCTION, instruction);
         SingleQuestionFragment fragment = new SingleQuestionFragment();
         fragment.setArguments(args);
         return fragment;
@@ -105,7 +108,7 @@ public class SingleQuestionFragment extends Fragment implements AnswerBox.Answer
             }
         });
 
-        tvResultInstruction.setText(question.getInstruction());
+        tvResultInstruction.setText(instruction);
 
         tvCurrentScore.setText(String.valueOf(GameProgressManager.getInstance().getTotalScore()));
 
@@ -143,6 +146,7 @@ public class SingleQuestionFragment extends Fragment implements AnswerBox.Answer
         clockView.resume();
 
         question = getArguments().getParcelable(ARGS_QUESTION_ENTITY);
+        instruction = getArguments().getString(ARGS_QUESTION_INSTRUCTION);
 
         initViews();
     }

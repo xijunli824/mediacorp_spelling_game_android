@@ -109,10 +109,20 @@
     <Button
         style="@style/NextButton"
         android:id="@+id/btnComplete"
-        android:text="Complete"
+        android:text="COMPLETE"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/llSummary"
         android:layout_marginTop="@dimen/large_margin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        style="@style/NextButton"
+        android:id="@+id/btnSendEmail"
+        android:text="Send Results"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="@dimen/medium_margin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 

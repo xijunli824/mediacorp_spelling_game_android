@@ -72,8 +72,7 @@ public class TypeBWaitingFragment extends Fragment {
 
     private void bind() {
 
-        Question question = GameRepo.getInstance().getQuestion(GameRepo.getInstance().getGame(gameIndex).getQuestionIdList()[0]);
-        tvInstruction.setText(question.getInstruction());
+        tvInstruction.setText(GameRepo.getInstance().getGame(gameIndex).getQuestionInstruction());
 
         tvCurrentScore.setText(String.valueOf(GameProgressManager.getInstance().getTotalScore()));
 

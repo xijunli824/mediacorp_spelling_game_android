@@ -1,70 +1,70 @@
 [{
         "id": 1,
         "question": "Apple",
-        "answer": "Apple",
+        "answers": "Apple",
         "score": 10,
         "instruction": "Enter the word that was read to you"
     },
     {
         "id": 2,
         "question": "Banana",
-        "answer": "Banana",
+        "answers": "Banana",
         "score": 10,
         "instruction": "Enter the word that was read to you"
     },
     {
         "id": 3,
         "question": "Orange",
-        "answer": "Orange",
+        "answers": "Orange",
         "score": 10,
         "instruction": "Enter the word that was read to you"
     },
     {
         "id": 4,
         "question": "Pear",
-        "answer": "Pear",
+        "answers": "Pear",
         "score": 10,
         "instruction": "Enter the word that was read to you"
     },
     {
         "id": 5,
         "question": "Durian",
-        "answer": "Durian",
+        "answers": "Durian",
         "score": 10,
         "instruction": "Unscramble the word"
     },
     {
         "id": 6,
         "question": "Durian",
-        "answer": "Durian",
+        "answers": "Durian",
         "score": 10,
         "instruction": "Unscramble the word"
     },
     {
         "id": 7,
         "question": "Durian",
-        "answer": "Durian",
+        "answers": "Durian",
         "score": 10,
         "instruction": "Unscramble the word"
     },
     {
         "id": 8,
         "question": "Durian",
-        "answer": "Durian",
+        "answers": "Durian",
         "score": 10,
         "instruction": "Unscramble the word"
     },
     {
         "id": 9,
         "question": "Durian",
-        "answer": "Durian",
+        "answers": "Durian",
         "score": 10,
         "instruction": "Enter the word that was read to you"
     },
     {
         "id": 10,
         "question": "Durian",
-        "answer": "Durian",
+        "answers": "Durian",
         "score": 10,
         "instruction": "Enter the word that was read to you"
     }

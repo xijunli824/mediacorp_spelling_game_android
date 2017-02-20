@@ -95,7 +95,7 @@ public class GameRepo {
             }
         });
 
-        questionsAsyncTask.execute(context.getResources().openRawResource(R.raw.questions_mock));
+        questionsAsyncTask.execute(context.getResources().openRawResource(R.raw.questions_set_a));
 
         if (gamesAsyncTask != null) {
             gamesAsyncTask.cancel(true);
@@ -109,7 +109,7 @@ public class GameRepo {
             }
         });
 
-        gamesAsyncTask.execute(context.getResources().openRawResource(R.raw.games_set_mock));
+        gamesAsyncTask.execute(context.getResources().openRawResource(R.raw.games_set_a));
     }
 
     private void reportBack(@NonNull final GameDataCallback gameDataCallback) {

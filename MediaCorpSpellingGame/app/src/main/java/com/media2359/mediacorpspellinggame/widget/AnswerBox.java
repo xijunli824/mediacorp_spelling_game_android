@@ -13,6 +13,8 @@ import android.widget.TextView;
 import com.media2359.mediacorpspellinggame.R;
 import com.media2359.mediacorpspellinggame.data.Question;
 
+import java.util.List;
+
 /**
  * Created by xijunli on 13/2/17.
  */
@@ -108,18 +110,19 @@ public class AnswerBox extends RelativeLayout {
         this.question = question;
         // get the input
         String actualAnswer = etAnswer.getText().toString().trim();
+        List<String> correctAnswers = question.getCorrectAnswers();
 
         // if the answer is empty
         if (TextUtils.isEmpty(actualAnswer)){
-            markAsWrong(question.getCorrectAnswer());
+            markAsWrong(correctAnswers.get(0));
             return;
         }
 
         // check if the answer is correct
-        if (question.getCorrectAnswer().equalsIgnoreCase(actualAnswer)){
+        if (correctAnswers.contains(actualAnswer)){
             markAsCorrect(question.getScore());
         }else {
-            markAsWrong(question.getCorrectAnswer());
+            markAsWrong(correctAnswers.get(0));
         }
     }
 
@@ -168,7 +171,7 @@ public class AnswerBox extends RelativeLayout {
             if (!isCorrect)
                 markAsCorrect(question.getScore());
             else
-                markAsWrong(question.getCorrectAnswer());
+                markAsWrong(question.getCorrectAnswers().get(0));
         }
     };
 

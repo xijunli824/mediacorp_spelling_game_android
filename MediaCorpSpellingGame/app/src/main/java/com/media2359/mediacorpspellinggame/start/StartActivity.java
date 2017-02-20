@@ -19,6 +19,7 @@ import com.media2359.mediacorpspellinggame.data.Question;
 import com.media2359.mediacorpspellinggame.factory.GameProgressManager;
 import com.media2359.mediacorpspellinggame.factory.GameRepo;
 import com.media2359.mediacorpspellinggame.game.GameActivity;
+import com.media2359.mediacorpspellinggame.game.SummaryActivity;
 import com.media2359.mediacorpspellinggame.widget.SessionSelectionFragment;
 
 import java.util.List;

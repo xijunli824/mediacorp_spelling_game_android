@@ -24,12 +24,15 @@ public final class Game implements Parcelable {
 
     private String gameInstruction;
 
-    public Game(String type, int gameId, int[] questionIdList, int questionCount, String gameInstruction) {
+    private String questionInstruction;
+
+    public Game(String type, int gameId, int[] questionIdList, int questionCount, String gameInstruction, String questionInstruction) {
         this.type = type;
         this.gameId = gameId;
         this.questionIdList = questionIdList;
         this.questionCount = questionCount;
         this.gameInstruction = gameInstruction;
+        this.questionInstruction = questionInstruction;
     }
 
 
@@ -39,6 +42,7 @@ public final class Game implements Parcelable {
         questionIdList = in.createIntArray();
         questionCount = in.readInt();
         gameInstruction = in.readString();
+        questionInstruction = in.readString();
     }
 
     public static final Creator<Game> CREATOR = new Creator<Game>() {
@@ -73,6 +77,10 @@ public final class Game implements Parcelable {
         return gameInstruction;
     }
 
+    public String getQuestionInstruction() {
+        return questionInstruction;
+    }
+
     @Override
     public int hashCode() {
         return gameId;
@@ -104,5 +112,6 @@ public final class Game implements Parcelable {
         dest.writeIntArray(questionIdList);
         dest.writeInt(questionCount);
         dest.writeString(gameInstruction);
+        dest.writeString(questionInstruction);
     }
 }
