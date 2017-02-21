@@ -235,9 +235,8 @@ public class GridQuestionsFragment extends Fragment implements AnswerBoxAdapter.
     private void finishThisGame() {
 
         GameProgressManager.getInstance().increaseSectionScore(getActivity(), sectionScore);
-        GameProgressManager.getInstance().setTotalScore(sectionScore + initialScore);
 
-        ((GameActivity) getActivity()).startNextGame();
+        ((GameActivity) getActivity()).showGameSummaryPage();
     }
 
     private void onSubmitButtonClick() {
@@ -313,6 +312,7 @@ public class GridQuestionsFragment extends Fragment implements AnswerBoxAdapter.
             viewHolder.enableEditMode(true);
         }
 
+        tvResultInstruction.setText("Edit Mode");
         showDoneButton();
     }
 

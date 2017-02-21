@@ -10,11 +10,9 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.media2359.mediacorpspellinggame.R;
-import com.media2359.mediacorpspellinggame.data.Question;
 import com.media2359.mediacorpspellinggame.factory.GameProgressManager;
 import com.media2359.mediacorpspellinggame.factory.GameRepo;
 import com.media2359.mediacorpspellinggame.game.GameActivity;
-import com.media2359.mediacorpspellinggame.game.typeA.SingleQuestionFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -72,7 +70,7 @@ public class TypeBWaitingFragment extends Fragment {
 
     private void bind() {
 
-        tvInstruction.setText(GameRepo.getInstance().getGame(gameIndex).getQuestionInstruction());
+        tvInstruction.setText(GameRepo.getInstance().getSection(gameIndex).getQuestionInstruction());
 
         tvCurrentScore.setText(String.valueOf(GameProgressManager.getInstance().getTotalScore()));
 

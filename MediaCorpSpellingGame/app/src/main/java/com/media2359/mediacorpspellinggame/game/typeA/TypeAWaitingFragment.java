@@ -10,11 +10,10 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.media2359.mediacorpspellinggame.R;
-import com.media2359.mediacorpspellinggame.data.Game;
+import com.media2359.mediacorpspellinggame.data.Section;
 import com.media2359.mediacorpspellinggame.data.Question;
 import com.media2359.mediacorpspellinggame.factory.GameProgressManager;
 import com.media2359.mediacorpspellinggame.game.GameActivity;
-import com.media2359.mediacorpspellinggame.game.typeB.GridQuestionsFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -77,7 +76,7 @@ public class TypeAWaitingFragment extends Fragment {
         tvCurrentScore.setText(String.valueOf(GameProgressManager.getInstance().getTotalScore()));
 
         int qid = GameProgressManager.getInstance().getLastAttemptedQuestionPos() + 1;
-        final Game game = ((GameActivity) getActivity()).getCurrentGame();
+        final Section game = ((GameActivity) getActivity()).getCurrentGame();
 
         tvQuestionCount.setText("Question: " + qid + "/" + game.getQuestionCount());
 

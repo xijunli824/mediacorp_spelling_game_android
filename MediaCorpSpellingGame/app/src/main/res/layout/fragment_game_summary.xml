@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/white_bg">
+
+    <TextView
+        android:id="@+id/tvCongratulations"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_above="@+id/llSummary"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:textSize="34sp"
+        tools:text="Congratulations \n You have completed Game E!" />
+
+    <LinearLayout
+        android:id="@+id/llSummary"
+        android:layout_width="440dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/bg_rounded_corner_pink"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="@dimen/small_margin">
+
+        <com.media2359.mediacorpspellinggame.widget.ScoreText
+            android:id="@+id/stGameA"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/medium_margin"
+            android:layout_marginRight="@dimen/medium_margin"
+            android:layout_marginTop="@dimen/small_margin"
+            app:left_text="SECTION A SCORE"
+            app:right_text="100" />
+
+        <com.media2359.mediacorpspellinggame.widget.ScoreText
+            android:id="@+id/stGameB"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/medium_margin"
+            android:layout_marginRight="@dimen/medium_margin"
+            android:layout_marginTop="@dimen/small_margin"
+            android:visibility="gone"
+            app:left_text="SECTION B SCORE"
+            app:right_text="100" />
+
+        <com.media2359.mediacorpspellinggame.widget.ScoreText
+            android:id="@+id/stGameC"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/medium_margin"
+            android:layout_marginRight="@dimen/medium_margin"
+            android:layout_marginTop="@dimen/small_margin"
+            android:visibility="gone"
+            app:left_text="SECTION C SCORE"
+            app:right_text="100" />
+
+        <com.media2359.mediacorpspellinggame.widget.ScoreText
+            android:id="@+id/stGameD"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/medium_margin"
+            android:layout_marginRight="@dimen/medium_margin"
+            android:layout_marginTop="@dimen/small_margin"
+            android:visibility="gone"
+            app:left_text="SECTION D SCORE"
+            app:right_text="100" />
+
+        <com.media2359.mediacorpspellinggame.widget.ScoreText
+            android:id="@+id/stGameE"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/medium_margin"
+            android:layout_marginRight="@dimen/medium_margin"
+            android:layout_marginTop="@dimen/small_margin"
+            android:visibility="gone"
+            app:left_text="SECTION E SCORE"
+            app:right_text="100" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="@dimen/small_margin"
+            android:layout_marginRight="@dimen/small_margin"
+            android:layout_marginTop="@dimen/small_margin"
+            android:layout_marginBottom="@dimen/small_margin"
+            android:background="@color/dark_grey"/>
+
+        <com.media2359.mediacorpspellinggame.widget.ScoreText
+            android:id="@+id/stTotalScore"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/medium_margin"
+            android:layout_marginRight="@dimen/medium_margin"
+            android:layout_marginTop="@dimen/small_margin"
+            android:layout_marginBottom="@dimen/small_margin"
+            app:left_text="TOTAL SCORE"
+            app:right_text="100" />
+
+        <com.media2359.mediacorpspellinggame.widget.ScoreText
+            android:id="@+id/stTotalTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/medium_margin"
+            android:layout_marginRight="@dimen/medium_margin"
+            android:layout_marginTop="@dimen/small_margin"
+            android:layout_marginBottom="@dimen/small_margin"
+            app:left_text="TOTAL TIME"
+            app:right_text="02:32" />
+
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/btnNext"
+        style="@style/NextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="@dimen/medium_margin"
+        android:text="@string/abc_next" />
+
+</RelativeLayout>

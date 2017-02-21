@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.media2359.mediacorpspellinggame.R;
-import com.media2359.mediacorpspellinggame.data.Game;
+import com.media2359.mediacorpspellinggame.data.Section;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -20,7 +20,7 @@ import butterknife.ButterKnife;
  * Created by xijunli on 13/2/17.
  */
 
-public class GameIntroFragment extends Fragment {
+public class SectionIntroFragment extends Fragment {
 
     private static final String ARGS_GAME_TYPE = "game_type";
 
@@ -36,13 +36,13 @@ public class GameIntroFragment extends Fragment {
     @BindView(R.id.btnStart)
     Button btnStart;
 
-    private Game game;
+    private Section game;
 
-    public static GameIntroFragment newInstance(Game game) {
+    public static SectionIntroFragment newInstance(Section game) {
 
         Bundle args = new Bundle();
         args.putParcelable(ARGS_GAME_TYPE, game);
-        GameIntroFragment fragment = new GameIntroFragment();
+        SectionIntroFragment fragment = new SectionIntroFragment();
         fragment.setArguments(args);
         return fragment;
     }

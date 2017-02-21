@@ -1,11 +1,9 @@
 package com.media2359.mediacorpspellinggame.factory;
 
 import android.os.AsyncTask;
-import android.util.SparseArray;
 
 import com.google.gson.reflect.TypeToken;
-import com.media2359.mediacorpspellinggame.data.Game;
-import com.media2359.mediacorpspellinggame.data.Question;
+import com.media2359.mediacorpspellinggame.data.Section;
 import com.media2359.mediacorpspellinggame.injection.Injection;
 
 import java.io.InputStream;
@@ -20,7 +18,7 @@ import java.util.List;
  * Created by xijunli on 13/2/17.
  */
 
-public class LoadGamesAsyncTask extends AsyncTask<InputStream, Void, List<Game>> {
+public class LoadGamesAsyncTask extends AsyncTask<InputStream, Void, List<Section>> {
 
     protected AsyncTaskCallback callback;
 
@@ -29,14 +27,14 @@ public class LoadGamesAsyncTask extends AsyncTask<InputStream, Void, List<Game>>
     }
 
     @Override
-    protected List<Game> doInBackground(InputStream... params) {
+    protected List<Section> doInBackground(InputStream... params) {
 
         InputStream input = params[0];
 
-        List<Game> data = new ArrayList<>();
+        List<Section> data = new ArrayList<>();
 
         try {
-            Type collectionType = new TypeToken<List<Game>>(){}.getType();
+            Type collectionType = new TypeToken<List<Section>>(){}.getType();
 
             Reader reader = new InputStreamReader(input, "UTF-8");
 
@@ -51,7 +49,7 @@ public class LoadGamesAsyncTask extends AsyncTask<InputStream, Void, List<Game>>
     }
 
     @Override
-    protected void onPostExecute(List<Game> games) {
+    protected void onPostExecute(List<Section> games) {
         super.onPostExecute(games);
         callback.onFinished(games);
 
@@ -59,7 +57,7 @@ public class LoadGamesAsyncTask extends AsyncTask<InputStream, Void, List<Game>>
     }
 
     public interface AsyncTaskCallback {
-        void onFinished(List<Game> games);
+        void onFinished(List<Section> games);
     }
 
 }

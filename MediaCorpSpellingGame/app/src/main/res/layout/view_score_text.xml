@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView
+        android:id="@+id/tvCardLeft"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        tools:text="TOTAL TIME" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:text=":"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvCardRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/light_purple"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        tools:text="02:32" />
+
+</merge>

@@ -4,22 +4,17 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
 import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.util.SparseArray;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.media2359.mediacorpspellinggame.R;
 import com.media2359.mediacorpspellinggame.base.BaseActivity;
-import com.media2359.mediacorpspellinggame.data.Game;
+import com.media2359.mediacorpspellinggame.data.Section;
 import com.media2359.mediacorpspellinggame.data.Question;
 import com.media2359.mediacorpspellinggame.factory.GameProgressManager;
 import com.media2359.mediacorpspellinggame.factory.GameRepo;
 import com.media2359.mediacorpspellinggame.game.GameActivity;
-import com.media2359.mediacorpspellinggame.game.SummaryActivity;
 import com.media2359.mediacorpspellinggame.widget.SessionSelectionFragment;
 
 import java.util.List;
@@ -80,7 +75,7 @@ public class StartActivity extends BaseActivity {
 
             GameRepo.getInstance().loadData(this, new GameRepo.GameDataCallback() {
                 @Override
-                public void onLoadingFinished(List<Game> games, List<Question> questions) {
+                public void onLoadingFinished(List<Section> games, List<Question> questions) {
                     dialog.dismiss();
                 }
             });
@@ -99,7 +94,7 @@ public class StartActivity extends BaseActivity {
             GameProgressManager.getInstance().setSchoolName(etSchoolName.getText().toString().trim());
 
             // start the first game
-            Game firstGame = GameRepo.getInstance().getGame(0);
+            Section firstGame = GameRepo.getInstance().getSection(0);
             GameActivity.startGameActivity(this, firstGame);
 
             // finish this activity

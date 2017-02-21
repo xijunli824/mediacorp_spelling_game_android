@@ -9,7 +9,7 @@ import com.google.gson.annotations.SerializedName;
  * Created by xijunli on 15/2/17.
  */
 
-public final class Game implements Parcelable {
+public final class Section implements Parcelable {
 
     // the type of the game, can be A, B, C, D, or E
     private String type;
@@ -26,7 +26,7 @@ public final class Game implements Parcelable {
 
     private String questionInstruction;
 
-    public Game(String type, int gameId, int[] questionIdList, int questionCount, String gameInstruction, String questionInstruction) {
+    public Section(String type, int gameId, int[] questionIdList, int questionCount, String gameInstruction, String questionInstruction) {
         this.type = type;
         this.gameId = gameId;
         this.questionIdList = questionIdList;
@@ -36,7 +36,7 @@ public final class Game implements Parcelable {
     }
 
 
-    protected Game(Parcel in) {
+    protected Section(Parcel in) {
         type = in.readString();
         gameId = in.readInt();
         questionIdList = in.createIntArray();
@@ -45,15 +45,15 @@ public final class Game implements Parcelable {
         questionInstruction = in.readString();
     }
 
-    public static final Creator<Game> CREATOR = new Creator<Game>() {
+    public static final Creator<Section> CREATOR = new Creator<Section>() {
         @Override
-        public Game createFromParcel(Parcel in) {
-            return new Game(in);
+        public Section createFromParcel(Parcel in) {
+            return new Section(in);
         }
 
         @Override
-        public Game[] newArray(int size) {
-            return new Game[size];
+        public Section[] newArray(int size) {
+            return new Section[size];
         }
     };
 
@@ -91,8 +91,8 @@ public final class Game implements Parcelable {
         if (obj == null)
             return false;
 
-        if (obj instanceof Game) {
-            Game right = (Game) obj;
+        if (obj instanceof Section) {
+            Section right = (Section) obj;
             return (getGameId() == right.getGameId());
         }
 

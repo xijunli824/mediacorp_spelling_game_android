@@ -4,7 +4,7 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 
 import com.media2359.mediacorpspellinggame.R;
-import com.media2359.mediacorpspellinggame.data.Game;
+import com.media2359.mediacorpspellinggame.data.Section;
 import com.media2359.mediacorpspellinggame.data.Question;
 
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ public class GameRepo {
 
     private static GameRepo INSTANCE;
 
-    private List<Game> gameList;
+    private List<Section> sectionList;
 
     private List<Question> questionList;
 
@@ -27,7 +27,7 @@ public class GameRepo {
     private LoadGamesAsyncTask gamesAsyncTask;
 
     private GameRepo() {
-        gameList = new ArrayList<>();
+        sectionList = new ArrayList<>();
         questionList = new ArrayList<>();
     }
 
@@ -39,10 +39,10 @@ public class GameRepo {
     }
 
     public synchronized void loadData(Context context, @NonNull GameDataCallback callback) {
-        if (questionList.isEmpty() || gameList.size() == 0) {
+        if (questionList.isEmpty() || sectionList.size() == 0) {
             forceLoad(context, callback);
         } else {
-            callback.onLoadingFinished(gameList, questionList);
+            callback.onLoadingFinished(sectionList, questionList);
         }
     }
 
@@ -58,7 +58,7 @@ public class GameRepo {
 
     public List<Question> getListOfQuestionsFromGame(int gameIndex) {
 
-        Game game = getGame(gameIndex);
+        Section game = getSection(gameIndex);
 
         if (game == null)
             return null;
@@ -72,16 +72,16 @@ public class GameRepo {
         return result;
     }
 
-    public Game getGame(int index) {
-        if (index < 0 || index >= gameList.size())
+    public Section getSection(int index) {
+        if (index < 0 || index >= sectionList.size())
             return null;
 
-        return gameList.get(index);
+        return sectionList.get(index);
     }
 
     private void forceLoad(Context context, @NonNull final GameDataCallback gameDataCallback) {
         questionList.clear();
-        gameList.clear();
+        sectionList.clear();
 
         if (questionsAsyncTask != null) {
             questionsAsyncTask.cancel(true);
@@ -103,8 +103,8 @@ public class GameRepo {
 
         gamesAsyncTask = new LoadGamesAsyncTask(new LoadGamesAsyncTask.AsyncTaskCallback() {
             @Override
-            public void onFinished(List<Game> games) {
-                gameList = games;
+            public void onFinished(List<Section> games) {
+                sectionList = games;
                 reportBack(gameDataCallback);
             }
         });
@@ -114,12 +114,12 @@ public class GameRepo {
 
     private void reportBack(@NonNull final GameDataCallback gameDataCallback) {
         if (isDataReady()){
-            gameDataCallback.onLoadingFinished(gameList, questionList);
+            gameDataCallback.onLoadingFinished(sectionList, questionList);
         }
     }
 
     public boolean isDataReady() {
-        return gameList != null && gameList.size() != 0 && questionList != null && !questionList.isEmpty();
+        return sectionList != null && sectionList.size() != 0 && questionList != null && !questionList.isEmpty();
     }
 
     public void onDestroy() {
@@ -132,12 +132,12 @@ public class GameRepo {
         }
 
         questionList = null;
-        gameList = null;
+        sectionList = null;
     }
 
     public interface GameDataCallback {
 
-        void onLoadingFinished(List<Game> games, List<Question> questions);
+        void onLoadingFinished(List<Section> games, List<Question> questions);
 
     }
 }

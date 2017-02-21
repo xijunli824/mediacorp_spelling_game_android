@@ -6,11 +6,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.widget.Toast;
 
-import com.media2359.mediacorpspellinggame.data.Game;
 import com.media2359.mediacorpspellinggame.game.GameActivity;
 import com.media2359.mediacorpspellinggame.utils.PreferenceUtils;
-
-import java.util.IllegalFormatException;
 
 /**
  * Created by xijunli on 15/2/17.
@@ -21,8 +18,6 @@ public class GameProgressManager {
     private static GameProgressManager INSTANCE;
 
     private String schoolName;
-
-    private int totalScore;
 
     private int timeTaken;
 
@@ -49,7 +44,6 @@ public class GameProgressManager {
 
     public void newGame() {
         schoolName = "";
-        totalScore = 0;
         timeTaken = 0;
         lastAttemptedGamePos = -1;
         lastAttemptedQuestionPos = -1;
@@ -59,7 +53,7 @@ public class GameProgressManager {
     }
 
     public void saveCurrentGame() {
-        PreferenceUtils.saveCurrentScore(totalScore);
+        PreferenceUtils.saveCurrentScore(getTotalScore());
         PreferenceUtils.saveSchoolName(schoolName);
         PreferenceUtils.saveTimeTaken(timeTaken);
         PreferenceUtils.saveLastGameId(lastAttemptedGamePos);
@@ -77,22 +71,19 @@ public class GameProgressManager {
     }
 
     public int getTotalScore() {
+        int totalScore = 0;
+
+        for (int i:sectionScores){
+            totalScore += i;
+        }
+
         return totalScore;
     }
 
     public String getTotalScoreString() {
-        return String.valueOf(totalScore);
+        return String.valueOf(getTotalScore());
     }
 
-    public void setTotalScore(int totalScore) {
-        this.totalScore = totalScore;
-        PreferenceUtils.saveCurrentScore(totalScore);
-    }
-
-    public void increaseScore(int increment) {
-        this.totalScore += increment;
-        PreferenceUtils.saveCurrentScore(totalScore);
-    }
 
     public int getTimeTaken() {
         return timeTaken;
@@ -146,11 +137,11 @@ public class GameProgressManager {
     }
 
     public void sendCurrentGameProgressAsEmail(Context context) {
-        String subjectText = "Game results for " + getSchoolName();
+        String subjectText = "Section results for " + getSchoolName();
 
         StringBuilder bodyBuilder = new StringBuilder();
         bodyBuilder.append("School Name: ").append(schoolName).append("\n")
-                .append("Score: ").append(totalScore).append("\n")
+                .append("Score: ").append(getTotalScore()).append("\n")
                 .append("Time: ").append(timeTaken).append("\n");
 
         String bodyText = bodyBuilder.toString();
@@ -178,7 +169,7 @@ public class GameProgressManager {
             int sectionScore = sectionScores[gameId] + score;
             sectionScores[gameId] = sectionScore;
         }else {
-            throw new IllegalArgumentException("Activity is not Game Activity");
+            throw new IllegalArgumentException("Activity is not Section Activity");
         }
     }
 
@@ -189,7 +180,7 @@ public class GameProgressManager {
             int sectionTime = sectionTimes[gameId] + time;
             sectionTimes[gameId] = sectionTime;
         }else {
-            throw new IllegalArgumentException("Activity is not Game Activity");
+            throw new IllegalArgumentException("Activity is not Section Activity");
         }
     }
 
@@ -206,6 +197,14 @@ public class GameProgressManager {
     }
 
     public String getSectionTimeText(int sectionId) {
-        return String.valueOf(sectionTimes[sectionId]);
+        int sectionTime = sectionTimes[sectionId];
+
+        int minutes = sectionTime / 60;
+        int seconds = sectionTime % 60;
+        if (seconds < 10){
+            return minutes + ":0" + seconds;
+        }else {
+            return minutes + ":" + seconds;
+        }
     }
 }

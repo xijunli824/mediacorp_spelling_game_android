@@ -213,7 +213,6 @@ public class SingleQuestionFragment extends Fragment implements AnswerBox.Answer
         tvResultInstruction.setText(getString(R.string.game_a_correct));
 
         // update the total score/time
-        GameProgressManager.getInstance().increaseScore(question.getScore());
         GameProgressManager.getInstance().increaseTime((int) clockView.getElapsedTime());
 
         // update the section score/time

@@ -5,17 +5,14 @@ import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.Snackbar;
 
 import com.media2359.mediacorpspellinggame.R;
 import com.media2359.mediacorpspellinggame.base.BaseActivity;
-import com.media2359.mediacorpspellinggame.data.Game;
+import com.media2359.mediacorpspellinggame.data.Section;
 import com.media2359.mediacorpspellinggame.data.Question;
 import com.media2359.mediacorpspellinggame.factory.GameProgressManager;
 import com.media2359.mediacorpspellinggame.factory.GameRepo;
-import com.media2359.mediacorpspellinggame.game.typeA.SingleQuestionFragment;
 import com.media2359.mediacorpspellinggame.game.typeA.TypeAWaitingFragment;
-import com.media2359.mediacorpspellinggame.game.typeB.GridQuestionsFragment;
 import com.media2359.mediacorpspellinggame.game.typeB.TypeBWaitingFragment;
 import com.media2359.mediacorpspellinggame.utils.ActivityUtils;
 
@@ -30,9 +27,9 @@ public class GameActivity extends BaseActivity {
     private static final String EXTRA_GAME = "extra_game";
 
     @NonNull
-    private Game currentGame;
+    private Section currentGame;
 
-    public static void startGameActivity(Activity activity, @NonNull Game game){
+    public static void startGameActivity(Activity activity, @NonNull Section game){
         Intent intent = new Intent(activity, GameActivity.class);
         intent.putExtra(EXTRA_GAME, game);
         activity.startActivity(intent);
@@ -49,7 +46,7 @@ public class GameActivity extends BaseActivity {
         GameProgressManager.getInstance().setLastAttemptedGamePos(currentGame.getGameId());
         GameProgressManager.getInstance().setLastAttemptedQuestionPos(-1);
 
-        GameIntroFragment gameIntroFragment = GameIntroFragment.newInstance(currentGame);
+        SectionIntroFragment gameIntroFragment = SectionIntroFragment.newInstance(currentGame);
         ActivityUtils.addFragmentToActivity(getFragmentManager(), gameIntroFragment, R.id.container, false, false);
     }
 
@@ -82,7 +79,8 @@ public class GameActivity extends BaseActivity {
 
         if (nextQuestionPos < 0) {
             // if this game has finished
-            startNextGame();
+            //startNextGame();
+            showGameSummaryPage();
             return;
         }
 
@@ -118,12 +116,17 @@ public class GameActivity extends BaseActivity {
         return nextQuestionPos;
     }
 
+    public void showGameSummaryPage() {
+        replaceFragment(SectionSummaryFragment.newInstance(currentGame.getGameId()));
+    }
+
+
     public void startNextGame() {
         int lastAttemptedGameId = GameProgressManager.getInstance().getLastAttemptedGamePos();
 
         if (lastAttemptedGameId == currentGame.getGameId()){
 
-            Game nextGame = GameRepo.getInstance().getGame(lastAttemptedGameId + 1);
+            Section nextGame = GameRepo.getInstance().getSection(lastAttemptedGameId + 1);
 
             if (nextGame == null){
                 Intent intent = new Intent(this, SummaryActivity.class);
@@ -138,7 +141,7 @@ public class GameActivity extends BaseActivity {
     }
 
     @NonNull
-    public Game getCurrentGame() {
+    public Section getCurrentGame() {
         return currentGame;
     }
 }

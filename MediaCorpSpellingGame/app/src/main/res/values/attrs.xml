@@ -3,4 +3,8 @@
     <declare-styleable name="AnswerBox">
         <attr name="id" format="integer" />
     </declare-styleable>
+    <declare-styleable name="ScoreText">
+        <attr name="left_text" format="string" />
+        <attr name="right_text" format="string" />
+    </declare-styleable>
 </resources>

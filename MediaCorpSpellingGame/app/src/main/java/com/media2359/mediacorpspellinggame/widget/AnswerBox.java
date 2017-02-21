@@ -86,7 +86,11 @@ public class AnswerBox extends RelativeLayout {
     }
 
     public void forceChangeResult(boolean isCorrect) {
+
         this.isCorrect = isCorrect;
+
+        lockInputField(true);
+
         if (isCorrect){
             markAsCorrect(question.getScore());
         } else {
