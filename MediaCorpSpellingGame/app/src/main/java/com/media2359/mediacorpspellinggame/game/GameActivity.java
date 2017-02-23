@@ -47,7 +47,7 @@ public class GameActivity extends BaseActivity {
         GameProgressManager.getInstance().setLastAttemptedQuestionPos(-1);
 
         SectionIntroFragment gameIntroFragment = SectionIntroFragment.newInstance(currentGame);
-        ActivityUtils.addFragmentToActivity(getFragmentManager(), gameIntroFragment, R.id.container, false, false);
+        ActivityUtils.replaceFragmentInActivity(getFragmentManager(), gameIntroFragment, R.id.container, false, false);
     }
 
     public void replaceFragment(Fragment fragment) {

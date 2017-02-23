@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/white_bg"
-    android:padding="@dimen/medium_margin">
+    android:padding="@dimen/large_margin">
 
     <ImageView
         android:id="@+id/ivGameIcon"
@@ -51,6 +51,6 @@
         android:layout_below="@id/tvGameHint"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/medium_margin"
-        android:text="Start GAME" />
+        android:text="@string/abc_start_game" />
 
 </RelativeLayout>

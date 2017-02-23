@@ -41,6 +41,9 @@ public class SummaryActivity extends BaseActivity {
         ButterKnife.bind(this);
 
         bindView();
+
+        // Save the game record
+        GameProgressManager.getInstance().saveCurrentGame();
     }
 
     private void bindView() {

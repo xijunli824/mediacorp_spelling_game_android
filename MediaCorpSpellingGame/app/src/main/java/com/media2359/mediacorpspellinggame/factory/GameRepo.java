@@ -4,9 +4,10 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 
 import com.media2359.mediacorpspellinggame.R;
-import com.media2359.mediacorpspellinggame.data.Section;
 import com.media2359.mediacorpspellinggame.data.Question;
+import com.media2359.mediacorpspellinggame.data.Section;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +27,8 @@ public class GameRepo {
 
     private LoadGamesAsyncTask gamesAsyncTask;
 
+    int currentDataSetId = -1;
+
     private GameRepo() {
         sectionList = new ArrayList<>();
         questionList = new ArrayList<>();
@@ -36,14 +39,6 @@ public class GameRepo {
             INSTANCE = new GameRepo();
         }
         return INSTANCE;
-    }
-
-    public synchronized void loadData(Context context, @NonNull GameDataCallback callback) {
-        if (questionList.isEmpty() || sectionList.size() == 0) {
-            forceLoad(context, callback);
-        } else {
-            callback.onLoadingFinished(sectionList, questionList);
-        }
     }
 
     public Question getQuestion(int index) {
@@ -65,7 +60,7 @@ public class GameRepo {
 
         List<Question> result = new ArrayList<>();
 
-        for (int i:game.getQuestionIdList()){
+        for (int i : game.getQuestionIdList()) {
             result.add(getQuestion(i));
         }
 
@@ -79,9 +74,36 @@ public class GameRepo {
         return sectionList.get(index);
     }
 
-    private void forceLoad(Context context, @NonNull final GameDataCallback gameDataCallback) {
+    public synchronized void loadData(int dataSetId, Context context, @NonNull GameDataCallback callback) {
+        if (questionList.isEmpty() || sectionList.size() == 0) {
+            forceLoad(dataSetId, context, callback);
+        } else {
+            callback.onLoadingFinished(sectionList, questionList);
+        }
+    }
+
+    private void forceLoad(int dataSetId, Context context, @NonNull final GameDataCallback gameDataCallback) {
         questionList.clear();
         sectionList.clear();
+
+        currentDataSetId = dataSetId;
+
+        InputStream gameSetInputStream, questionSetInputStream;
+
+        switch (currentDataSetId){
+            case 0:
+                gameSetInputStream = context.getResources().openRawResource(R.raw.games_set_a);
+                questionSetInputStream = context.getResources().openRawResource(R.raw.questions_set_a);
+                break;
+            case 1:
+                //TODO
+                gameSetInputStream = context.getResources().openRawResource(R.raw.games_set_a);
+                questionSetInputStream = context.getResources().openRawResource(R.raw.questions_set_a);
+                break;
+            default:
+                throw new IllegalArgumentException("Load data exception: wrong data set id");
+
+        }
 
         if (questionsAsyncTask != null) {
             questionsAsyncTask.cancel(true);
@@ -95,7 +117,7 @@ public class GameRepo {
             }
         });
 
-        questionsAsyncTask.execute(context.getResources().openRawResource(R.raw.questions_set_a));
+        questionsAsyncTask.execute(questionSetInputStream);
 
         if (gamesAsyncTask != null) {
             gamesAsyncTask.cancel(true);
@@ -109,11 +131,11 @@ public class GameRepo {
             }
         });
 
-        gamesAsyncTask.execute(context.getResources().openRawResource(R.raw.games_set_a));
+        gamesAsyncTask.execute(gameSetInputStream);
     }
 
     private void reportBack(@NonNull final GameDataCallback gameDataCallback) {
-        if (isDataReady()){
+        if (isDataReady()) {
             gameDataCallback.onLoadingFinished(sectionList, questionList);
         }
     }

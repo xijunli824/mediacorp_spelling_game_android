@@ -66,13 +66,13 @@ public class ActivityUtils {
 
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         if (withAnim) {
-//            transaction.setCustomAnimations(
-//                    R.animator.slide_in_right,
-//                    R.animator.slide_out_left,
-//                    R.animator.slide_in_left,
-//                    R.animator.slide_out_right
-//            );
-            transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+            transaction.setCustomAnimations(
+                    R.animator.slide_in_right,
+                    R.animator.slide_out_left,
+                    R.animator.slide_in_left,
+                    R.animator.slide_out_right
+            );
+            //transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
         }
         transaction.replace(frameId, fragment);
         if (addToBackStack)

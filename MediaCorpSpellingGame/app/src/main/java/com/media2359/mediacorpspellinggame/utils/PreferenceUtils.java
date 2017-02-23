@@ -19,6 +19,7 @@ public class PreferenceUtils {
     private static final String KEY_LAST_ATTEMPTED_GAME = "key_last_game";
     private static final String KEY_LAST_ATTEMPTED_QUESTION = "key_last_question";
     private static final String KEY_SESSION_ID = "key_session_id";
+    private static final String KEY_PAST_RECORDS = "key_past_records";
 
     public static SharedPreferences getSharedPreferences() {
         return SpellingGameApplication.getContext().getSharedPreferences(PREF_FILE_SAVE_DATA, Context.MODE_PRIVATE);
@@ -70,6 +71,17 @@ public class PreferenceUtils {
 
     public static String getSessionId() {
         return getSharedPreferences().getString(KEY_SESSION_ID, "");
+    }
+
+    public static void updateGameRecords(String newRecord) {
+        String pastRecords = getPastRecords();
+        String fullRecords = newRecord + "\n\n\n" + pastRecords;
+
+        getSharedPreferences().edit().putString(KEY_PAST_RECORDS, fullRecords).apply();
+    }
+
+    public static String getPastRecords() {
+        return getSharedPreferences().getString(KEY_PAST_RECORDS, "");
     }
 
 }

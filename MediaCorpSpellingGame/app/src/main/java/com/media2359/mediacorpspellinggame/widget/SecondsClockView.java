@@ -19,6 +19,8 @@ public class SecondsClockView extends LinearLayout implements Runnable{
 
     private boolean mPause = true;
 
+    private boolean pauseViewOnly = false;
+
     private TabDigit mCharHighSecond;
 
     private TabDigit mCharLowSecond;
@@ -61,8 +63,13 @@ public class SecondsClockView extends LinearLayout implements Runnable{
         //mCharLowSecond.sync();
     }
 
+    public void pauseViewOnly() {
+        pauseViewOnly = true;
+    }
+
     public void resume() {
         mPause = false;
+        pauseViewOnly = false;
 
         /* seconds*/
         int seconds = (int) elapsedTime;
@@ -80,6 +87,9 @@ public class SecondsClockView extends LinearLayout implements Runnable{
     }
 
     public void showAlertClock() {
+        if (pauseViewOnly)
+            return;
+
         mCharHighSecond.setBackgroundColor(getResources().getColor(R.color.red));
 
         int seconds = (int) elapsedTime;
@@ -91,16 +101,20 @@ public class SecondsClockView extends LinearLayout implements Runnable{
 
     @Override
     public void run() {
+
         if(mPause){
             return;
         }
 
         elapsedTime += 1;
 
-        mCharLowSecond.start();
+        if (!pauseViewOnly){
 
-        if (elapsedTime % 10 == 0) {
-            mCharHighSecond.start();
+            mCharLowSecond.start();
+
+            if (elapsedTime % 10 == 0) {
+                mCharHighSecond.start();
+            }
         }
 
         if (timeListener != null){

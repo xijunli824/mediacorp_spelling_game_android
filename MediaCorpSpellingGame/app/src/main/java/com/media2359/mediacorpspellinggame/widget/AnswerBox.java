@@ -6,6 +6,7 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -182,6 +183,10 @@ public class AnswerBox extends RelativeLayout {
 
     public void lockInputField(boolean lock) {
         etAnswer.setEnabled(!lock);
+    }
+
+    public void changeToActionNext(){
+        etAnswer.setImeOptions(EditorInfo.IME_ACTION_NEXT);
     }
 
     public void setAnswerListener(AnswerListener answerListener) {

@@ -3,6 +3,6 @@
 
     <item android:color="@color/light_purple" android:state_enabled="true" />
 
-    <item android:color="@color/light_purple_40" android:state_enabled="false"/>
+    <item android:color="@color/grey" android:state_enabled="false"/>
 
 </selector>

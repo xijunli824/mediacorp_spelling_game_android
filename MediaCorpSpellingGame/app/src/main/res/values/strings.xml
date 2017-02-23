@@ -3,6 +3,14 @@
 
     <string name="abc_next">Next</string>
     <string name="abc_submit">Submit</string>
+    <string name="abc_begin">Begin</string>
+    <string name="abc_start_game">Start Game</string>
+    <string name="abc_proceed">Proceed</string>
+    <string name="abc_password">Password</string>
+
+    <string name="enter_school_name">Enter The Name of Your School</string>
+    <string name="abc_school_name">School Name</string>
+    <string name="enter_password">Please enter the password</string>
 
     <string name="pick_session">Select a Session</string>
 

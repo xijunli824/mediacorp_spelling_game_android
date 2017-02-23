@@ -1,6 +1,7 @@
 package com.media2359.mediacorpspellinggame.start;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import com.media2359.mediacorpspellinggame.data.Question;
 import com.media2359.mediacorpspellinggame.factory.GameProgressManager;
 import com.media2359.mediacorpspellinggame.factory.GameRepo;
 import com.media2359.mediacorpspellinggame.game.GameActivity;
+import com.media2359.mediacorpspellinggame.utils.CommonUtils;
 import com.media2359.mediacorpspellinggame.widget.SessionSelectionFragment;
 
 import java.util.List;
@@ -50,22 +52,32 @@ public class StartActivity extends BaseActivity {
 
         GameProgressManager.getInstance().newGame();
 
-        selectSession();
+        //selectSession();
+
+        prepareData(0);
     }
 
     private void selectSession() {
-        SessionSelectionFragment dialogFragment = SessionSelectionFragment.newInstance();
+        Fragment fragment = getFragmentManager().findFragmentByTag("session");
 
-        dialogFragment.setCancelable(false);
+        if (fragment == null) {
 
-        dialogFragment.setCallback(new SessionSelectionFragment.SessionSelectCallback() {
-            @Override
-            public void onSessionSelected(int sessionId) {
-                prepareData(sessionId);
-            }
-        });
+            SessionSelectionFragment dialogFragment = SessionSelectionFragment.newInstance();
 
-        dialogFragment.show(getFragmentManager(), "session");
+            dialogFragment.setCancelable(false);
+
+            dialogFragment.setCallback(new SessionSelectionFragment.SessionSelectCallback() {
+                @Override
+                public void onSessionSelected(int sessionId) {
+                    prepareData(sessionId);
+                }
+            });
+
+            CommonUtils.dismissKeyboard(etSchoolName);
+
+            dialogFragment.show(getFragmentManager(), "session");
+        }
+
     }
 
     private void prepareData(int sessionId) {
@@ -73,7 +85,7 @@ public class StartActivity extends BaseActivity {
 
             final ProgressDialog dialog = ProgressDialog.show(this, "Preparing...", "Please wait...", true, false);
 
-            GameRepo.getInstance().loadData(this, new GameRepo.GameDataCallback() {
+            GameRepo.getInstance().loadData(sessionId, this, new GameRepo.GameDataCallback() {
                 @Override
                 public void onLoadingFinished(List<Section> games, List<Question> questions) {
                     dialog.dismiss();
@@ -94,7 +106,7 @@ public class StartActivity extends BaseActivity {
             GameProgressManager.getInstance().setSchoolName(etSchoolName.getText().toString().trim());
 
             // start the first game
-            Section firstGame = GameRepo.getInstance().getSection(0);
+            Section firstGame = GameRepo.getInstance().getSection(1);
             GameActivity.startGameActivity(this, firstGame);
 
             // finish this activity

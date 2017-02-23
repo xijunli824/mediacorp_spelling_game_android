@@ -20,7 +20,7 @@
     </style>
 
     <style name="NextButton" parent="BaseButton">
-        <item name="android:backgroundTint">@color/light_purple</item>
+        <item name="android:backgroundTint">@drawable/bg_button_purple</item>
         <item name="android:foreground">?selectableItemBackground</item>
     </style>
 

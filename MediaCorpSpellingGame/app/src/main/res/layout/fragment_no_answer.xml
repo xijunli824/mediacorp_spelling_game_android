@@ -38,7 +38,7 @@
         android:id="@+id/tvResultInstruction"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/answerBox"
+        android:layout_above="@+id/etAnswer"
         android:layout_centerHorizontal="true"
         android:gravity="center"
         android:textColor="@color/black"
@@ -61,8 +61,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <com.media2359.mediacorpspellinggame.widget.AnswerBox
-        android:id="@+id/answerBox"
+    <EditText
+        android:id="@+id/etAnswer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
@@ -73,7 +73,7 @@
         android:id="@+id/flScoreCard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/answerBox"
+        android:layout_below="@+id/etAnswer"
         android:layout_centerHorizontal="true">
 
         <include layout="@layout/view_score_card" />
@@ -86,7 +86,7 @@
         android:text="@string/abc_submit"
         android:layout_marginTop="@dimen/large_margin"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/answerBox"
+        android:layout_below="@+id/etAnswer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 

@@ -3,7 +3,7 @@
     <!-- Slide in. -->
     <objectAnimator
         android:valueFrom="0"
-        android:valueTo="1000"
+        android:valueTo="1920"
         android:propertyName="x"
         android:valueType="floatType"
         android:duration="@android:integer/config_mediumAnimTime" />

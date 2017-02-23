@@ -83,7 +83,9 @@ public class GridQuestionsFragment extends Fragment implements AnswerBoxAdapter.
 
     private List<Question> questionList;
 
-    private int initialScore;
+    private static final int MAX_TIME_SECONDS = 30;
+
+    private int timeTaken = MAX_TIME_SECONDS;
 
     private int sectionScore;
 
@@ -94,12 +96,6 @@ public class GridQuestionsFragment extends Fragment implements AnswerBoxAdapter.
         GridQuestionsFragment fragment = new GridQuestionsFragment();
         fragment.setArguments(args);
         return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        initialScore = GameProgressManager.getInstance().getTotalScore();
     }
 
     @Nullable
@@ -116,7 +112,9 @@ public class GridQuestionsFragment extends Fragment implements AnswerBoxAdapter.
         questionList = new ArrayList<>();
 
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 5));
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 4);
+        gridLayoutManager.setSpanSizeLookup(new GridSpanSizeLookup());
+        recyclerView.setLayoutManager(gridLayoutManager);
         recyclerView.setItemViewCacheSize(10);
         adapter = new AnswerBoxAdapter(questionList);
 
@@ -171,10 +169,10 @@ public class GridQuestionsFragment extends Fragment implements AnswerBoxAdapter.
         clockView.setTimeListener(new MinutesClockView.TimeListener() {
             @Override
             public void onSecond(long seconds) {
-                if (seconds == 165)
+                if (seconds == MAX_TIME_SECONDS - 15)
                     clockView.showAlertClock();
 
-                if (seconds >= 20) {
+                if (seconds >= MAX_TIME_SECONDS) {
                     onTimeExpired();
                 }
             }
@@ -240,34 +238,27 @@ public class GridQuestionsFragment extends Fragment implements AnswerBoxAdapter.
     }
 
     private void onSubmitButtonClick() {
-        clockView.pause();
+        //clockView.pause();
 
-        int timeSpent = (int) clockView.getElapsedTime();
+        timeTaken = (int) clockView.getElapsedTime();
 
-        GameProgressManager.getInstance().increaseSectionTime(getActivity(), timeSpent);
-        GameProgressManager.getInstance().increaseTime(timeSpent);
+        clockView.pauseViewOnly();
 
-        CommonUtils.makeHoldOnAlertDialog(getActivity(), new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                adapter.reset();
-
-                for (int i = 0; i < adapter.getItemCount(); i++) {
-                    AnswerBoxAdapter.AnswerBoxViewHolder viewHolder = (AnswerBoxAdapter.AnswerBoxViewHolder) recyclerView.findViewHolderForAdapterPosition(i);
-                    viewHolder.checkAnswer(questionList.get(i));
-                }
-
-            }
-        }).show();
+        btnSubmit.setEnabled(false);
+        for (int i = 0; i < adapter.getItemCount(); i++) {
+            AnswerBoxAdapter.AnswerBoxViewHolder viewHolder = (AnswerBoxAdapter.AnswerBoxViewHolder) recyclerView.findViewHolderForAdapterPosition(i);
+            viewHolder.getAnswerBox().lockInputField(true);
+        }
     }
 
     private void onTimeExpired() {
         clockView.pause();
 
-        int timeSpent = (int) clockView.getElapsedTime();
+        //int timeSpent = (int) clockView.getElapsedTime();
 
-        GameProgressManager.getInstance().increaseSectionTime(getActivity(), timeSpent);
-        GameProgressManager.getInstance().increaseTime(timeSpent);
+        //GameProgressManager.getInstance().increaseSectionTime(getActivity(), timeSpent);
+
+        GameProgressManager.getInstance().increaseSectionTime(getActivity(), timeTaken);
 
         adapter.reset();
 

@@ -144,6 +144,7 @@ public class AnswerBoxAdapter extends RecyclerView.Adapter<AnswerBoxAdapter.Answ
         AnswerBoxViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+            answerBox.changeToActionNext();
         }
 
         void bind(Question question, int adapterPos) {
@@ -161,6 +162,10 @@ public class AnswerBoxAdapter extends RecyclerView.Adapter<AnswerBoxAdapter.Answ
 
         void checkAnswer(Question question) {
             answerBox.checkAnswer(question);
+        }
+
+        AnswerBox getAnswerBox() {
+            return answerBox;
         }
 
     }

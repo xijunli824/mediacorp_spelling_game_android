@@ -19,6 +19,8 @@ public class MinutesClockView extends LinearLayout implements Runnable{
 
     private boolean mPause = true;
 
+    private boolean pauseViewOnly = false;
+
     private TabDigit mCharHighSecond;
 
     private TabDigit mCharLowSecond;
@@ -64,7 +66,14 @@ public class MinutesClockView extends LinearLayout implements Runnable{
         //mCharLowSecond.sync();
     }
 
+    public void pauseViewOnly() {
+        pauseViewOnly = true;
+    }
+
     public void showAlertClock() {
+
+        if (pauseViewOnly)
+            return;
 
         int seconds = (int) elapsedTime;
 
@@ -83,6 +92,7 @@ public class MinutesClockView extends LinearLayout implements Runnable{
 
     public void resume() {
         mPause = false;
+        pauseViewOnly = false;
 
         /* seconds*/
         int seconds = (int) elapsedTime;
@@ -112,14 +122,18 @@ public class MinutesClockView extends LinearLayout implements Runnable{
 
         elapsedTime += 1;
 
-        mCharLowSecond.start();
+        if (! pauseViewOnly) {
 
-        if (elapsedTime % 10 == 0) {
-            mCharHighSecond.start();
-        }
+            mCharLowSecond.start();
 
-        if (elapsedTime % 60 == 0) {
-            mCharLowMinute.start();
+            if (elapsedTime % 10 == 0) {
+                mCharHighSecond.start();
+            }
+
+            if (elapsedTime % 60 == 0) {
+                mCharLowMinute.start();
+            }
+
         }
 
         if (timeListener != null){

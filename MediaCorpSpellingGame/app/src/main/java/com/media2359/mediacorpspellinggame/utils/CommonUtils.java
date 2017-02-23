@@ -66,4 +66,16 @@ public class CommonUtils {
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
+    public static String convertSecondsIntegerToClockFormatString(int elapsedTime) {
+
+        int minutes = elapsedTime / 60;
+        int seconds = elapsedTime % 60;
+
+        if (seconds < 10) {
+            return minutes + ":0" + seconds;
+        } else {
+            return minutes + ":" + seconds;
+        }
+    }
+
 }

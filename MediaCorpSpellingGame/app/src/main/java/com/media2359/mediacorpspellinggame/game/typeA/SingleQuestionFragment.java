@@ -75,6 +75,8 @@ public class SingleQuestionFragment extends Fragment implements AnswerBox.Answer
     @BindView(R.id.logo)
     ImageView logo;
 
+    int timeTaken = 30;
+
     private Question question;
     private String instruction;
 
@@ -108,10 +110,7 @@ public class SingleQuestionFragment extends Fragment implements AnswerBox.Answer
                     clockView.showAlertClock();
 
                 if (seconds >= 30) {
-                    clockView.pause();
-                    answerBox.forceChangeResult(false);
-                    //GameProgressManager.getInstance().increaseTime(30);
-                    //onError(30);
+                    onTimeExpired();
                 }
             }
         });
@@ -126,14 +125,7 @@ public class SingleQuestionFragment extends Fragment implements AnswerBox.Answer
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                clockView.pause();
-
-                CommonUtils.makeHoldOnAlertDialog(getActivity(), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        answerBox.checkAnswer(question);
-                    }
-                }).show();
+            onSubmitClick();
             }
         });
 
@@ -152,6 +144,28 @@ public class SingleQuestionFragment extends Fragment implements AnswerBox.Answer
         tvSectionTimeText.setText(sectionTimeText);
 
         showPlayView();
+    }
+
+    private void onSubmitClick(){
+        //clockView.pause();
+        timeTaken = (int) clockView.getElapsedTime();
+        clockView.pauseViewOnly();
+
+//                CommonUtils.makeHoldOnAlertDialog(getActivity(), new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        answerBox.checkAnswer(question);
+//                    }
+//                }).show();
+        btnSubmit.setEnabled(false);
+        answerBox.lockInputField(true);
+    }
+
+    private void onTimeExpired() {
+        clockView.pause();
+        answerBox.checkAnswer(question);
+        //answerBox.forceChangeResult(false);
+        //onError(30);
     }
 
     @Override
@@ -202,7 +216,6 @@ public class SingleQuestionFragment extends Fragment implements AnswerBox.Answer
     public void onError(int time) {
         tvResultInstruction.setText(getString(R.string.game_a_error));
 
-        GameProgressManager.getInstance().increaseTime(time);
         GameProgressManager.getInstance().increaseSectionTime(getActivity(), time);
 
         showScoreView();
@@ -212,12 +225,9 @@ public class SingleQuestionFragment extends Fragment implements AnswerBox.Answer
     public void onCorrect(int score) {
         tvResultInstruction.setText(getString(R.string.game_a_correct));
 
-        // update the total score/time
-        GameProgressManager.getInstance().increaseTime((int) clockView.getElapsedTime());
-
         // update the section score/time
         GameProgressManager.getInstance().increaseSectionScore(getActivity(), question.getScore());
-        GameProgressManager.getInstance().increaseSectionTime(getActivity(), (int) clockView.getElapsedTime());
+        GameProgressManager.getInstance().increaseSectionTime(getActivity(), timeTaken);
 
         showScoreView();
     }

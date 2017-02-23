@@ -25,12 +25,12 @@
         style="@style/TextAppearance.AppCompat.Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="34sp"
-        android:layout_marginTop="@dimen/medium_margin"
         android:layout_below="@+id/centerAnchor"
         android:layout_centerHorizontal="true"
-        android:text="Enter The Name of Your School"
-        android:textColor="@color/white" />
+        android:layout_marginTop="@dimen/medium_margin"
+        android:text="@string/enter_school_name"
+        android:textColor="@color/white"
+        android:textSize="34sp" />
 
     <EditText
         android:id="@+id/etSchoolName"
@@ -40,9 +40,9 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="@dimen/medium_margin"
         android:layout_marginTop="@dimen/medium_margin"
-        android:hint="School Name"
-        android:inputType="textCapWords"
+        android:hint="@string/abc_school_name"
         android:imeOptions="actionDone"
+        android:inputType="textCapWords"
         android:maxLines="1"
         android:textColor="@color/white"
         android:textColorHint="#60ffffff" />
@@ -52,9 +52,9 @@
         style="@style/NextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/etSchoolName"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/large_margin"
-        android:layout_below="@id/etSchoolName"
-        android:text="BEGIN" />
+        android:text="@string/abc_begin" />
 
 </RelativeLayout>

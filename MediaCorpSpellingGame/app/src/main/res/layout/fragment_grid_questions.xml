@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:padding="@dimen/medium_margin"
+    android:padding="@dimen/large_margin"
     android:background="@drawable/white_bg"
     xmlns:tools="http://schemas.android.com/tools">
 
@@ -45,13 +45,14 @@
         android:id="@+id/logo"
         android:src="@drawable/logo_big"
         android:layout_centerHorizontal="true"
-        android:layout_above="@+id/tvResultInstruction"
+        android:layout_above="@+id/recyclerView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/tvResultInstruction"
         tools:text="You’ve answered 8/10 questions correctly."
+        android:visibility="gone"
         android:gravity="center"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/clockView"
@@ -65,7 +66,7 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_marginTop="@dimen/medium_margin"
-        android:layout_below="@id/tvResultInstruction"
+        android:layout_below="@id/clockView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
