@@ -1,7 +1,6 @@
 package com.media2359.mediacorpspellinggame.game.typeA;
 
 import android.app.Fragment;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -13,11 +12,11 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.media2359.mediacorpspellinggame.factory.GameConstants;
 import com.media2359.mediacorpspellinggame.R;
 import com.media2359.mediacorpspellinggame.data.Question;
 import com.media2359.mediacorpspellinggame.factory.GameProgressManager;
 import com.media2359.mediacorpspellinggame.game.GameActivity;
-import com.media2359.mediacorpspellinggame.utils.CommonUtils;
 import com.media2359.mediacorpspellinggame.widget.AnswerBox;
 import com.media2359.mediacorpspellinggame.widget.SecondsClockView;
 
@@ -75,7 +74,9 @@ public class SingleQuestionFragment extends Fragment implements AnswerBox.Answer
     @BindView(R.id.logo)
     ImageView logo;
 
-    int timeTaken = 30;
+    int timeTaken;
+
+    int MAX_TIME;
 
     private Question question;
     private String instruction;
@@ -88,6 +89,13 @@ public class SingleQuestionFragment extends Fragment implements AnswerBox.Answer
         SingleQuestionFragment fragment = new SingleQuestionFragment();
         fragment.setArguments(args);
         return fragment;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        MAX_TIME = ((GameActivity)getActivity()).getCurrentSectionTime();
+        timeTaken = MAX_TIME;
     }
 
     @Nullable
@@ -106,10 +114,10 @@ public class SingleQuestionFragment extends Fragment implements AnswerBox.Answer
         clockView.setTimeListener(new SecondsClockView.TimeListener() {
             @Override
             public void onSecond(long seconds) {
-                if (seconds == 25)
+                if (seconds == MAX_TIME - 8)
                     clockView.showAlertClock();
 
-                if (seconds >= 30) {
+                if (seconds >= MAX_TIME) {
                     onTimeExpired();
                 }
             }
@@ -213,10 +221,10 @@ public class SingleQuestionFragment extends Fragment implements AnswerBox.Answer
     }
 
     @Override
-    public void onError(int time) {
+    public void onError() {
         tvResultInstruction.setText(getString(R.string.game_a_error));
 
-        GameProgressManager.getInstance().increaseSectionTime(getActivity(), time);
+        GameProgressManager.getInstance().increaseSectionTime(getActivity(), MAX_TIME);
 
         showScoreView();
     }

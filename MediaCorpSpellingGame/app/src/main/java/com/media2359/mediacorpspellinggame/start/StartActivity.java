@@ -106,7 +106,7 @@ public class StartActivity extends BaseActivity {
             GameProgressManager.getInstance().setSchoolName(etSchoolName.getText().toString().trim());
 
             // start the first game
-            Section firstGame = GameRepo.getInstance().getSection(1);
+            Section firstGame = GameRepo.getInstance().getSection(0);
             GameActivity.startGameActivity(this, firstGame);
 
             // finish this activity

@@ -144,4 +144,8 @@ public class GameActivity extends BaseActivity {
     public Section getCurrentGame() {
         return currentGame;
     }
+
+    public int getCurrentSectionTime() {
+        return currentGame.getTime();
+    }
 }

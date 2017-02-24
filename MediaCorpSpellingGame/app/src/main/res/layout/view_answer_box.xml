@@ -15,15 +15,17 @@
 
     <EditText
         android:id="@+id/etAnswer"
-        android:layout_width="300dp"
+        android:layout_width="360dp"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/tvId"
-        android:textSize="24sp"
+        android:textSize="20sp"
         android:maxLines="1"
         android:freezesText="true"
+        android:privateImeOptions="nm"
         android:inputType="textNoSuggestions"
         android:imeOptions="actionDone"
-        android:paddingLeft="@dimen/small_margin"
+        android:paddingRight="8dp"
+        android:paddingLeft="8dp"
         tools:text="Pineapple" />
 
     <TextView
@@ -32,8 +34,8 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/etAnswer"
         android:layout_below="@+id/etAnswer"
-        android:padding="@dimen/small_margin"
-        android:textSize="18sp"
+        android:padding="8dp"
+        android:textSize="16sp"
         tools:text="Papaya" />
 
 </merge>

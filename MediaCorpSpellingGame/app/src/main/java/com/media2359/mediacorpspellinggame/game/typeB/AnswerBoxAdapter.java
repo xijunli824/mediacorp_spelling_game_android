@@ -81,7 +81,7 @@ public class AnswerBoxAdapter extends RecyclerView.Adapter<AnswerBoxAdapter.Answ
     }
 
     @Override
-    public synchronized void onError(int time) {
+    public synchronized void onError() {
         totalQuestions += 1;
 
         if (!isEditMode)
@@ -144,12 +144,16 @@ public class AnswerBoxAdapter extends RecyclerView.Adapter<AnswerBoxAdapter.Answ
         AnswerBoxViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
-            answerBox.changeToActionNext();
+
         }
 
         void bind(Question question, int adapterPos) {
             answerBox.setQuestion(question);
             answerBox.setLeftId(adapterPos + 1);
+            if (adapterPos == 9) // TODO: hard code it to 9, since we are sure there will only be 10 items in the adapter
+                answerBox.changeToActionNext(false);
+            else
+                answerBox.changeToActionNext(true);
         }
 
         void setAnswerListener (AnswerBox.AnswerListener answerListener) {

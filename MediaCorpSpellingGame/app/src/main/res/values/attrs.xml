@@ -2,6 +2,8 @@
 <resources>
     <declare-styleable name="AnswerBox">
         <attr name="id" format="integer" />
+        <attr name="edit_text_size" format="integer"/>
+        <attr name="result_text_size" format="integer"/>
     </declare-styleable>
     <declare-styleable name="ScoreText">
         <attr name="left_text" format="string" />

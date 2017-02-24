@@ -2,6 +2,7 @@
   {
     "gameId": 0,
     "type": "A",
+    "time": 45,
     "questionList": [
       0,
       1,
@@ -15,6 +16,7 @@
   {
     "gameId": 1,
     "type": "B",
+    "time": 360,
     "questionList": [
       16,
       17,
@@ -34,6 +36,7 @@
   {
     "gameId": 2,
     "type": "C",
+    "time": 60,
     "questionList": [
       26,
       27,

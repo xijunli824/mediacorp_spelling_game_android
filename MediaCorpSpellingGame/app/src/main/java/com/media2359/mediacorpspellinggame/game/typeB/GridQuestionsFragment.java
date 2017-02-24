@@ -2,7 +2,6 @@ package com.media2359.mediacorpspellinggame.game.typeB;
 
 import android.app.Fragment;
 import android.app.FragmentTransaction;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
@@ -14,12 +13,12 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import com.media2359.mediacorpspellinggame.factory.GameConstants;
 import com.media2359.mediacorpspellinggame.R;
 import com.media2359.mediacorpspellinggame.data.Question;
 import com.media2359.mediacorpspellinggame.factory.GameProgressManager;
 import com.media2359.mediacorpspellinggame.factory.GameRepo;
 import com.media2359.mediacorpspellinggame.game.GameActivity;
-import com.media2359.mediacorpspellinggame.utils.CommonUtils;
 import com.media2359.mediacorpspellinggame.widget.MinutesClockView;
 import com.media2359.mediacorpspellinggame.widget.PasswordDialogFragment;
 
@@ -83,9 +82,9 @@ public class GridQuestionsFragment extends Fragment implements AnswerBoxAdapter.
 
     private List<Question> questionList;
 
-    private static final int MAX_TIME_SECONDS = 30;
+    private int MAX_TIME;
 
-    private int timeTaken = MAX_TIME_SECONDS;
+    private int timeTaken;
 
     private int sectionScore;
 
@@ -96,6 +95,13 @@ public class GridQuestionsFragment extends Fragment implements AnswerBoxAdapter.
         GridQuestionsFragment fragment = new GridQuestionsFragment();
         fragment.setArguments(args);
         return fragment;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        MAX_TIME = ((GameActivity) getActivity()).getCurrentSectionTime();
+        timeTaken = MAX_TIME;
     }
 
     @Nullable
@@ -169,10 +175,10 @@ public class GridQuestionsFragment extends Fragment implements AnswerBoxAdapter.
         clockView.setTimeListener(new MinutesClockView.TimeListener() {
             @Override
             public void onSecond(long seconds) {
-                if (seconds == MAX_TIME_SECONDS - 15)
+                if (seconds == MAX_TIME - 15)
                     clockView.showAlertClock();
 
-                if (seconds >= MAX_TIME_SECONDS) {
+                if (seconds >= MAX_TIME) {
                     onTimeExpired();
                 }
             }
@@ -216,11 +222,9 @@ public class GridQuestionsFragment extends Fragment implements AnswerBoxAdapter.
         btnNext.setVisibility(View.VISIBLE);
 
         btnEdit.setEnabled(true);
-
         btnEdit.setVisibility(View.VISIBLE);
 
         btnNext.setText("Next");
-
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -231,9 +235,7 @@ public class GridQuestionsFragment extends Fragment implements AnswerBoxAdapter.
     }
 
     private void finishThisGame() {
-
         GameProgressManager.getInstance().increaseSectionScore(getActivity(), sectionScore);
-
         ((GameActivity) getActivity()).showGameSummaryPage();
     }
 

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MediaCorpSpellingGame</string>
+    <string name="app_name">Spelling Bee</string>
 
     <string name="abc_next">Next</string>
     <string name="abc_submit">Submit</string>

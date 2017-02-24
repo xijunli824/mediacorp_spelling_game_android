@@ -26,13 +26,16 @@ public final class Section implements Parcelable {
 
     private String questionInstruction;
 
-    public Section(String type, int gameId, int[] questionIdList, int questionCount, String gameInstruction, String questionInstruction) {
+    private int time;
+
+    public Section(String type, int gameId, int[] questionIdList, int questionCount, String gameInstruction, String questionInstruction, int time) {
         this.type = type;
         this.gameId = gameId;
         this.questionIdList = questionIdList;
         this.questionCount = questionCount;
         this.gameInstruction = gameInstruction;
         this.questionInstruction = questionInstruction;
+        this.time = time;
     }
 
 
@@ -43,6 +46,7 @@ public final class Section implements Parcelable {
         questionCount = in.readInt();
         gameInstruction = in.readString();
         questionInstruction = in.readString();
+        time = in.readInt();
     }
 
     public static final Creator<Section> CREATOR = new Creator<Section>() {
@@ -81,6 +85,10 @@ public final class Section implements Parcelable {
         return questionInstruction;
     }
 
+    public int getTime() {
+        return time;
+    }
+
     @Override
     public int hashCode() {
         return gameId;
@@ -113,5 +121,6 @@ public final class Section implements Parcelable {
         dest.writeInt(questionCount);
         dest.writeString(gameInstruction);
         dest.writeString(questionInstruction);
+        dest.writeInt(time);
     }
 }

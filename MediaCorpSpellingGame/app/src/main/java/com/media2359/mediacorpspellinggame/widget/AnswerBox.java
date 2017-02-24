@@ -108,7 +108,7 @@ public class AnswerBox extends RelativeLayout {
             if (isCorrect)
                 answerListener.onCorrect(question.getScore());
             else
-                answerListener.onError(30);
+                answerListener.onError();
 
             return;
         }
@@ -137,7 +137,8 @@ public class AnswerBox extends RelativeLayout {
         // change text color to green
         tvResult.setTextColor(getResources().getColor(R.color.green));
         // show green tick
-        tvResult.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_tick, 0);
+        //tvResult.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_tick, 0);
+        etAnswer.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_tick, 0);
         // show the awarded score
         String display = "+ " + score + " pts";
         tvResult.setText(display);
@@ -151,12 +152,13 @@ public class AnswerBox extends RelativeLayout {
         // change text color to red
         tvResult.setTextColor(getResources().getColor(R.color.red));
         // show red cross
-        tvResult.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_cross, 0);
+        //tvResult.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_cross, 0);
+        etAnswer.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_cross, 0);
         // show the correct answer
         tvResult.setText(correctAnswer);
 
         if (answerListener != null)
-            answerListener.onError(30);
+            answerListener.onError();
     }
 
     public void enableEditMode(boolean enable) {
@@ -185,8 +187,11 @@ public class AnswerBox extends RelativeLayout {
         etAnswer.setEnabled(!lock);
     }
 
-    public void changeToActionNext(){
-        etAnswer.setImeOptions(EditorInfo.IME_ACTION_NEXT);
+    public void changeToActionNext(boolean next){
+        if (next)
+            etAnswer.setImeOptions(EditorInfo.IME_ACTION_NEXT);
+        else
+            etAnswer.setImeOptions(EditorInfo.IME_ACTION_DONE);
     }
 
     public void setAnswerListener(AnswerListener answerListener) {
@@ -199,7 +204,7 @@ public class AnswerBox extends RelativeLayout {
 
     public interface AnswerListener {
 
-        void onError(int time);
+        void onError();
 
         void onCorrect(int score);
 

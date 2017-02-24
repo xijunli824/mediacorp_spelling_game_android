@@ -8,6 +8,16 @@ import android.support.v7.widget.GridLayoutManager;
 
 public class GridSpanSizeLookup extends GridLayoutManager.SpanSizeLookup {
 
+//    @Override
+//    public int getSpanSize(int position) {
+//        if (position >= 0 && position < 3)
+//            return 2;
+//        else if (position > 4 && position < 8)
+//            return 2;
+//        else
+//            return 3;
+//    }
+
     @Override
     public int getSpanSize(int position) {
         if (position >= 0 && position < 8)
@@ -15,6 +25,5 @@ public class GridSpanSizeLookup extends GridLayoutManager.SpanSizeLookup {
         else
             return 2;
     }
-
 }
 
