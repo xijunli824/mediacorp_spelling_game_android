@@ -96,10 +96,21 @@ public class GameRepo {
                 questionSetInputStream = context.getResources().openRawResource(R.raw.questions_set_a);
                 break;
             case 1:
-                //TODO
                 gameSetInputStream = context.getResources().openRawResource(R.raw.games_set_a);
-                questionSetInputStream = context.getResources().openRawResource(R.raw.questions_set_a);
+                questionSetInputStream = context.getResources().openRawResource(R.raw.questions_set_b);
                 break;
+            case 2:
+                gameSetInputStream = context.getResources().openRawResource(R.raw.games_set_a);
+                questionSetInputStream = context.getResources().openRawResource(R.raw.questions_set_c);
+                break;
+            case 3:
+                gameSetInputStream = context.getResources().openRawResource(R.raw.games_set_a);
+                questionSetInputStream = context.getResources().openRawResource(R.raw.questions_set_d);
+                break;
+//            case 4:
+//                gameSetInputStream = context.getResources().openRawResource(R.raw.games_set_a);
+//                questionSetInputStream = context.getResources().openRawResource(R.raw.questions_backup_set);
+//                break;
             default:
                 throw new IllegalArgumentException("Load data exception: wrong data set id");
 

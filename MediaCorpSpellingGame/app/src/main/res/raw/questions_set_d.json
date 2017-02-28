@@ -1,0 +1,184 @@
+[
+  {
+    "id": 101,
+    "question": "வாய்ப்பு",
+    "answers": ["வாய்ப்பு"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 102,
+    "question": "நியமனம்",
+    "answers": ["நியமனம்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 103,
+    "question": "உணர்வு",
+    "answers": ["உணர்வு"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 104,
+    "question": "ஆராய்ச்சி",
+    "answers": ["ஆராய்ச்சி"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 105,
+    "question": "தலைகீழ்",
+    "answers": ["தலைகீழ்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 106,
+    "question": "முக்கியம்",
+    "answers": ["முக்கியம்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 107,
+    "question": "நெரிசல்",
+    "answers": ["நெரிசல்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 108,
+    "question": "சாத்தியம்",
+    "answers": ["சாத்தியம்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 201,
+    "question": "உணவுக்கடை",
+    "answers": ["உணவுக்கடை"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 202,
+    "question": "பாத்திரம்",
+    "answers": ["பாத்திரம்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 203,
+    "question": "கத்தி",
+    "answers": ["கத்தி"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 204,
+    "question": "சமையல்காரர்",
+    "answers": ["சமையல்காரர்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 205,
+    "question": "பாதுகாவலர்",
+    "answers": ["பாதுகாவலர்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 206,
+    "question": "வாய்",
+    "answers": ["வாய்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 207,
+    "question": "மலர்கள்",
+    "answers": ["மலர்கள்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 208,
+    "question": "சிறுமி",
+    "answers": ["சிறுமி"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 209,
+    "question": "அம்மா",
+    "answers": ["அம்மா"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 210,
+    "question": "கடைக்காரர்",
+    "answers": ["கடைக்காரர்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 301,
+    "question": "உச்சரிப்பு",
+    "answers": ["உச்சரிப்பு"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 302,
+    "question": "கல்வெட்டு",
+    "answers": ["கல்வெட்டு"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 303,
+    "question": "அங்கீகாரம்",
+    "answers": ["அங்கீகாரம்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 304,
+    "question": "பதிப்பகம்",
+    "answers": ["பதிப்பகம்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 305,
+    "question": "நிலநடுக்கம்",
+    "answers": ["நிலநடுக்கம்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 306,
+    "question": "அரையிறுதி",
+    "answers": ["அரையிறுதி"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 307,
+    "question": "உலகப்போர்",
+    "answers": ["உலகப்போர்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 308,
+    "question": "விழிப்புணர்வு",
+    "answers": ["விழிப்புணர்வு"],
+    "score": 10,
+    "additions":[]
+  }
+]

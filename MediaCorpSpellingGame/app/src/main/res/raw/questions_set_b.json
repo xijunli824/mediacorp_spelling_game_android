@@ -1,0 +1,184 @@
+[
+  {
+    "id": 101,
+    "question": "தீப்புண்",
+    "answers": ["தீப்புண்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 102,
+    "question": "துப்பாக்கி",
+    "answers": ["துப்பாக்கி"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 103,
+    "question": "சுரப்பி",
+    "answers": ["சுரப்பி"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 104,
+    "question": "சுயரூபம்",
+    "answers": ["சுயரூபம்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 105,
+    "question": "நாயகன்",
+    "answers": ["நாயகன்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 106,
+    "question": "உன்னிப்பு",
+    "answers": ["உன்னிப்பு"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 107,
+    "question": "மாகாணம்",
+    "answers": ["மாகாணம்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 108,
+    "question": "புழக்கம்",
+    "answers": ["புழக்கம்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 201,
+    "question": "செய்தித்தாள்",
+    "answers": ["செய்தித்தாள்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 202,
+    "question": "பாட்டி",
+    "answers": ["பாட்டி"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 203,
+    "question": "நோயாளி",
+    "answers": ["நோயாளி"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 204,
+    "question": "இருமல்",
+    "answers": ["இருமல்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 205,
+    "question": "கைத்தடி",
+    "answers": ["கைத்தடி"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 206,
+    "question": "குழந்தை",
+    "answers": ["குழந்தை"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 207,
+    "question": "மருந்து",
+    "answers": ["மருந்து"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 208,
+    "question": "கொண்டை",
+    "answers": ["கொண்டை"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 209,
+    "question": "படம்",
+    "answers": ["படம்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 210,
+    "question": "தாதி",
+    "answers": ["தாதி"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 301,
+    "question": "தடுப்பூசி",
+    "answers": ["தடுப்பூசி"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 302,
+    "question": "தலைக்கவசம்",
+    "answers": ["தலைக்கவசம்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 303,
+    "question": "ஆரோக்கியம்",
+    "answers": ["ஆரோக்கியம்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 304,
+    "question": "எரிசக்தி",
+    "answers": ["எரிசக்தி"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 305,
+    "question": "குத்துச்சண்டை",
+    "answers": ["குத்துச்சண்டை"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 306,
+    "question": "நோய்க்கிருமி",
+    "answers": ["நோய்க்கிருமி"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 307,
+    "question": "பக்கவாதம்",
+    "answers": ["பக்கவாதம்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 308,
+    "question": "ஆய்வுக்கூடம்",
+    "answers": ["ஆய்வுக்கூடம்"],
+    "score": 10,
+    "additions":[]
+  }
+]

@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <array name="sessions">
-        <item>Morning</item>
-        <item>Afternoon</item>
+        <item>Session 1</item>
+        <item>Session 2</item>
+        <item>Session 3</item>
+        <item>Session 4</item>
     </array>
 </resources>

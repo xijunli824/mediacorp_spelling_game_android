@@ -78,7 +78,9 @@ public class SingleQuestionFragment extends Fragment implements AnswerBox.Answer
 
     int MAX_TIME;
 
+    @NonNull
     private Question question;
+
     private String instruction;
 
     public static SingleQuestionFragment newInstance(@NonNull Question question, @NonNull String instruction) {

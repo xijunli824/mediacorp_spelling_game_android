@@ -1,0 +1,184 @@
+[
+  {
+    "id": 101,
+    "question": "முன்னணி",
+    "answers": ["முன்னணி"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 102,
+    "question": "பரிந்துரை",
+    "answers": ["பரிந்துரை"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 103,
+    "question": "வரம்பு",
+    "answers": ["வரம்பு"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 104,
+    "question": "அரசியல்",
+    "answers": ["அரசியல்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 105,
+    "question": "நிரப்பு",
+    "answers": ["நிரப்பு"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 106,
+    "question": "உத்தரவு",
+    "answers": ["உத்தரவு"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 107,
+    "question": "கைவசம்",
+    "answers": ["கைவசம்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 108,
+    "question": "மெல்லினம்",
+    "answers": ["மெல்லினம்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 201,
+    "question": "கடைக்காரர்",
+    "answers": ["கடைக்காரர்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 202,
+    "question": "பெண்",
+    "answers": ["பெண்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 203,
+    "question": "தாத்தா",
+    "answers": ["தாத்தா"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 204,
+    "question": "நாற்காலி",
+    "answers": ["நாற்காலி"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 205,
+    "question": "மேசை",
+    "answers": ["மேசை"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 206,
+    "question": "காலணி",
+    "answers": ["காலணி"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 207,
+    "question": "கணினி",
+    "answers": ["கணினி"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 208,
+    "question": "சிறுவன்",
+    "answers": ["சிறுவன்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 209,
+    "question": "கழிவறை",
+    "answers": ["கழிவறை"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 210,
+    "question": "கைப்பை",
+    "answers": ["கைப்பை"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 301,
+    "question": "வாத்தியம்",
+    "answers": ["வாத்தியம்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 302,
+    "question": "திரைச்சீலை",
+    "answers": ["திரைச்சீலை"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 303,
+    "question": "நிலச்சரிவு",
+    "answers": ["நிலச்சரிவு"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 304,
+    "question": "நாட்டியம்",
+    "answers": ["நாட்டியம்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 305,
+    "question": "தொலைநோக்கி",
+    "answers": ["தொலைநோக்கி"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 306,
+    "question": "மன்னராட்சி",
+    "answers": ["மன்னராட்சி"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 307,
+    "question": "சமாதானம்",
+    "answers": ["சமாதானம்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 308,
+    "question": "கலைக்கூடம்",
+    "answers": ["கலைக்கூடம்"],
+    "score": 10,
+    "additions":[]
+  }
+]

@@ -2,24 +2,46 @@
   {
     "gameId": 0,
     "type": "A",
-    "time": 45,
+    "time": 5,
     "questionList": [
       0,
       1,
       2,
-      3
+      3,
+      4,
+      5,
+      6,
+      7
     ],
-    "questionCount": 4,
+    "questionCount": 8,
     "gameInstruction": "Let's test your hearing.",
     "questionInstruction": "Enter the word that was read to you"
   },
   {
     "gameId": 1,
     "type": "B",
-    "time": 360,
+    "time": 10,
     "questionList": [
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
       16,
-      17,
+      17
+    ],
+    "questionCount": 10,
+    "gameInstruction": "Fill in the words as shown in the picture.",
+    "questionInstruction": "Fill in the words as shown in the picture."
+  },
+  {
+    "gameId": 2,
+    "type": "C",
+    "time": 5,
+    "questionList": [
       18,
       19,
       20,
@@ -29,21 +51,7 @@
       24,
       25
     ],
-    "questionCount": 10,
-    "gameInstruction": "Fill in the words as shown in the picture.",
-    "questionInstruction": "Fill in the words as shown in the picture."
-  },
-  {
-    "gameId": 2,
-    "type": "C",
-    "time": 60,
-    "questionList": [
-      26,
-      27,
-      28,
-      29
-    ],
-    "questionCount": 4,
+    "questionCount": 8,
     "gameInstruction": "Unscramble the word",
     "questionInstruction": "Unscramble the word"
   }

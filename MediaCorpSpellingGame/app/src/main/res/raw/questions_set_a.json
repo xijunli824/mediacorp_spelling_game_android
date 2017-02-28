@@ -1,225 +1,183 @@
 [
   {
     "id": 0,
-    "question": "கீறல்",
-    "answers": ["கீறல்"],
+    "question": "கிடங்கு",
+    "answers": ["கிடங்கு"],
     "score": 10,
     "additions":[]
   },
   {
     "id": 1,
-    "question": "கைவினை",
-    "answers": ["கைவினை"],
+    "question": "நிர்ணயம்",
+    "answers": ["நிர்ணயம்"],
     "score": 10,
     "additions":[]
   },
   {
     "id": 2,
-    "question": "சிலேடை",
-    "answers": ["சிலேடை"],
+    "question": "நாற்றம்",
+    "answers": ["நாற்றம்"],
     "score": 10,
     "additions":[]
   },
   {
     "id": 3,
-    "question": "நுழைவு",
-    "answers": ["நுழைவு"],
+    "question": "கலக்கம்",
+    "answers": ["கலக்கம்"],
     "score": 10,
     "additions":[]
   },
   {
     "id": 4,
-    "question": "உடமை",
-    "answers": ["உடமை"],
+    "question": "துரும்பு",
+    "answers": ["துரும்பு"],
     "score": 10,
     "additions":[]
   },
   {
     "id": 5,
-    "question": "திறமை",
-    "answers": ["திறமை"],
+    "question": "மனச்சுமை",
+    "answers": ["மனச்சுமை"],
     "score": 10,
     "additions":[]
   },
   {
     "id": 6,
-    "question": "தாமிரம்",
-    "answers": ["தாமிரம்"],
+    "question": "புறங்கை",
+    "answers": ["புறங்கை"],
     "score": 10,
     "additions":[]
   },
   {
     "id": 7,
-    "question": "ஓரளவு",
-    "answers": ["ஓரளவு"],
+    "question": "முரண்பாடு",
+    "answers": ["முரண்பாடு"],
     "score": 10,
     "additions":[]
   },
   {
     "id": 8,
-    "question": "இணக்கம்",
-    "answers": ["இணக்கம்"],
+    "question": "நோயாளி",
+    "answers": ["நோயாளி"],
     "score": 10,
     "additions":[]
   },
   {
     "id": 9,
-    "question": "உறைவிடம்",
-    "answers": ["உறைவிடம்"],
+    "question": "பொம்மை",
+    "answers": ["பொம்மை"],
     "score": 10,
     "additions":[]
   },
   {
     "id": 10,
-    "question": "தேய்மானம்",
-    "answers": ["தேய்மானம்"],
+    "question": "மெத்தை",
+    "answers": ["மெத்தை"],
     "score": 10,
     "additions":[]
   },
   {
     "id": 11,
-    "question": "நுணுக்கம்",
-    "answers": ["நுணுக்கம்"],
+    "question": "சன்னல்",
+    "answers": ["சன்னல்"],
     "score": 10,
     "additions":[]
   },
   {
     "id": 12,
-    "question": "துல்லியம்",
-    "answers": ["துல்லியம்"],
+    "question": "திரைச்சீலை",
+    "answers": ["திரைச்சீலை"],
     "score": 10,
     "additions":[]
   },
   {
     "id": 13,
-    "question": "ஆணழகன்",
-    "answers": ["ஆணழகன்"],
+    "question": "மின்விசிறி",
+    "answers": ["மின்விசிறி"],
     "score": 10,
     "additions":[]
   },
   {
     "id": 14,
-    "question": "ஆபரணம்",
-    "answers": ["ஆபரணம்"],
+    "question": "பூங்கொத்து",
+    "answers": ["பூங்கொத்து"],
     "score": 10,
     "additions":[]
   },
   {
     "id": 15,
-    "question": "கொந்தளி",
-    "answers": ["கொந்தளி"],
+    "question": "செய்தித்தாள்",
+    "answers": ["செய்தித்தாள்"],
     "score": 10,
     "additions":[]
   },
   {
     "id": 16,
-    "question": "கதவு",
-    "answers": ["கதவு"],
+    "question": "தண்ணீர்",
+    "answers": ["தண்ணீர்"],
     "score": 10,
     "additions":[]
   },
   {
     "id": 17,
-    "question": "நாள்காட்டி",
-    "answers": ["நாள்காட்டி", "எண்", "பண்ணீரெண்டு"],
+    "question": "மேசை",
+    "answers": ["மேசை"],
     "score": 10,
     "additions":[]
   },
   {
     "id": 18,
-    "question": "அம்மா",
-    "answers": ["அம்மா", "பெண்", "சட்டை", "மேல்சட்டை"],
+    "question": "நகப்பூச்சு",
+    "answers": ["நகப்பூச்சு"],
     "score": 10,
     "additions":[]
   },
   {
     "id": 19,
-    "question": "மருத்துவர்",
-    "answers": ["மருத்துவர்", "ஆடவர்"],
+    "question": "பாரம்பரியம்",
+    "answers": ["பாரம்பரியம்"],
     "score": 10,
     "additions":[]
   },
   {
     "id": 20,
-    "question": "குழந்தை",
-    "answers": ["குழந்தை", "சிறுமி", "பாப்பா"],
+    "question": "அரசாங்கம்",
+    "answers": ["அரசாங்கம்"],
     "score": 10,
     "additions":[]
   },
   {
     "id": 21,
-    "question": "சான்றிதழ்",
-    "answers": ["சான்றிதழ்", "சட்டம்", "தாள்"],
+    "question": "இளவேனில்",
+    "answers": ["இளவேனில்"],
     "score": 10,
     "additions":[]
   },
   {
     "id": 22,
-    "question": "கால்",
-    "answers": ["கால்", "கால்சட்டை"],
+    "question": "மழைமேகம்",
+    "answers": ["மழைமேகம்"],
     "score": 10,
     "additions":[]
   },
   {
     "id": 23,
-    "question": "பணப்பை",
-    "answers": ["பணப்பை", "கைபேசி", "கைத்தொலைபேசி"],
+    "question": "வெப்பநிலை",
+    "answers": ["வெப்பநிலை"],
     "score": 10,
     "additions":[]
   },
   {
     "id": 24,
-    "question": "வயதானவர்",
-    "answers": ["வயதானவர்", "முதியவர்", "நெற்றி", "வழுக்கை", "தலை", "சொட்டை", "மொட்டை"],
+    "question": "புயல்காற்று",
+    "answers": ["புயல்காற்று"],
     "score": 10,
     "additions":[]
   },
   {
     "id": 25,
-    "question": "ஆடவர்",
-    "answers": ["ஆடவர்", "நோயாளி", "முதுகு", "சட்டை"],
-    "score": 10,
-    "additions":[]
-  },
-  {
-    "id": 26,
-    "question": "கா வெ டை க் ண் ய்",
-    "answers": ["வெண்டைக்காய்"],
-    "score": 10,
-    "additions":[]
-  },
-  {
-    "id": 27,
-    "question": "ம் து ள ப மா ம் ழ",
-    "answers": ["மாதுளம்பழம்"],
-    "score": 10,
-    "additions":[]
-  },
-  {
-    "id": 28,
-    "question": "மை ச் அ ர் ச",
-    "answers": ["அமைச்சர்"],
-    "score": 10,
-    "additions":[]
-  },
-  {
-    "id": 29,
-    "question": "ம் ச ன சா",
-    "answers": ["சாசனம்"],
-    "score": 10,
-    "additions":[]
-  },
-  {
-    "id": 30,
-    "question": "ட ம் ஆ வு ய் க் கூ",
-    "answers": ["ஆய்வுக்கூடம்"],
-    "score": 10,
-    "additions":[]
-  },
-  {
-    "id": 31,
-    "question": "ய வ தா ர வி ல்ூ",
-    "answers": ["தாவரவியல்"],
+    "question": "கூடைப்பந்து",
+    "answers": ["கூடைப்பந்து"],
     "score": 10,
     "additions":[]
   }

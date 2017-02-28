@@ -52,9 +52,9 @@ public class StartActivity extends BaseActivity {
 
         GameProgressManager.getInstance().newGame();
 
-        //selectSession();
+        selectSession();
 
-        prepareData(0);
+        //prepareData(0);
     }
 
     private void selectSession() {
