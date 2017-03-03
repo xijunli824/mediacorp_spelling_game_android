@@ -7,12 +7,14 @@ import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.media2359.mediacorpspellinggame.R;
 import com.media2359.mediacorpspellinggame.data.Question;
+import com.media2359.mediacorpspellinggame.factory.QuestionChecker;
 
 import java.util.List;
 
@@ -114,22 +116,13 @@ public class AnswerBox extends RelativeLayout {
         }
 
         this.question = question;
-        // get the input
-        String actualAnswer = etAnswer.getText().toString().trim();
-        List<String> correctAnswers = question.getCorrectAnswers();
 
-        // if the answer is empty
-        if (TextUtils.isEmpty(actualAnswer)){
-            markAsWrong(correctAnswers.get(0));
-            return;
-        }
+        boolean isCorrect = QuestionChecker.isAnswerCorrect(etAnswer.getText().toString(), question);
 
-        // check if the answer is correct
-        if (correctAnswers.contains(actualAnswer)){
+        if (isCorrect)
             markAsCorrect(question.getScore());
-        }else {
-            markAsWrong(correctAnswers.get(0));
-        }
+        else
+            markAsWrong(question.getCorrectAnswers().get(0));
     }
 
     private void markAsCorrect(int score) {
@@ -200,6 +193,15 @@ public class AnswerBox extends RelativeLayout {
 
     public void addTextWatcher(TextWatcher textWatcher) {
         etAnswer.addTextChangedListener(textWatcher);
+    }
+
+    public void focusOnEditText(){
+        etAnswer.setFocusable(true);
+        etAnswer.setFocusableInTouchMode(true);
+        etAnswer.requestFocus();
+
+        InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.showSoftInput(etAnswer, InputMethodManager.SHOW_IMPLICIT);
     }
 
     public interface AnswerListener {

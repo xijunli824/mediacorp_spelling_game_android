@@ -48,9 +48,9 @@
         style="@style/NextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tvGameHint"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/medium_margin"
-        android:text="@string/abc_start_game" />
+        android:layout_marginTop="16dp"
+        android:text="@string/abc_start_game"
+        android:layout_below="@+id/tvGameHint"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

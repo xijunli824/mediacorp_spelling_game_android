@@ -70,6 +70,14 @@ public class MinutesClockView extends LinearLayout implements Runnable{
         pauseViewOnly = true;
     }
 
+    public void pauseAndSync() {
+        mPause = true;
+
+        mCharHighSecond.sync();
+        mCharLowSecond.sync();
+        mCharLowMinute.sync();
+    }
+
     public void showAlertClock() {
 
         if (pauseViewOnly)

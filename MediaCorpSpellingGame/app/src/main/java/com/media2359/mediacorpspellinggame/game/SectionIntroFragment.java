@@ -78,7 +78,7 @@ public class SectionIntroFragment extends Fragment {
     }
 
     private void bind() {
-        String type = "GAME " + game.getType();
+        String type = "அங்கம் " + game.getType();
 
 //        if (type.equalsIgnoreCase("A")) {
 //            tvGameType.setText("GAME A");

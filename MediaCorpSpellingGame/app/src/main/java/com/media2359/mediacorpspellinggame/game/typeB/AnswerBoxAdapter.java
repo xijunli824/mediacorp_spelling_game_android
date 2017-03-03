@@ -136,7 +136,7 @@ public class AnswerBoxAdapter extends RecyclerView.Adapter<AnswerBoxAdapter.Answ
 
     }
 
-    static class AnswerBoxViewHolder extends RecyclerView.ViewHolder {
+    public static class AnswerBoxViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.answerBox)
         AnswerBox answerBox;

@@ -65,7 +65,7 @@ public class GameActivity extends BaseActivity {
     }
 
     public void showNextQuestion() {
-        if (getCurrentGame().getType().equalsIgnoreCase("B")){
+        if (getCurrentGame().getType().equalsIgnoreCase("2")){
             showNextMultipleQuestionFragment();
         }else {
             showNextSingleQuestionFragment();

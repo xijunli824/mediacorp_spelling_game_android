@@ -1,21 +1,24 @@
 <resources>
-    <string name="app_name">Spelling Bee</string>
+    <string name="app_name">தமிழோடு விளையாடு</string>
 
-    <string name="abc_next">Next</string>
-    <string name="abc_submit">Submit</string>
-    <string name="abc_begin">Begin</string>
-    <string name="abc_start_game">Start Game</string>
+    <string name="abc_next">அடுத்து</string>
+    <string name="abc_submit">அனுப்பு</string>
+    <string name="abc_begin">தொடங்கு</string>
+    <string name="abc_start_game">ஆரம்பம் </string>
     <string name="abc_proceed">Proceed</string>
+    <string name="abc_go">தொடங்கு</string>
     <string name="abc_password">Password</string>
+    <string name="abc_current_score">புள்ளிகள்</string>
+    <string name="question_count" formatted="false">கேள்வி எண்: %d/%d</string>
 
-    <string name="enter_school_name">Enter The Name of Your School</string>
-    <string name="abc_school_name">School Name</string>
+    <string name="enter_school_name">பள்ளியின் பெயர்</string>
+    <string name="abc_school_name">பள்ளி</string>
     <string name="enter_password">Please enter the password</string>
 
     <string name="pick_session">Select a Session</string>
 
-    <string name="game_a_error">Sorry, you’ve got the wrong answer.</string>
-    <string name="game_a_correct">"Congratulations!\n You’ve gotten the correct answer."</string>
+    <string name="game_a_error">தவறான பதில்</string>
+    <string name="game_a_correct">"வாழ்த்துகள்\n சரியான விடை!"</string>
 
     <string name="hold_on_message">You have to wait for the other team to submit their answer before proceeding. (Only the coordinator is allowed to tap on proceed)</string>
 </resources>

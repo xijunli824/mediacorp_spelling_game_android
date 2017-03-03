@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -17,6 +18,7 @@ import com.media2359.mediacorpspellinggame.R;
 import com.media2359.mediacorpspellinggame.data.Question;
 import com.media2359.mediacorpspellinggame.factory.GameProgressManager;
 import com.media2359.mediacorpspellinggame.game.GameActivity;
+import com.media2359.mediacorpspellinggame.utils.CommonUtils;
 import com.media2359.mediacorpspellinggame.widget.AnswerBox;
 import com.media2359.mediacorpspellinggame.widget.SecondsClockView;
 
@@ -30,7 +32,6 @@ import butterknife.ButterKnife;
 public class SingleQuestionFragment extends Fragment implements AnswerBox.AnswerListener {
 
     private static final String ARGS_QUESTION_ENTITY = "args_question";
-    private static final String ARGS_QUESTION_INSTRUCTION = "instruction";
 
     @BindView(R.id.tvQuestionCount)
     TextView tvQuestionCount;
@@ -81,13 +82,10 @@ public class SingleQuestionFragment extends Fragment implements AnswerBox.Answer
     @NonNull
     private Question question;
 
-    private String instruction;
-
-    public static SingleQuestionFragment newInstance(@NonNull Question question, @NonNull String instruction) {
+    public static SingleQuestionFragment newInstance(@NonNull Question question) {
 
         Bundle args = new Bundle();
         args.putParcelable(ARGS_QUESTION_ENTITY, question);
-        args.putString(ARGS_QUESTION_INSTRUCTION, instruction);
         SingleQuestionFragment fragment = new SingleQuestionFragment();
         fragment.setArguments(args);
         return fragment;
@@ -125,12 +123,15 @@ public class SingleQuestionFragment extends Fragment implements AnswerBox.Answer
             }
         });
 
-        tvResultInstruction.setText(instruction);
+        //tvResultInstruction.setText(instruction);
+        tvResultInstruction.setVisibility(View.INVISIBLE);
 
         tvCurrentScore.setText(String.valueOf(GameProgressManager.getInstance().getTotalScore()));
 
         int qid = GameProgressManager.getInstance().getLastAttemptedQuestionPos() + 1;
-        tvQuestionCount.setText("Question: " + qid + "/" + ((GameActivity) getActivity()).getCurrentGame().getQuestionCount());
+
+        String questionCount = CommonUtils.getQuestionCountString(getActivity(), qid, ((GameActivity) getActivity()).getCurrentGame().getQuestionCount());
+        tvQuestionCount.setText(questionCount);
 
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -147,8 +148,8 @@ public class SingleQuestionFragment extends Fragment implements AnswerBox.Answer
         });
 
         String gameType = ((GameActivity) getActivity()).getCurrentGame().getType();
-        String sectionScoreText = "SECTION " + gameType + " SCORE";
-        String sectionTimeText = "SECTION " + gameType + " TIME";
+        String sectionScoreText = "அங்கம் " + gameType + " - புள்ளிகள்";
+        String sectionTimeText = "அங்கம் " + gameType + " - நேரம்";
 
         tvSectionScoreText.setText(sectionScoreText);
         tvSectionTimeText.setText(sectionTimeText);
@@ -182,12 +183,17 @@ public class SingleQuestionFragment extends Fragment implements AnswerBox.Answer
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        clockView.resume();
-
         question = getArguments().getParcelable(ARGS_QUESTION_ENTITY);
-        instruction = getArguments().getString(ARGS_QUESTION_INSTRUCTION);
+
+        answerBox.focusOnEditText();
 
         initViews();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        clockView.resume();
     }
 
     private void showPlayView() {
@@ -224,6 +230,7 @@ public class SingleQuestionFragment extends Fragment implements AnswerBox.Answer
 
     @Override
     public void onError() {
+        tvResultInstruction.setVisibility(View.VISIBLE);
         tvResultInstruction.setText(getString(R.string.game_a_error));
 
         GameProgressManager.getInstance().increaseSectionTime(getActivity(), MAX_TIME);
@@ -233,6 +240,7 @@ public class SingleQuestionFragment extends Fragment implements AnswerBox.Answer
 
     @Override
     public void onCorrect(int score) {
+        tvResultInstruction.setVisibility(View.VISIBLE);
         tvResultInstruction.setText(getString(R.string.game_a_correct));
 
         // update the section score/time
@@ -240,6 +248,12 @@ public class SingleQuestionFragment extends Fragment implements AnswerBox.Answer
         GameProgressManager.getInstance().increaseSectionTime(getActivity(), timeTaken);
 
         showScoreView();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        clockView.pauseAndSync();
     }
 
     @Override

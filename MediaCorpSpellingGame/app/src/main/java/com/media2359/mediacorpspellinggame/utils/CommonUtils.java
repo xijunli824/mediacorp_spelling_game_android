@@ -78,4 +78,8 @@ public class CommonUtils {
         }
     }
 
+    public static String getQuestionCountString(Context context, int currentCount, int totalCount) {
+        return context.getString(R.string.question_count, currentCount, totalCount);
+    }
+
 }

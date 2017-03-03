@@ -18,15 +18,18 @@
         android:layout_width="360dp"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/tvId"
-        android:textSize="20sp"
-        android:maxLines="1"
         android:freezesText="true"
-        android:privateImeOptions="nm"
-        android:inputType="textNoSuggestions"
         android:imeOptions="actionDone"
-        android:paddingRight="8dp"
+        android:inputType="textNoSuggestions"
+        android:maxLines="1"
         android:paddingLeft="8dp"
-        tools:text="Pineapple" />
+        android:paddingRight="8dp"
+        android:privateImeOptions="nm"
+        android:textSize="20sp"
+        tools:text="Pineapple">
+
+        <requestFocus />
+    </EditText>
 
     <TextView
         android:id="@+id/tvResult"

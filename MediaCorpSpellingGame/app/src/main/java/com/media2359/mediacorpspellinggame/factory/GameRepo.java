@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 
 import com.media2359.mediacorpspellinggame.R;
+import com.media2359.mediacorpspellinggame.SpellingGameApplication;
 import com.media2359.mediacorpspellinggame.data.Question;
 import com.media2359.mediacorpspellinggame.data.Section;
 
@@ -153,6 +154,12 @@ public class GameRepo {
 
     public boolean isDataReady() {
         return sectionList != null && sectionList.size() != 0 && questionList != null && !questionList.isEmpty();
+    }
+
+    private void loadDataIfNull(GameDataCallback gameDataCallback) {
+        if (sectionList == null || sectionList.isEmpty() || questionList == null || questionList.isEmpty()){
+            forceLoad(currentDataSetId, SpellingGameApplication.getContext(), gameDataCallback);
+        }
     }
 
     public void onDestroy() {

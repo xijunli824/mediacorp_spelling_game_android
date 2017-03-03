@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/black"
         android:textStyle="bold"
+        android:textSize="20sp"
         tools:text="QUESTION: 1/4" />
 
     <TextView
@@ -19,7 +20,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:text="CURRENT SCORE"
+        android:textSize="20sp"
+        android:text="@string/abc_current_score"
         android:textColor="@color/black"
         android:textStyle="bold" />
 
@@ -69,17 +71,6 @@
         android:layout_marginBottom="@dimen/medium_margin"
         android:layout_marginTop="@dimen/medium_margin" />
 
-    <FrameLayout
-        android:id="@+id/flScoreCard"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/answerBox"
-        android:layout_centerHorizontal="true">
-
-        <include layout="@layout/view_score_card" />
-
-    </FrameLayout>
-
     <Button
         android:id="@+id/btnSubmit"
         style="@style/NextButton"
@@ -98,6 +89,18 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:text="NEXT" />
+        android:text="@string/abc_next" />
+
+    <FrameLayout
+        android:id="@+id/flScoreCard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/answerBox"
+        android:layout_marginTop="@dimen/medium_margin"
+        android:layout_centerHorizontal="true">
+
+        <include layout="@layout/view_score_card" />
+
+    </FrameLayout>
 
 </RelativeLayout>

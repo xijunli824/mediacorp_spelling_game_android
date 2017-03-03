@@ -67,6 +67,13 @@ public class SecondsClockView extends LinearLayout implements Runnable{
         pauseViewOnly = true;
     }
 
+    public void pauseAndSync() {
+        mPause = true;
+
+        mCharHighSecond.sync();
+        mCharLowSecond.sync();
+    }
+
     public void resume() {
         mPause = false;
         pauseViewOnly = false;

@@ -85,7 +85,7 @@ public class SectionSummaryFragment extends Fragment {
     private void bind() {
         Section game = GameRepo.getInstance().getSection(gameIndex);
 
-        String congratulations = "Congratulations!\n You have completed Game " + game.getType();
+        String congratulations = "வாழ்த்துகள்!\n அங்கம் "+ game.getType()+" முடிவடைந்தது!";
 
         tvCongratulations.setText(congratulations);
 

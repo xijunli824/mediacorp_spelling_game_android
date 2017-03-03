@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:text="Congratulations \n You have completed all the questions!"
+        android:text="வாழ்த்துகள்!"
         android:textSize="34sp"
         android:gravity="center"
         android:layout_above="@+id/llSummary"
@@ -46,7 +46,7 @@
                 android:layout_width="180dp"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="TOTAL SCORE"
+                android:text="மொத்த புள்ளிகள்"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -81,7 +81,7 @@
                 android:layout_width="180dp"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="TOTAL TIME"
+                android:text="மொத்த நேரம்"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -108,22 +108,22 @@
 
     <Button
         style="@style/NextButton"
-        android:id="@+id/btnComplete"
-        android:text="COMPLETE"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/llSummary"
-        android:layout_marginTop="@dimen/medium_margin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <Button
-        style="@style/NextButton"
         android:id="@+id/btnSendEmail"
-        android:text="Send Results"
+        android:text="மின்னஞ்சல் அனுப்பு"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_margin="@dimen/large_margin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+
+    <Button
+        style="@style/NextButton"
+        android:id="@+id/btnComplete"
+        android:text="நிறைவு"
+        android:layout_marginTop="24dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/llSummary"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

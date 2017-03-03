@@ -21,7 +21,7 @@ import butterknife.OnClick;
 
 public class PasswordDialogFragment extends DialogFragment {
 
-    private static final String PASSWORD_TEXT = "password";
+    private static final String PASSWORD_TEXT = "4321";
 
     @BindView(R.id.etPassword)
     EditText etPassword;

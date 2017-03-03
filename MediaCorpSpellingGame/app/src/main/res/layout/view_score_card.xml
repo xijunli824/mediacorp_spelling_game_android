@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:padding="@dimen/medium_margin"
     android:background="@drawable/bg_rounded_corner_pink"
-    android:layout_width="400dp"
+    android:layout_width="500dp"
     android:layout_height="wrap_content">
 
     <LinearLayout
@@ -15,7 +15,7 @@
 
         <TextView
             android:id="@+id/tvSectionScoreText"
-            android:layout_width="170dp"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:textSize="18sp"
             android:textStyle="bold"
@@ -35,7 +35,8 @@
             android:textSize="30sp"
             android:textColor="@color/light_purple"
             android:textStyle="bold"
-            android:layout_width="wrap_content"
+            android:maxLines="1"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
     </LinearLayout>
@@ -48,7 +49,7 @@
 
         <TextView
             android:id="@+id/tvSectionTimeText"
-            android:layout_width="170dp"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:textSize="18sp"
             android:textStyle="bold"
@@ -64,11 +65,12 @@
 
         <TextView
             android:id="@+id/tvCardTime"
-            tools:text="02:32"
+            tools:text="03:52"
             android:textSize="30sp"
             android:textColor="@color/light_purple"
             android:textStyle="bold"
-            android:layout_width="wrap_content"
+            android:maxLines="1"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
     </LinearLayout>

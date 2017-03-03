@@ -9,11 +9,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
-import com.media2359.mediacorpspellinggame.factory.GameConstants;
 import com.media2359.mediacorpspellinggame.R;
 import com.media2359.mediacorpspellinggame.data.Question;
 import com.media2359.mediacorpspellinggame.factory.GameProgressManager;
@@ -131,8 +131,9 @@ public class GridQuestionsFragment extends Fragment implements AnswerBoxAdapter.
         questionList.addAll(GameRepo.getInstance().getListOfQuestionsFromGame(gameIndex));
         adapter.refreshData(questionList);
 
-        tvResultInstruction.setText("Fill in the the words as shown on the picture.");
-        tvQuestionCount.setText("QUESTION: 1/1");
+        //tvResultInstruction.setText("Fill in the the words as shown on the picture.");
+
+        tvQuestionCount.setText(getString(R.string.question_count, 1, 1));
 
         tvCurrentScore.setText(String.valueOf(GameProgressManager.getInstance().getTotalScore()));
 
@@ -156,8 +157,8 @@ public class GridQuestionsFragment extends Fragment implements AnswerBoxAdapter.
 
         String gameType = ((GameActivity) getActivity()).getCurrentGame().getType();
 
-        String sectionScoreText = "SECTION " + gameType + " SCORE";
-        String sectionTimeText = "SECTION " + gameType + " TIME";
+        String sectionScoreText = "அங்கம் " + gameType + " புள்ளிகள்";
+        String sectionTimeText = "அங்கம் " + gameType + " நேரம்";
 
         tvSectionScoreText.setText(sectionScoreText);
         tvSectionTimeText.setText(sectionTimeText);
@@ -170,8 +171,6 @@ public class GridQuestionsFragment extends Fragment implements AnswerBoxAdapter.
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        clockView.resume();
-
         clockView.setTimeListener(new MinutesClockView.TimeListener() {
             @Override
             public void onSecond(long seconds) {
@@ -183,6 +182,21 @@ public class GridQuestionsFragment extends Fragment implements AnswerBoxAdapter.
                 }
             }
         });
+
+        recyclerView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                ((AnswerBoxAdapter.AnswerBoxViewHolder) recyclerView.findViewHolderForAdapterPosition(0)).getAnswerBox().focusOnEditText();
+
+                recyclerView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+            }
+        });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        clockView.resume();
     }
 
     @Override
@@ -195,7 +209,7 @@ public class GridQuestionsFragment extends Fragment implements AnswerBoxAdapter.
         tvCardScore.setText(String.valueOf(totalScore));
         tvCardTime.setText(GameProgressManager.getInstance().getSectionTimeText(gameId));
 
-        tvResultInstruction.setText("You have answered " + correctAnswers + "/" + totalQuestions + " questions correctly");
+        tvResultInstruction.setText("சரியான விடைகள் – " + correctAnswers + "/" + totalQuestions);
 
         showScoreView();
     }
@@ -224,7 +238,7 @@ public class GridQuestionsFragment extends Fragment implements AnswerBoxAdapter.
         btnEdit.setEnabled(true);
         btnEdit.setVisibility(View.VISIBLE);
 
-        btnNext.setText("Next");
+        btnNext.setText(getString(R.string.abc_next));
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -305,12 +319,12 @@ public class GridQuestionsFragment extends Fragment implements AnswerBoxAdapter.
             viewHolder.enableEditMode(true);
         }
 
-        tvResultInstruction.setText("Edit Mode");
+        //tvResultInstruction.setText("Edit Mode");
         showDoneButton();
     }
 
     private void showDoneButton() {
-        btnNext.setText("DONE");
+        btnNext.setText("முடிந்தது ");
 
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -323,5 +337,11 @@ public class GridQuestionsFragment extends Fragment implements AnswerBoxAdapter.
                 }
             }
         });
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        clockView.pauseAndSync();
     }
 }

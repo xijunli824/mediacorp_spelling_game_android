@@ -14,6 +14,7 @@ import com.media2359.mediacorpspellinggame.data.Section;
 import com.media2359.mediacorpspellinggame.data.Question;
 import com.media2359.mediacorpspellinggame.factory.GameProgressManager;
 import com.media2359.mediacorpspellinggame.game.GameActivity;
+import com.media2359.mediacorpspellinggame.utils.CommonUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -78,7 +79,8 @@ public class TypeAWaitingFragment extends Fragment {
         int qid = GameProgressManager.getInstance().getLastAttemptedQuestionPos() + 1;
         final Section game = ((GameActivity) getActivity()).getCurrentGame();
 
-        tvQuestionCount.setText("Question: " + qid + "/" + game.getQuestionCount());
+        String questionCount = CommonUtils.getQuestionCountString(getActivity(), qid, game.getQuestionCount());
+        tvQuestionCount.setText(questionCount);
 
         tvInstruction.setText(game.getQuestionInstruction());
 
@@ -86,7 +88,7 @@ public class TypeAWaitingFragment extends Fragment {
         btnGo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((GameActivity)getActivity()).replaceFragment(SingleQuestionFragment.newInstance(question, game.getQuestionInstruction()));
+                ((GameActivity)getActivity()).replaceFragment(SingleQuestionFragment.newInstance(question));
             }
         });
     }

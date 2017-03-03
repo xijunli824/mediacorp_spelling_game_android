@@ -1,113 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:padding="@dimen/large_margin"
     android:background="@drawable/white_bg"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:padding="@dimen/large_margin">
 
     <TextView
         android:id="@+id/tvQuestionCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/black"
+        android:textSize="20sp"
         android:textStyle="bold"
         tools:text="QUESTION: 1/4" />
 
     <com.media2359.mediacorpspellinggame.widget.MinutesClockView
         android:id="@+id/clockView"
-        android:layout_below="@+id/tvQuestionCount"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvQuestionCount" />
 
     <TextView
         android:id="@+id/tvCurrentScoreText"
         android:layout_width="wrap_content"
-        android:text="CURRENT SCORE"
-        android:textColor="@color/black"
-        android:textStyle="bold"
+        android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:layout_height="wrap_content" />
+        android:text="@string/abc_current_score"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/tvCurrentScore"
-        tools:text="10"
-        android:textStyle="bold"
-        android:textSize="80sp"
-        android:textColor="@color/light_purple"
-        android:layout_below="@id/tvCurrentScoreText"
-        android:layout_alignParentEnd="true"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/tvCurrentScoreText"
+        android:textColor="@color/light_purple"
+        android:textSize="80sp"
+        android:textStyle="bold"
+        tools:text="10" />
 
     <ImageView
         android:id="@+id/logo"
-        android:src="@drawable/logo_big"
-        android:layout_centerHorizontal="true"
-        android:layout_above="@+id/recyclerView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/recyclerView"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/logo_big" />
 
     <TextView
         android:id="@+id/tvResultInstruction"
-        tools:text="You’ve answered 8/10 questions correctly."
-        android:visibility="gone"
-        android:gravity="center"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/clockView"
-        android:textStyle="bold"
-        android:textSize="34sp"
-        android:textColor="@color/black"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/clockView"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        tools:text="You’ve answered 8/10 questions correctly." />
 
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
-        android:layout_marginTop="@dimen/medium_margin"
-        android:layout_below="@id/clockView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_below="@id/clockView"
+        android:layout_marginTop="@dimen/medium_margin" />
 
     <Button
         android:id="@+id/btnSubmit"
-        android:text="@string/abc_submit"
         style="@style/NextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/recyclerView"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/medium_margin"
-        android:layout_below="@+id/recyclerView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <FrameLayout
-        android:id="@+id/flScoreCard"
-        android:layout_below="@+id/recyclerView"
-        android:layout_marginTop="@dimen/medium_margin"
-        android:layout_centerHorizontal="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <include layout="@layout/view_score_card" />
-    </FrameLayout>
+        android:text="@string/abc_submit" />
 
     <Button
         android:id="@+id/btnNext"
         style="@style/NextButton"
-        android:text="NEXT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:text="@string/abc_next" />
 
     <Button
         android:id="@+id/btnEdit"
         style="@style/EditButton"
-        android:text="EDIT"
-        android:layout_toLeftOf="@+id/btnNext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginRight="@dimen/medium_margin"
+        android:layout_toLeftOf="@+id/btnNext"
+        android:text="திருத்து" />
+
+    <FrameLayout
+        android:id="@+id/flScoreCard"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/btnSubmit"
+        android:layout_centerHorizontal="true">
+
+        <include layout="@layout/view_score_card" />
+    </FrameLayout>
 
 </RelativeLayout>
