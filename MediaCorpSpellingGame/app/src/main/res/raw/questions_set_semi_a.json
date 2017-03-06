@@ -1,0 +1,240 @@
+[
+  {
+    "id": 0,
+    "question": "கிடங்கு",
+    "answers": ["கிடங்கு"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 1,
+    "question": "நிர்ணயம்",
+    "answers": ["நிர்ணயம்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 2,
+    "question": "நாற்றம்",
+    "answers": ["நாற்றம்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 3,
+    "question": "கலக்கம்",
+    "answers": ["கலக்கம்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 4,
+    "question": "துரும்பு",
+    "answers": ["துரும்பு"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 5,
+    "question": "மனச்சுமை",
+    "answers": ["மனச்சுமை"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 6,
+    "question": "புறங்கை",
+    "answers": ["புறங்கை"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 7,
+    "question": "முரண்பாடு",
+    "answers": ["முரண்பாடு"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 8,
+    "question": "நோயாளி",
+    "answers": ["நோயாளி"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 9,
+    "question": "பொம்மை",
+    "answers": ["பொம்மை"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 10,
+    "question": "மெத்தை",
+    "answers": ["மெத்தை"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 11,
+    "question": "சன்னல்",
+    "answers": ["சன்னல்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 12,
+    "question": "திரைச்சீலை",
+    "answers": ["திரைச்சீலை"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 13,
+    "question": "மின்விசிறி",
+    "answers": ["மின்விசிறி"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 14,
+    "question": "பூங்கொத்து",
+    "answers": ["பூங்கொத்து"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 15,
+    "question": "செய்தித்தாள்",
+    "answers": ["செய்தித்தாள்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 16,
+    "question": "தண்ணீர்",
+    "answers": ["தண்ணீர்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 17,
+    "question": "மேசை",
+    "answers": ["மேசை"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 18,
+    "question": "நகப்பூச்சு",
+    "answers": ["நகப்பூச்சு"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 19,
+    "question": "பாரம்பரியம்",
+    "answers": ["பாரம்பரியம்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 20,
+    "question": "அரசாங்கம்",
+    "answers": ["அரசாங்கம்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 21,
+    "question": "இளவேனில்",
+    "answers": ["இளவேனில்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 22,
+    "question": "மழைமேகம்",
+    "answers": ["மழைமேகம்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 23,
+    "question": "வெப்பநிலை",
+    "answers": ["வெப்பநிலை"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 24,
+    "question": "புயல்காற்று",
+    "answers": ["புயல்காற்று"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 25,
+    "question": "கூடைப்பந்து",
+    "answers": ["கூடைப்பந்து"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 26,
+    "question": "நகப்பூச்சு",
+    "answers": ["நகப்பூச்சு"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 27,
+    "question": "பாரம்பரியம்",
+    "answers": ["பாரம்பரியம்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 28,
+    "question": "அரசாங்கம்",
+    "answers": ["அரசாங்கம்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 29,
+    "question": "இளவேனில்",
+    "answers": ["இளவேனில்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 30,
+    "question": "மழைமேகம்",
+    "answers": ["மழைமேகம்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 31,
+    "question": "வெப்பநிலை",
+    "answers": ["வெப்பநிலை"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 32,
+    "question": "புயல்காற்று",
+    "answers": ["புயல்காற்று"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 33,
+    "question": "கூடைப்பந்து",
+    "answers": ["கூடைப்பந்து"],
+    "score": 10,
+    "additions":[]
+  }
+]

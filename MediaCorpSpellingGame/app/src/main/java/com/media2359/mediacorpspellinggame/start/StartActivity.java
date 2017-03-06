@@ -11,8 +11,8 @@ import android.widget.EditText;
 
 import com.media2359.mediacorpspellinggame.R;
 import com.media2359.mediacorpspellinggame.base.BaseActivity;
-import com.media2359.mediacorpspellinggame.data.Section;
 import com.media2359.mediacorpspellinggame.data.Question;
+import com.media2359.mediacorpspellinggame.data.Section;
 import com.media2359.mediacorpspellinggame.factory.GameProgressManager;
 import com.media2359.mediacorpspellinggame.factory.GameRepo;
 import com.media2359.mediacorpspellinggame.game.GameActivity;
@@ -50,6 +50,7 @@ public class StartActivity extends BaseActivity {
         setContentView(R.layout.activity_start);
         ButterKnife.bind(this);
 
+        // Reset data
         GameProgressManager.getInstance().newGame();
         GameRepo.getInstance().clearRepo();
 
@@ -82,22 +83,15 @@ public class StartActivity extends BaseActivity {
     }
 
     private void prepareData(int sessionId) {
-        if (!GameRepo.getInstance().isDataReady()) {
 
-            final ProgressDialog dialog = ProgressDialog.show(this, "Preparing...", "Please wait...", true, false);
+        final ProgressDialog dialog = ProgressDialog.show(this, "Preparing...", "Please wait...", true, false);
 
-            GameRepo.getInstance().loadData(sessionId, this, new GameRepo.GameDataCallback() {
-                @Override
-                public void onLoadingFinished(List<Section> games, List<Question> questions) {
-                    dialog.dismiss();
-                }
-            });
-        }
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
+        GameRepo.getInstance().loadData(sessionId, this, new GameRepo.GameDataCallback() {
+            @Override
+            public void onLoadingFinished(List<Section> games, List<Question> questions) {
+                dialog.dismiss();
+            }
+        });
     }
 
     @OnClick(R.id.btnNext)
@@ -107,7 +101,7 @@ public class StartActivity extends BaseActivity {
             GameProgressManager.getInstance().setSchoolName(etSchoolName.getText().toString().trim());
 
             // start the first game
-            Section firstGame = GameRepo.getInstance().getSection(4);
+            Section firstGame = GameRepo.getInstance().getSection(0);
             GameActivity.startGameActivity(this, firstGame);
 
             // finish this activity

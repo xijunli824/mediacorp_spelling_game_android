@@ -29,7 +29,7 @@ public class GameRepo {
 
     private LoadGamesAsyncTask gamesAsyncTask;
 
-    int currentDataSetId = -1;
+    private int currentDataSetId = -1;
 
     private GameRepo() {
         sectionList = new ArrayList<>();
@@ -103,23 +103,23 @@ public class GameRepo {
 
         switch (currentDataSetId){
             case 0:
-                gameSetInputStream = context.getResources().openRawResource(R.raw.games_set_final);
-                questionSetInputStream = context.getResources().openRawResource(R.raw.questions_set_a);
+                gameSetInputStream = context.getResources().openRawResource(R.raw.games_set_semi_final);
+                questionSetInputStream = context.getResources().openRawResource(R.raw.questions_set_semi_a);
                 break;
             case 1:
-                gameSetInputStream = context.getResources().openRawResource(R.raw.games_set_a);
+                gameSetInputStream = context.getResources().openRawResource(R.raw.games_set_quarters);
                 questionSetInputStream = context.getResources().openRawResource(R.raw.questions_set_b);
                 break;
             case 2:
-                gameSetInputStream = context.getResources().openRawResource(R.raw.games_set_a);
+                gameSetInputStream = context.getResources().openRawResource(R.raw.games_set_quarters);
                 questionSetInputStream = context.getResources().openRawResource(R.raw.questions_set_c);
                 break;
             case 3:
-                gameSetInputStream = context.getResources().openRawResource(R.raw.games_set_a);
+                gameSetInputStream = context.getResources().openRawResource(R.raw.games_set_quarters);
                 questionSetInputStream = context.getResources().openRawResource(R.raw.questions_set_d);
                 break;
 //            case 4:
-//                gameSetInputStream = context.getResources().openRawResource(R.raw.games_set_a);
+//                gameSetInputStream = context.getResources().openRawResource(R.raw.games_set_quarters);
 //                questionSetInputStream = context.getResources().openRawResource(R.raw.questions_backup_set);
 //                break;
             default:
@@ -171,10 +171,14 @@ public class GameRepo {
         return sectionList != null && sectionList.size() != 0 && questionList != null && !questionList.isEmpty();
     }
 
-    private void loadDataIfNull(GameDataCallback gameDataCallback) {
-        if (sectionList == null || sectionList.isEmpty() || questionList == null || questionList.isEmpty()){
-            forceLoad(currentDataSetId, SpellingGameApplication.getContext(), gameDataCallback);
+    public void loadDataIfNull(Context context, GameDataCallback gameDataCallback) {
+        if (!isDataReady()){
+            forceLoad(currentDataSetId, context, gameDataCallback);
         }
+    }
+
+    public int getCurrentDataSetId() {
+        return currentDataSetId;
     }
 
     public void onDestroy() {

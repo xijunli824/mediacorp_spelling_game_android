@@ -217,7 +217,8 @@ public class TypeBGameFragment extends Fragment implements AnswerBoxAdapter.Resu
         tvCardScore.setText(String.valueOf(totalScore));
         tvCardTime.setText(GameProgressManager.getInstance().getSectionTimeText(gameId));
 
-        tvResultInstruction.setText("சரியான விடைகள் – " + correctAnswers + "/" + totalQuestions);
+        String resultText = "சரியான விடைகள் – " + correctAnswers + "/" + totalQuestions;
+        tvResultInstruction.setText(resultText);
 
         showScoreView();
     }
