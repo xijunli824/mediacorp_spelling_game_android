@@ -80,7 +80,7 @@ public class TypeBWaitingFragment extends Fragment {
         btnGo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((GameActivity)getActivity()).replaceFragment(GridQuestionsFragment.newInstance(gameIndex));
+                ((GameActivity)getActivity()).replaceFragment(TypeBGameFragment.newInstance(gameIndex));
             }
         });
     }

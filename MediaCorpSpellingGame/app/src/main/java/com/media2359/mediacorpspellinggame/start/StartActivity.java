@@ -51,6 +51,7 @@ public class StartActivity extends BaseActivity {
         ButterKnife.bind(this);
 
         GameProgressManager.getInstance().newGame();
+        GameRepo.getInstance().clearRepo();
 
         selectSession();
 
@@ -106,7 +107,7 @@ public class StartActivity extends BaseActivity {
             GameProgressManager.getInstance().setSchoolName(etSchoolName.getText().toString().trim());
 
             // start the first game
-            Section firstGame = GameRepo.getInstance().getSection(0);
+            Section firstGame = GameRepo.getInstance().getSection(4);
             GameActivity.startGameActivity(this, firstGame);
 
             // finish this activity

@@ -19,7 +19,7 @@ public class SecondsClockView extends LinearLayout implements Runnable{
 
     private boolean mPause = true;
 
-    private boolean pauseViewOnly = false;
+    private boolean pauseAnimationOnly = false;
 
     private TabDigit mCharHighSecond;
 
@@ -58,13 +58,10 @@ public class SecondsClockView extends LinearLayout implements Runnable{
 
     public void pause() {
         mPause = true;
-
-        //mCharHighSecond.sync();
-        //mCharLowSecond.sync();
     }
 
-    public void pauseViewOnly() {
-        pauseViewOnly = true;
+    public void pauseAnimationOnly() {
+        pauseAnimationOnly = true;
     }
 
     public void pauseAndSync() {
@@ -76,17 +73,18 @@ public class SecondsClockView extends LinearLayout implements Runnable{
 
     public void resume() {
         mPause = false;
-        pauseViewOnly = false;
+        //pauseAnimationOnly = false;
 
         /* seconds*/
-        int seconds = (int) elapsedTime;
-        int highSecond = (seconds % 60) / 10;
-        mCharHighSecond.setChar(highSecond);
+//        int seconds = (int) elapsedTime;
+//        int highSecond = (seconds % 60) / 10;
+//        mCharHighSecond.setChar(highSecond);
+//
+//        int lowSecond = seconds % 10;
+//        mCharLowSecond.setChar(lowSecond);
 
-        int lowSecond = (seconds%60 - highSecond * 10);
-        mCharLowSecond.setChar(lowSecond);
 
-        ViewCompat.postOnAnimationDelayed(mClock, this, 100);
+        ViewCompat.postOnAnimationDelayed(mClock, this, 1000);
     }
 
     public void setTimeListener(TimeListener timeListener) {
@@ -94,7 +92,8 @@ public class SecondsClockView extends LinearLayout implements Runnable{
     }
 
     public void showAlertClock() {
-        if (pauseViewOnly)
+
+        if (pauseAnimationOnly)
             return;
 
         mCharHighSecond.setBackgroundColor(getResources().getColor(R.color.red));
@@ -115,13 +114,17 @@ public class SecondsClockView extends LinearLayout implements Runnable{
 
         elapsedTime += 1;
 
-        if (!pauseViewOnly){
-
-            mCharLowSecond.start();
+        if (!pauseAnimationOnly){
 
             if (elapsedTime % 10 == 0) {
-                mCharHighSecond.start();
+                int highSecond = (int) (elapsedTime % 60)/10;
+                //mCharHighSecond.start();
+                mCharHighSecond.setChar(highSecond);
             }
+
+            //mCharLowSecond.start();
+            int lowSecond = (int) elapsedTime % 10;
+            mCharLowSecond.setChar(lowSecond);
         }
 
         if (timeListener != null){

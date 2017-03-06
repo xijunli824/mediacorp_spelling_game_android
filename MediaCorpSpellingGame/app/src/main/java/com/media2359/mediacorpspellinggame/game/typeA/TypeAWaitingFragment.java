@@ -10,10 +10,12 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.media2359.mediacorpspellinggame.R;
-import com.media2359.mediacorpspellinggame.data.Section;
 import com.media2359.mediacorpspellinggame.data.Question;
+import com.media2359.mediacorpspellinggame.data.Section;
 import com.media2359.mediacorpspellinggame.factory.GameProgressManager;
 import com.media2359.mediacorpspellinggame.game.GameActivity;
+import com.media2359.mediacorpspellinggame.game.typeC.TypeCGameFragment;
+import com.media2359.mediacorpspellinggame.game.typeE.TypeEGameFragment;
 import com.media2359.mediacorpspellinggame.utils.CommonUtils;
 
 import butterknife.BindView;
@@ -26,6 +28,8 @@ import butterknife.ButterKnife;
 public class TypeAWaitingFragment extends Fragment {
 
     private static final String ARGS_QUESTION = "args_question";
+
+    private static final String ARGS_GAME_TYPE = "args_game_type";
 
     @BindView(R.id.btnGo)
     Button btnGo;
@@ -41,10 +45,11 @@ public class TypeAWaitingFragment extends Fragment {
 
     private Question question;
 
-    public static TypeAWaitingFragment newInstance(Question question) {
+    public static TypeAWaitingFragment newInstance(Question question, String gameType) {
 
         Bundle args = new Bundle();
         args.putParcelable(ARGS_QUESTION, question);
+        args.putString(ARGS_GAME_TYPE, gameType);
         TypeAWaitingFragment fragment = new TypeAWaitingFragment();
         fragment.setArguments(args);
         return fragment;
@@ -73,7 +78,6 @@ public class TypeAWaitingFragment extends Fragment {
 
     private void bind() {
 
-
         tvCurrentScore.setText(String.valueOf(GameProgressManager.getInstance().getTotalScore()));
 
         int qid = GameProgressManager.getInstance().getLastAttemptedQuestionPos() + 1;
@@ -88,7 +92,27 @@ public class TypeAWaitingFragment extends Fragment {
         btnGo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((GameActivity)getActivity()).replaceFragment(SingleQuestionFragment.newInstance(question));
+                String gameType = getArguments().getString(ARGS_GAME_TYPE);
+
+                if (gameType == null || gameType.isEmpty() || gameType.equalsIgnoreCase("2")){
+                    throw new IllegalArgumentException("Game Type is not supported");
+                }
+
+//                if (gameType.equalsIgnoreCase("1")) {
+//                    ((GameActivity) getActivity()).replaceFragment(TypeAGameFragment.newInstance(question));
+//                } else if (gameType.equalsIgnoreCase("3") || gameType.equalsIgnoreCase("4")) {
+//                    //((GameActivity) getActivity()).replaceFragment(TypeCGameFragment.newInstance(question));
+//                    ((GameActivity) getActivity()).replaceFragment(TypeAGameFragment.newInstance(question));
+//                } else if (gameType.equalsIgnoreCase("5")) {
+//                    ((GameActivity) getActivity()).replaceFragment(TypeEGameFragment.newInstance());
+//                }
+
+                if (gameType.equalsIgnoreCase("5")) {
+                    ((GameActivity) getActivity()).replaceFragment(TypeEGameFragment.newInstance());
+                } else {
+                    ((GameActivity) getActivity()).replaceFragment(TypeAGameFragment.newInstance(question));
+                }
+
             }
         });
     }

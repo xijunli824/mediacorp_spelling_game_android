@@ -61,9 +61,6 @@ public class MinutesClockView extends LinearLayout implements Runnable{
 
     public void pause() {
         mPause = true;
-
-        //mCharHighSecond.sync();
-        //mCharLowSecond.sync();
     }
 
     public void pauseViewOnly() {
@@ -100,22 +97,26 @@ public class MinutesClockView extends LinearLayout implements Runnable{
 
     public void resume() {
         mPause = false;
-        pauseViewOnly = false;
+        //pauseViewOnly = false;
 
         /* seconds*/
-        int seconds = (int) elapsedTime;
-        int highSecond = (seconds % 60) / 10;
-        mCharHighSecond.setChar(highSecond);
-
-        int lowSecond = (seconds % 60) - highSecond * 10;
-        mCharLowSecond.setChar(lowSecond);
-
-        int minutes = (int) Math.floor(elapsedTime / 60);
-        mCharLowMinute.setChar(minutes);
+//        int seconds = (int) elapsedTime;
+//        int highSecond = (seconds % 60) / 10;
+//        mCharHighSecond.setChar(highSecond);
+//
+//        int lowSecond = seconds % 10;
+//        mCharLowSecond.setChar(lowSecond);
+//
+//        int minutes = (int) Math.floor(elapsedTime / 60);
+//        mCharLowMinute.setChar(minutes);
+//
+//        mCharHighSecond.sync();
+//        mCharLowSecond.sync();
+//        mCharLowMinute.sync();
 
         //elapsedTime = lowSecond + highSecond * 10;
 
-        ViewCompat.postOnAnimationDelayed(mClock, this, 100);
+        ViewCompat.postOnAnimationDelayed(mClock, this, 1000);
     }
 
     public void setTimeListener(TimeListener timeListener) {
@@ -132,15 +133,26 @@ public class MinutesClockView extends LinearLayout implements Runnable{
 
         if (! pauseViewOnly) {
 
-            mCharLowSecond.start();
+//            if (elapsedTime % 10 == 0) {
+//                mCharHighSecond.start();
+//            }
+//
+//            if (elapsedTime % 60 == 0) {
+//                mCharLowMinute.start();
+//            }
 
             if (elapsedTime % 10 == 0) {
-                mCharHighSecond.start();
+                int highSecond = (int) (elapsedTime % 60) / 10;
+                mCharHighSecond.setChar(highSecond);
             }
 
             if (elapsedTime % 60 == 0) {
-                mCharLowMinute.start();
+                int minutes = (int) Math.floor(elapsedTime / 60);
+                mCharLowMinute.setChar(minutes);
             }
+
+            int lowSecond = (int) elapsedTime % 10;
+            mCharLowSecond.setChar(lowSecond);
 
         }
 

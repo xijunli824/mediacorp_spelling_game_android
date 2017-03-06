@@ -1,0 +1,44 @@
+[
+  {
+    "gameId": 0,
+    "type": "1",
+    "time": 45,
+    "questionList": [
+      0
+    ],
+    "questionCount": 1,
+    "gameInstruction": "சொல்வதெழுதுதல்",
+    "questionInstruction": "கேட்ட சொல்லை எழுது"
+  },
+  {
+    "gameId": 1,
+    "type": "2",
+    "time": 240,
+    "questionList": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "questionCount": 10,
+    "gameInstruction": "படம் பார்த்து சொல் எழுது",
+    "questionInstruction": "படம் பார்த்து சரியான எண்ணில் சொல்லை எழுது"
+  },
+  {
+    "gameId": 2,
+    "type": "3",
+    "time": 60,
+    "questionList": [
+      11
+    ],
+    "questionCount": 1,
+    "gameInstruction": "சொல்லைக் கண்டுபிடித்து எழுது",
+    "questionInstruction": "சொல்லைக் கண்டுபிடித்து எழுது"
+  }
+]

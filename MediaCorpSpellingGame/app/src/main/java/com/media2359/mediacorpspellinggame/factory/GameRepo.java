@@ -3,6 +3,7 @@ package com.media2359.mediacorpspellinggame.factory;
 import android.content.Context;
 import android.support.annotation.NonNull;
 
+import com.media2359.mediacorpspellinggame.BuildConfig;
 import com.media2359.mediacorpspellinggame.R;
 import com.media2359.mediacorpspellinggame.SpellingGameApplication;
 import com.media2359.mediacorpspellinggame.data.Question;
@@ -42,6 +43,14 @@ public class GameRepo {
         return INSTANCE;
     }
 
+    public void clearRepo() {
+        if (sectionList != null)
+            sectionList.clear();
+
+        if (questionList != null)
+            questionList.clear();
+    }
+
     public Question getQuestion(int index) {
         if (index < 0 || index >= questionList.size())
             return null;
@@ -76,11 +85,12 @@ public class GameRepo {
     }
 
     public synchronized void loadData(int dataSetId, Context context, @NonNull GameDataCallback callback) {
-        if (questionList.isEmpty() || sectionList.size() == 0) {
-            forceLoad(dataSetId, context, callback);
-        } else {
-            callback.onLoadingFinished(sectionList, questionList);
-        }
+//        if (questionList.isEmpty() || sectionList.size() == 0 || dataSetId != currentDataSetId) {
+//            forceLoad(dataSetId, context, callback);
+//        } else {
+//            callback.onLoadingFinished(sectionList, questionList);
+//        }
+        forceLoad(dataSetId, context, callback);
     }
 
     private void forceLoad(int dataSetId, Context context, @NonNull final GameDataCallback gameDataCallback) {
@@ -93,7 +103,7 @@ public class GameRepo {
 
         switch (currentDataSetId){
             case 0:
-                gameSetInputStream = context.getResources().openRawResource(R.raw.games_set_a);
+                gameSetInputStream = context.getResources().openRawResource(R.raw.games_set_final);
                 questionSetInputStream = context.getResources().openRawResource(R.raw.questions_set_a);
                 break;
             case 1:
@@ -115,6 +125,11 @@ public class GameRepo {
             default:
                 throw new IllegalArgumentException("Load data exception: wrong data set id");
 
+        }
+
+        if (BuildConfig.DEBUG){
+            gameSetInputStream = context.getResources().openRawResource(R.raw.games_set_demo);
+            questionSetInputStream = context.getResources().openRawResource(R.raw.questions_set_demo);
         }
 
         if (questionsAsyncTask != null) {

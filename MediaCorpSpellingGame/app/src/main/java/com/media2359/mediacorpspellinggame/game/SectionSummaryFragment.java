@@ -13,7 +13,6 @@ import com.media2359.mediacorpspellinggame.R;
 import com.media2359.mediacorpspellinggame.data.Section;
 import com.media2359.mediacorpspellinggame.factory.GameProgressManager;
 import com.media2359.mediacorpspellinggame.factory.GameRepo;
-import com.media2359.mediacorpspellinggame.game.typeA.SingleQuestionFragment;
 import com.media2359.mediacorpspellinggame.widget.ScoreText;
 
 import butterknife.BindView;

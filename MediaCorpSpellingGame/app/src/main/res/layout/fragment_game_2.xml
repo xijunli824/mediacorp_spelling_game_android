@@ -104,7 +104,8 @@
         android:id="@+id/flScoreCard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/btnSubmit"
+        android:layout_marginTop="@dimen/medium_margin"
+        android:layout_below="@+id/recyclerView"
         android:layout_centerHorizontal="true">
 
         <include layout="@layout/view_score_card" />

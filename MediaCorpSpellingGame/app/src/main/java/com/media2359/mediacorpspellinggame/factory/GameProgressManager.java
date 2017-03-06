@@ -159,7 +159,13 @@ public class GameProgressManager {
 
         String bodyText = PreferenceUtils.getPastRecords();
 
-        String[] addresses = {"dummyEmail@2359media.com"};
+        String[] addresses = {
+                "gunalan@mediacorp.com.sg",
+                "MeenaA@mediacorp.com.sg",
+                "sabamuna@mediacorp.com.sg",
+                "elakeyaa@mediacorp.com.sg",
+                "Spellingbee@mediacorp.com.sg"
+        };
 
 
         Intent intent = new Intent(Intent.ACTION_SENDTO);

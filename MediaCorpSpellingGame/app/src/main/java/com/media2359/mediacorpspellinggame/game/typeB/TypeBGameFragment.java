@@ -1,7 +1,6 @@
 package com.media2359.mediacorpspellinggame.game.typeB;
 
 import android.app.Fragment;
-import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
@@ -19,6 +18,7 @@ import com.media2359.mediacorpspellinggame.data.Question;
 import com.media2359.mediacorpspellinggame.factory.GameProgressManager;
 import com.media2359.mediacorpspellinggame.factory.GameRepo;
 import com.media2359.mediacorpspellinggame.game.GameActivity;
+import com.media2359.mediacorpspellinggame.utils.CommonUtils;
 import com.media2359.mediacorpspellinggame.widget.MinutesClockView;
 import com.media2359.mediacorpspellinggame.widget.PasswordDialogFragment;
 
@@ -32,7 +32,7 @@ import butterknife.ButterKnife;
  * Created by xijunli on 14/2/17.
  */
 
-public class GridQuestionsFragment extends Fragment implements AnswerBoxAdapter.ResultListener {
+public class TypeBGameFragment extends Fragment implements AnswerBoxAdapter.ResultListener {
 
     private static final String ARGS_GAME_INDEX = "game_index";
 
@@ -88,11 +88,15 @@ public class GridQuestionsFragment extends Fragment implements AnswerBoxAdapter.
 
     private int sectionScore;
 
-    public static GridQuestionsFragment newInstance(int gameIndex) {
+    private boolean gameHasEnded = false;
+
+    private int gameId;
+
+    public static TypeBGameFragment newInstance(int gameIndex) {
 
         Bundle args = new Bundle();
         args.putInt(ARGS_GAME_INDEX, gameIndex);
-        GridQuestionsFragment fragment = new GridQuestionsFragment();
+        TypeBGameFragment fragment = new TypeBGameFragment();
         fragment.setArguments(args);
         return fragment;
     }
@@ -107,7 +111,7 @@ public class GridQuestionsFragment extends Fragment implements AnswerBoxAdapter.
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_grid_questions, container, false);
+        View root = inflater.inflate(R.layout.fragment_game_2, container, false);
         ButterKnife.bind(this, root);
         initViews();
         return root;
@@ -130,8 +134,6 @@ public class GridQuestionsFragment extends Fragment implements AnswerBoxAdapter.
 
         questionList.addAll(GameRepo.getInstance().getListOfQuestionsFromGame(gameIndex));
         adapter.refreshData(questionList);
-
-        //tvResultInstruction.setText("Fill in the the words as shown on the picture.");
 
         tvQuestionCount.setText(getString(R.string.question_count, 1, 1));
 
@@ -171,6 +173,7 @@ public class GridQuestionsFragment extends Fragment implements AnswerBoxAdapter.
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+
         clockView.setTimeListener(new MinutesClockView.TimeListener() {
             @Override
             public void onSecond(long seconds) {
@@ -183,28 +186,33 @@ public class GridQuestionsFragment extends Fragment implements AnswerBoxAdapter.
             }
         });
 
-        recyclerView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-            @Override
-            public void onGlobalLayout() {
-                ((AnswerBoxAdapter.AnswerBoxViewHolder) recyclerView.findViewHolderForAdapterPosition(0)).getAnswerBox().focusOnEditText();
+        // focus on the first edit text, show keyboard
+        if (!gameHasEnded) {
+            recyclerView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+                @Override
+                public void onGlobalLayout() {
+                    ((AnswerBoxAdapter.AnswerBoxViewHolder) recyclerView.findViewHolderForAdapterPosition(0)).getAnswerBox().focusOnEditText();
 
-                recyclerView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-            }
-        });
+                    recyclerView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                }
+            });
+        }
+
+        gameId = ((GameActivity) getActivity()).getCurrentGame().getGameId();
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        clockView.resume();
+
+        if (!gameHasEnded)
+            clockView.resume();
     }
 
     @Override
     public void onResultSubmit(int correctAnswers, int totalQuestions, int totalScore) {
 
         sectionScore = totalScore;
-
-        int gameId = ((GameActivity) getActivity()).getCurrentGame().getGameId();
 
         tvCardScore.setText(String.valueOf(totalScore));
         tvCardTime.setText(GameProgressManager.getInstance().getSectionTimeText(gameId));
@@ -254,8 +262,6 @@ public class GridQuestionsFragment extends Fragment implements AnswerBoxAdapter.
     }
 
     private void onSubmitButtonClick() {
-        //clockView.pause();
-
         timeTaken = (int) clockView.getElapsedTime();
 
         clockView.pauseViewOnly();
@@ -265,14 +271,14 @@ public class GridQuestionsFragment extends Fragment implements AnswerBoxAdapter.
             AnswerBoxAdapter.AnswerBoxViewHolder viewHolder = (AnswerBoxAdapter.AnswerBoxViewHolder) recyclerView.findViewHolderForAdapterPosition(i);
             viewHolder.getAnswerBox().lockInputField(true);
         }
+
+        gameHasEnded = true;
     }
 
     private void onTimeExpired() {
         clockView.pause();
 
-        //int timeSpent = (int) clockView.getElapsedTime();
-
-        //GameProgressManager.getInstance().increaseSectionTime(getActivity(), timeSpent);
+        gameHasEnded = true;
 
         GameProgressManager.getInstance().increaseSectionTime(getActivity(), timeTaken);
 
@@ -285,33 +291,17 @@ public class GridQuestionsFragment extends Fragment implements AnswerBoxAdapter.
     }
 
     private void showPasswordDialog() {
-        // DialogFragment.show() will take care of adding the fragment
-        // in a transaction.  We also want to remove any currently showing
-        // dialog, so make our own transaction and take care of that here.
-        FragmentTransaction ft = getChildFragmentManager().beginTransaction();
-        Fragment prev = getChildFragmentManager().findFragmentByTag("dialog");
-        if (prev != null) {
-            ft.remove(prev);
-        }
-        ft.addToBackStack(null);
-
-        // Create and show the dialog.
-        PasswordDialogFragment newFragment = PasswordDialogFragment.newInstance();
-
-        newFragment.setListener(new PasswordDialogFragment.PasswordListener() {
+        CommonUtils.showPasswordDialogFragment(getChildFragmentManager(), new PasswordDialogFragment.PasswordListener() {
             @Override
             public void onPasswordMatch() {
                 startEditing();
             }
         });
-
-        newFragment.show(ft, "dialog");
     }
 
     private void startEditing() {
 
         adapter.enableEditMode(true);
-
         btnEdit.setEnabled(false);
 
         for (int i = 0; i < adapter.getItemCount(); i++) {
@@ -319,7 +309,6 @@ public class GridQuestionsFragment extends Fragment implements AnswerBoxAdapter.
             viewHolder.enableEditMode(true);
         }
 
-        //tvResultInstruction.setText("Edit Mode");
         showDoneButton();
     }
 
@@ -342,6 +331,8 @@ public class GridQuestionsFragment extends Fragment implements AnswerBoxAdapter.
     @Override
     public void onPause() {
         super.onPause();
-        clockView.pauseAndSync();
+
+        if (!gameHasEnded)
+            clockView.pauseAndSync();
     }
 }

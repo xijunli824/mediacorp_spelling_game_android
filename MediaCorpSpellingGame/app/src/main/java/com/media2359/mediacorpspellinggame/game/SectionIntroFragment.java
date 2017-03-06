@@ -80,23 +80,6 @@ public class SectionIntroFragment extends Fragment {
     private void bind() {
         String type = "அங்கம் " + game.getType();
 
-//        if (type.equalsIgnoreCase("A")) {
-//            tvGameType.setText("GAME A");
-//            //ivGameIcon.setImageResource(R.drawable.ic_game_a);
-//        } else if (type.equalsIgnoreCase("B")) {
-//            tvGameType.setText("GAME B");
-//            //ivGameIcon.setImageResource(R.drawable.ic_game_b);
-//        } else if (type.equalsIgnoreCase("C")) {
-//            tvGameType.setText("GAME C");
-//            //ivGameIcon.setImageResource(R.drawable.ic_game_c);
-//        } else if (type.equalsIgnoreCase("D")) {
-//            tvGameType.setText("GAME D");
-//            //ivGameIcon.setImageResource(R.drawable.ic_game_c);
-//        } else if (type.equalsIgnoreCase("E")) {
-//            tvGameType.setText("GAME E");
-//            //ivGameIcon.setImageResource(R.drawable.ic_game_c);
-//        }
-
         tvGameType.setText(type);
         tvGameHint.setText(game.getGameInstruction());
 

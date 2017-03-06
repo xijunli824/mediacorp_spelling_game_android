@@ -1,5 +1,8 @@
 package com.media2359.mediacorpspellinggame.utils;
 
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
@@ -10,6 +13,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 
 import com.media2359.mediacorpspellinggame.R;
+import com.media2359.mediacorpspellinggame.widget.PasswordDialogFragment;
 
 /**
  * Created by xijunli on 19/12/16.
@@ -80,6 +84,25 @@ public class CommonUtils {
 
     public static String getQuestionCountString(Context context, int currentCount, int totalCount) {
         return context.getString(R.string.question_count, currentCount, totalCount);
+    }
+
+    public static void showPasswordDialogFragment(FragmentManager fragmentManager, PasswordDialogFragment.PasswordListener listener) {
+        // DialogFragment.show() will take care of adding the fragment
+        // in a transaction.  We also want to remove any currently showing
+        // dialog, so make our own transaction and take care of that here.
+        FragmentTransaction ft = fragmentManager.beginTransaction();
+        Fragment prev = fragmentManager.findFragmentByTag("dialog");
+        if (prev != null) {
+            ft.remove(prev);
+        }
+        ft.addToBackStack(null);
+
+        // Create and show the dialog.
+        PasswordDialogFragment newFragment = PasswordDialogFragment.newInstance();
+
+        newFragment.setListener(listener);
+
+        newFragment.show(ft, "dialog");
     }
 
 }

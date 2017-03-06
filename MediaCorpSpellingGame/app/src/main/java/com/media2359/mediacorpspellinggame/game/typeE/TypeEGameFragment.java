@@ -1,37 +1,37 @@
-package com.media2359.mediacorpspellinggame.game.typeA;
+package com.media2359.mediacorpspellinggame.game.typeE;
 
 import android.app.Fragment;
+import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.media2359.mediacorpspellinggame.factory.GameConstants;
 import com.media2359.mediacorpspellinggame.R;
-import com.media2359.mediacorpspellinggame.data.Question;
 import com.media2359.mediacorpspellinggame.factory.GameProgressManager;
 import com.media2359.mediacorpspellinggame.game.GameActivity;
 import com.media2359.mediacorpspellinggame.utils.CommonUtils;
-import com.media2359.mediacorpspellinggame.widget.AnswerBox;
+import com.media2359.mediacorpspellinggame.widget.PasswordDialogFragment;
 import com.media2359.mediacorpspellinggame.widget.SecondsClockView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by xijunli on 13/2/17.
  */
 
-public class SingleQuestionFragment extends Fragment implements AnswerBox.AnswerListener {
+public class TypeEGameFragment extends Fragment {
 
-    private static final String ARGS_QUESTION_ENTITY = "args_question";
+    private static final int QUESTION_SCORE = 10;
 
     @BindView(R.id.tvQuestionCount)
     TextView tvQuestionCount;
@@ -48,8 +48,8 @@ public class SingleQuestionFragment extends Fragment implements AnswerBox.Answer
     @BindView(R.id.tvResultInstruction)
     TextView tvResultInstruction;
 
-    @BindView(R.id.answerBox)
-    AnswerBox answerBox;
+    @BindView(R.id.etAnswer)
+    EditText etAnswer;
 
     @BindView(R.id.btnNext)
     Button btnNext;
@@ -75,18 +75,26 @@ public class SingleQuestionFragment extends Fragment implements AnswerBox.Answer
     @BindView(R.id.logo)
     ImageView logo;
 
+    @BindView(R.id.btnEdit)
+    Button btnEdit;
+
+    @BindView(R.id.btnCorrect)
+    Button btnCorrect;
+
+    @BindView(R.id.btnWrong)
+    Button btnWrong;
+
+    private boolean gameHasEnded = false;
+
     int timeTaken;
 
     int MAX_TIME;
 
-    @NonNull
-    private Question question;
+    int sectionScore;
 
-    public static SingleQuestionFragment newInstance(@NonNull Question question) {
-
+    public static TypeEGameFragment newInstance() {
         Bundle args = new Bundle();
-        args.putParcelable(ARGS_QUESTION_ENTITY, question);
-        SingleQuestionFragment fragment = new SingleQuestionFragment();
+        TypeEGameFragment fragment = new TypeEGameFragment();
         fragment.setArguments(args);
         return fragment;
     }
@@ -94,22 +102,19 @@ public class SingleQuestionFragment extends Fragment implements AnswerBox.Answer
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        MAX_TIME = ((GameActivity)getActivity()).getCurrentSectionTime();
+        MAX_TIME = ((GameActivity) getActivity()).getCurrentSectionTime();
         timeTaken = MAX_TIME;
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_single_question, container, false);
+        View root = inflater.inflate(R.layout.fragment_game_5, container, false);
         ButterKnife.bind(this, root);
         return root;
     }
 
     private void initViews() {
-
-        answerBox.setAnswerListener(this);
-        answerBox.setQuestion(question);
 
         clockView.setTimeListener(new SecondsClockView.TimeListener() {
             @Override
@@ -123,7 +128,6 @@ public class SingleQuestionFragment extends Fragment implements AnswerBox.Answer
             }
         });
 
-        //tvResultInstruction.setText(instruction);
         tvResultInstruction.setVisibility(View.INVISIBLE);
 
         tvCurrentScore.setText(String.valueOf(GameProgressManager.getInstance().getTotalScore()));
@@ -132,20 +136,6 @@ public class SingleQuestionFragment extends Fragment implements AnswerBox.Answer
 
         String questionCount = CommonUtils.getQuestionCountString(getActivity(), qid, ((GameActivity) getActivity()).getCurrentGame().getQuestionCount());
         tvQuestionCount.setText(questionCount);
-
-        btnSubmit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            onSubmitClick();
-            }
-        });
-
-        btnNext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ((GameActivity) getActivity()).showNextQuestion();
-            }
-        });
 
         String gameType = ((GameActivity) getActivity()).getCurrentGame().getType();
         String sectionScoreText = "அங்கம் " + gameType + " - புள்ளிகள்";
@@ -157,35 +147,19 @@ public class SingleQuestionFragment extends Fragment implements AnswerBox.Answer
         showPlayView();
     }
 
-    private void onSubmitClick(){
-        //clockView.pause();
-        timeTaken = (int) clockView.getElapsedTime();
-        clockView.pauseViewOnly();
-
-//                CommonUtils.makeHoldOnAlertDialog(getActivity(), new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        answerBox.checkAnswer(question);
-//                    }
-//                }).show();
-        btnSubmit.setEnabled(false);
-        answerBox.lockInputField(true);
-    }
-
     private void onTimeExpired() {
         clockView.pause();
-        answerBox.checkAnswer(question);
-        //answerBox.forceChangeResult(false);
-        //onError(30);
+        onErrorClick();
+        gameHasEnded = true;
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        question = getArguments().getParcelable(ARGS_QUESTION_ENTITY);
-
-        answerBox.focusOnEditText();
+        etAnswer.requestFocus();
+        InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.showSoftInput(etAnswer, InputMethodManager.SHOW_IMPLICIT);
 
         initViews();
     }
@@ -193,13 +167,45 @@ public class SingleQuestionFragment extends Fragment implements AnswerBox.Answer
     @Override
     public void onResume() {
         super.onResume();
-        clockView.resume();
+
+        if (!gameHasEnded)
+            clockView.resume();
+    }
+
+    private void showJudgeView() {
+
+        btnSubmit.setVisibility(View.GONE);
+        btnNext.setVisibility(View.GONE);
+
+        btnCorrect.setClickable(true);
+        btnWrong.setClickable(true);
+
+        btnCorrect.setVisibility(View.VISIBLE);
+        btnWrong.setVisibility(View.VISIBLE);
+
+        btnEdit.setVisibility(View.GONE);
+
+        clockView.setVisibility(View.VISIBLE);
+        flScoreCard.setVisibility(View.GONE);
+        tvCurrentScore.setVisibility(View.VISIBLE);
+        tvCurrentScoreText.setVisibility(View.VISIBLE);
+
+        logo.setVisibility(View.VISIBLE);
+
     }
 
     private void showPlayView() {
 
         btnSubmit.setVisibility(View.VISIBLE);
         btnNext.setVisibility(View.GONE);
+
+        btnCorrect.setVisibility(View.GONE);
+        btnWrong.setVisibility(View.GONE);
+
+        btnCorrect.setClickable(false);
+        btnWrong.setClickable(false);
+
+        btnEdit.setVisibility(View.GONE);
 
         clockView.setVisibility(View.VISIBLE);
         flScoreCard.setVisibility(View.GONE);
@@ -212,6 +218,9 @@ public class SingleQuestionFragment extends Fragment implements AnswerBox.Answer
 
     private void showScoreView() {
 
+        btnCorrect.setClickable(false);
+        btnWrong.setClickable(false);
+
         clockView.setVisibility(View.GONE);
         flScoreCard.setVisibility(View.VISIBLE);
         tvCurrentScore.setVisibility(View.GONE);
@@ -219,47 +228,93 @@ public class SingleQuestionFragment extends Fragment implements AnswerBox.Answer
 
         int gameId = ((GameActivity) getActivity()).getCurrentGame().getGameId();
 
-        tvCardScore.setText(GameProgressManager.getInstance().getSectionScoreText(gameId));
-        tvCardTime.setText(GameProgressManager.getInstance().getSectionTimeText(gameId));
+        String sectionScoreText = String.valueOf(GameProgressManager.getInstance().getSectionScore(gameId) + sectionScore);
+        String sectionTimeText = String.valueOf(GameProgressManager.getInstance().getSectionTime(gameId) + timeTaken);
+
+        tvCardScore.setText(sectionScoreText);
+        tvCardTime.setText(sectionTimeText);
 
         btnSubmit.setVisibility(View.GONE);
         btnNext.setVisibility(View.VISIBLE);
 
+        btnEdit.setVisibility(View.VISIBLE);
+
         logo.setVisibility(View.INVISIBLE);
     }
 
-    @Override
-    public void onError() {
+    @OnClick(R.id.btnWrong)
+    public void onErrorClick() {
+        btnCorrect.setClickable(false);
+        btnWrong.setClickable(false);
+
         tvResultInstruction.setVisibility(View.VISIBLE);
         tvResultInstruction.setText(getString(R.string.game_a_error));
 
-        GameProgressManager.getInstance().increaseSectionTime(getActivity(), MAX_TIME);
+        sectionScore = 0;
 
         showScoreView();
     }
 
-    @Override
-    public void onCorrect(int score) {
+    @OnClick(R.id.btnCorrect)
+    public void onCorrect() {
+        btnCorrect.setClickable(false);
+        btnWrong.setClickable(false);
+
         tvResultInstruction.setVisibility(View.VISIBLE);
         tvResultInstruction.setText(getString(R.string.game_a_correct));
 
-        // update the section score/time
-        GameProgressManager.getInstance().increaseSectionScore(getActivity(), question.getScore());
-        GameProgressManager.getInstance().increaseSectionTime(getActivity(), timeTaken);
+        sectionScore = QUESTION_SCORE;
 
         showScoreView();
+    }
+
+    @OnClick(R.id.btnNext)
+    public void onNextClick() {
+        // update the section score/time
+        GameProgressManager.getInstance().increaseSectionScore(getActivity(), sectionScore);
+        GameProgressManager.getInstance().increaseSectionTime(getActivity(), timeTaken);
+
+        ((GameActivity) getActivity()).showNextQuestion();
+    }
+
+    @OnClick(R.id.btnSubmit)
+    public void onSubmitClick() {
+        timeTaken = (int) clockView.getElapsedTime();
+        clockView.pauseAnimationOnly();
+
+        btnSubmit.setEnabled(false);
+        etAnswer.setEnabled(false);
+
+        gameHasEnded = true;
+
+        showJudgeView();
+    }
+
+    @OnClick(R.id.btnEdit)
+    public void onEditClick() {
+        showPasswordDialog();
+    }
+
+    private void showPasswordDialog() {
+        CommonUtils.showPasswordDialogFragment(getChildFragmentManager(), new PasswordDialogFragment.PasswordListener() {
+            @Override
+            public void onPasswordMatch() {
+                showJudgeView();
+            }
+        });
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        clockView.pauseAndSync();
+
+        if (!gameHasEnded)
+            clockView.pauseAndSync();
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         clockView.pause();
-        answerBox.setAnswerListener(null);
     }
 }

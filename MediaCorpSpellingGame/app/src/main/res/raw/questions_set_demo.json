@@ -1,0 +1,115 @@
+[
+  {
+    "id": 0,
+    "question": "மனச்சுமை",
+    "answers": [
+      "மனச்சுமை"
+    ],
+    "score": 10,
+    "additions": []
+  },
+  {
+    "id": 1,
+    "question": "புத்தகம்",
+    "answers": [
+      "புத்தகம்",
+      "நூல்"
+    ],
+    "score": 10,
+    "additions": []
+  },
+  {
+    "id": 2,
+    "question": "சிறுவன்",
+    "answers": [
+      "சிறுவன்"
+    ],
+    "score": 10,
+    "additions": []
+  },
+  {
+    "id": 3,
+    "question": "குழந்தை",
+    "answers": [
+      "குழந்தை"
+    ],
+    "score": 10,
+    "additions": []
+  },
+  {
+    "id": 4,
+    "question": "கடைக்காரர்",
+    "answers": [
+      "கடைக்காரர்"
+    ],
+    "score": 10,
+    "additions": []
+  },
+  {
+    "id": 5,
+    "question": "பேருந்து",
+    "answers": [
+      "பேருந்து"
+    ],
+    "score": 10,
+    "additions": []
+  },
+  {
+    "id": 6,
+    "question": "பாட்டி",
+    "answers": [
+      "பாட்டி"
+    ],
+    "score": 10,
+    "additions": []
+  },
+  {
+    "id": 7,
+    "question": "குப்பைத்தொட்டி",
+    "answers": [
+      "குப்பைத்தொட்டி",
+      "குப்பை"
+    ],
+    "score": 10,
+    "additions": []
+  },
+  {
+    "id": 8,
+    "question": "கைப்பை",
+    "answers": [
+      "கைப்பை",
+      "பை"
+    ],
+    "score": 10,
+    "additions": []
+  },
+  {
+    "id": 9,
+    "question": "காலணி",
+    "answers": [
+      "காலணி",
+      "காலணி"
+    ],
+    "score": 10,
+    "additions": []
+  },
+  {
+    "id": 10,
+    "question": "மேற்கூரை",
+    "answers": [
+      "மேற்கூரை",
+      "கடை"
+    ],
+    "score": 10,
+    "additions": []
+  },
+  {
+    "id": 11,
+    "question": "மை ச் அ ர் ச",
+    "answers": [
+      "அமைச்சர்"
+    ],
+    "score": 10,
+    "additions": []
+  }
+]

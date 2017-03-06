@@ -11,6 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/black"
+        android:textSize="20sp"
         android:textStyle="bold"
         tools:text="QUESTION: 1/4" />
 
@@ -19,8 +20,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:text="CURRENT SCORE"
+        android:text="@string/abc_current_score"
         android:textColor="@color/black"
+        android:textSize="20sp"
         android:textStyle="bold" />
 
     <TextView
@@ -38,7 +40,7 @@
         android:id="@+id/tvResultInstruction"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/etAnswer"
+        android:layout_above="@+id/answerBox"
         android:layout_centerHorizontal="true"
         android:gravity="center"
         android:textColor="@color/black"
@@ -61,34 +63,39 @@
         android:layout_centerHorizontal="true"
         android:src="@drawable/logo_big" />
 
-    <EditText
-        android:id="@+id/etAnswer"
-        android:layout_width="360dp"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_marginBottom="@dimen/medium_margin"
-        android:layout_marginTop="@dimen/medium_margin"
-        android:privateImeOptions="nm" />
+    <View
+        android:id="@+id/centerAnchor"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_centerInParent="true" />
 
-
-    <FrameLayout
-        android:id="@+id/flScoreCard"
+    <com.media2359.mediacorpspellinggame.widget.AnswerBox
+        android:id="@+id/answerBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="@dimen/medium_margin"
         android:layout_marginTop="@dimen/medium_margin"
-        android:layout_below="@+id/btnCorrect"
-        android:layout_centerHorizontal="true">
+        android:layout_toRightOf="@+id/centerAnchor" />
 
-        <include layout="@layout/view_score_card" />
-
-    </FrameLayout>
+    <TextView
+        android:id="@+id/tvQuestion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:textStyle="bold"
+        android:paddingBottom="@dimen/medium_margin"
+        android:layout_marginRight="160dp"
+        android:layout_toLeftOf="@+id/centerAnchor"
+        android:textSize="30sp"
+        tools:text="QUESTION is" />
 
     <Button
         android:id="@+id/btnSubmit"
         style="@style/NextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/etAnswer"
+        android:layout_below="@+id/answerBox"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/large_margin"
         android:text="@string/abc_submit" />
@@ -101,46 +108,18 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:text="NEXT" />
+        android:text="@string/abc_next" />
 
-    <Button
-        android:id="@+id/btnEdit"
-        style="@style/EditButton"
+    <FrameLayout
+        android:id="@+id/flScoreCard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginRight="@dimen/medium_margin"
-        android:layout_toLeftOf="@+id/btnNext"
-        android:text="EDIT" />
+        android:layout_below="@+id/answerBox"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/medium_margin">
 
-    <Button
-        android:id="@+id/btnCorrect"
-        android:text="Right"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        android:paddingTop="@dimen/medium_margin"
-        android:paddingBottom="@dimen/medium_margin"
-        android:paddingLeft="40dp"
-        android:paddingRight="40dp"
-        android:backgroundTint="@color/green"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/etAnswer"
-        android:layout_alignEnd="@+id/etAnswer" />
+        <include layout="@layout/view_score_card" />
 
-    <Button
-        android:id="@+id/btnWrong"
-        android:text="Wrong"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        android:paddingTop="@dimen/medium_margin"
-        android:paddingBottom="@dimen/medium_margin"
-        android:paddingLeft="40dp"
-        android:paddingRight="40dp"
-        android:backgroundTint="@color/red"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/etAnswer"
-        android:layout_alignStart="@+id/etAnswer" />
+    </FrameLayout>
 
 </RelativeLayout>

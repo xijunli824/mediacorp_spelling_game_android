@@ -8,8 +8,8 @@ import android.support.annotation.NonNull;
 
 import com.media2359.mediacorpspellinggame.R;
 import com.media2359.mediacorpspellinggame.base.BaseActivity;
-import com.media2359.mediacorpspellinggame.data.Section;
 import com.media2359.mediacorpspellinggame.data.Question;
+import com.media2359.mediacorpspellinggame.data.Section;
 import com.media2359.mediacorpspellinggame.factory.GameProgressManager;
 import com.media2359.mediacorpspellinggame.factory.GameRepo;
 import com.media2359.mediacorpspellinggame.game.typeA.TypeAWaitingFragment;
@@ -29,7 +29,7 @@ public class GameActivity extends BaseActivity {
     @NonNull
     private Section currentGame;
 
-    public static void startGameActivity(Activity activity, @NonNull Section game){
+    public static void startGameActivity(Activity activity, @NonNull Section game) {
         Intent intent = new Intent(activity, GameActivity.class);
         intent.putExtra(EXTRA_GAME, game);
         activity.startActivity(intent);
@@ -54,44 +54,61 @@ public class GameActivity extends BaseActivity {
         ActivityUtils.replaceFragmentInActivity(getFragmentManager(), fragment, R.id.container, false, true);
     }
 
-    private void showNextMultipleQuestionFragment() {
-        if (GameProgressManager.getInstance().getLastAttemptedQuestionPos() < 0){
+    public void showNextQuestion() {
+        String gameType = getCurrentGame().getType();
+
+        if (gameType.equalsIgnoreCase("2")) {
+            showNextMultiQuestionsFragment();
+        } else if (gameType.equalsIgnoreCase("5")) {
+            showNextGame5Fragment();
+        } else {
+            showNextSingleQuestionFragment(gameType);
+        }
+    }
+
+    private void showNextGame5Fragment() {
+        int nextQuestionPos = getNextQuestionPosition();
+
+        if (nextQuestionPos < 0) {
+            // if this game has finished
+            showGameSummaryPage();
+            return;
+        }
+
+        replaceFragment(TypeAWaitingFragment.newInstance(null, "5"));
+
+        GameProgressManager.getInstance().setLastAttemptedQuestionPos(nextQuestionPos);
+    }
+
+    private void showNextMultiQuestionsFragment() {
+        if (GameProgressManager.getInstance().getLastAttemptedQuestionPos() < 0) {
             replaceFragment(TypeBWaitingFragment.newInstance(currentGame.getGameId()));
             GameProgressManager.getInstance().setLastAttemptedQuestionPos(currentGame.getQuestionCount());
-        }else {
+        } else {
             startNextGame();
         }
 
     }
 
-    public void showNextQuestion() {
-        if (getCurrentGame().getType().equalsIgnoreCase("2")){
-            showNextMultipleQuestionFragment();
-        }else {
-            showNextSingleQuestionFragment();
-        }
-    }
-
-
-    private void showNextSingleQuestionFragment() {
+    private void showNextSingleQuestionFragment(String type) {
 
         int nextQuestionPos = getNextQuestionPosition();
 
         if (nextQuestionPos < 0) {
             // if this game has finished
-            //startNextGame();
             showGameSummaryPage();
             return;
         }
 
         Question question = GameRepo.getInstance().getQuestion(currentGame.getQuestionIdList()[nextQuestionPos]);
-        replaceFragment(TypeAWaitingFragment.newInstance(question));
+        replaceFragment(TypeAWaitingFragment.newInstance(question, type));
 
         GameProgressManager.getInstance().setLastAttemptedQuestionPos(nextQuestionPos);
     }
 
     private int getNextQuestionPosition() {
 
+        // this will be -1 if there is no last attempted question
         int lastAttemptedQuestionPos = GameProgressManager.getInstance().getLastAttemptedQuestionPos();
 
         int nextQuestionPos;
@@ -104,11 +121,11 @@ public class GameActivity extends BaseActivity {
 
             // if the last attempted question position is same as size-1, then should go to next game
             // e.g Total Questions count: 4, last attempted question position: 3
-        } else if (lastAttemptedQuestionPos < currentGame.getQuestionCount() - 1){
+        } else if (lastAttemptedQuestionPos < currentGame.getQuestionCount() - 1) {
             // if this game hasn't finished
             nextQuestionPos = lastAttemptedQuestionPos + 1;
 
-        }else {
+        } else {
             // if this game has finished
             nextQuestionPos = -1;
         }
@@ -124,18 +141,18 @@ public class GameActivity extends BaseActivity {
     public void startNextGame() {
         int lastAttemptedGameId = GameProgressManager.getInstance().getLastAttemptedGamePos();
 
-        if (lastAttemptedGameId == currentGame.getGameId()){
+        if (lastAttemptedGameId == currentGame.getGameId()) {
 
             Section nextGame = GameRepo.getInstance().getSection(lastAttemptedGameId + 1);
 
-            if (nextGame == null){
+            if (nextGame == null) {
                 Intent intent = new Intent(this, SummaryActivity.class);
                 startActivity(intent);
                 finish();
-            }else {
+            } else {
                 GameActivity.startGameActivity(this, nextGame);
             }
-        }else {
+        } else {
             throw new IllegalArgumentException("last attempted game id: " + lastAttemptedGameId + " is not the same as current game id: " + currentGame.getGameId());
         }
     }
