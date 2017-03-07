@@ -1,0 +1,240 @@
+[
+  {
+    "id": 0,
+    "question": "ஆர்ப்பாட்டம்",
+    "answers": ["ஆர்ப்பாட்டம்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 1,
+    "question": "புல்லாங்குழல்",
+    "answers": ["புல்லாங்குழல்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 2,
+    "question": "கேலிச்சித்திரம்",
+    "answers": ["கேலிச்சித்திரம்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 3,
+    "question": "மாரடைப்பு",
+    "answers": ["மாரடைப்பு"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 4,
+    "question": "நுழைவாயில்",
+    "answers": ["நுழைவாயில்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 5,
+    "question": "தரவரிசை",
+    "answers": ["தரவரிசை"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 6,
+    "question": "பேராசிரியர்",
+    "answers": ["பேராசிரியர்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 7,
+    "question": "குடியுரிமை",
+    "answers": ["குடியுரிமை"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 8,
+    "question": "பூச்சாடி",
+    "answers": ["பூச்சாடி", "பூங்கொத்து", "பூக்கள்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 9,
+    "question": "தொலைக்காட்சி",
+    "answers": ["தொலைக்காட்சி"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 10,
+    "question": "விளக்கு",
+    "answers": ["விளக்கு"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 11,
+    "question": "விளையாட்டுப் பொருள்",
+    "answers": ["விளையாட்டுப் பொருள்", "கார் பொம்மை"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 12,
+    "question": "குவளை",
+    "answers": ["குவளை"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 13,
+    "question": "முக்காலி",
+    "answers": ["முக்காலி"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 14,
+    "question": "இருக்கை",
+    "answers": ["இருக்கை"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 15,
+    "question": "மூக்குக் கண்ணாடி",
+    "answers": ["மூக்குக் கண்ணாடி"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 16,
+    "question": "கால்சட்டை",
+    "answers": ["கால்சட்டை"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 17,
+    "question": "புத்தகம்",
+    "answers": ["புத்தகம்", "புத்தகங்கள்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 18,
+    "question": "தொகுப்பாளர்",
+    "answers": ["தொகுப்பாளர்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 19,
+    "question": "சொற்றொடர்",
+    "answers": ["சொற்றொடர்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 20,
+    "question": "வண்ணக்கிளி",
+    "answers": ["வண்ணக்கிளி"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 21,
+    "question": "தின்பண்டம்",
+    "answers": ["தின்பண்டம்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 22,
+    "question": "பயணச்சீட்டு",
+    "answers": ["பயணச்சீட்டு"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 23,
+    "question": "கருப்பொருள்",
+    "answers": ["கருப்பொருள்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 24,
+    "question": "வழித்துணை",
+    "answers": ["வழித்துணை"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 25,
+    "question": "மனநிறைவு",
+    "answers": ["மனநிறைவு"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 26,
+    "question": "கலப்படம்",
+    "answers": ["கலப்படம்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 27,
+    "question": "பரிமாணம்",
+    "answers": ["பரிமாணம்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 28,
+    "question": "வரவேற்பு",
+    "answers": ["வரவேற்பு"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 29,
+    "question": "கொண்டைக்கடலை",
+    "answers": ["கொண்டைக்கடலை"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 30,
+    "question": "முழக்கவரி",
+    "answers": ["முழக்கவரி"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 31,
+    "question": "முந்திரிப்பருப்பு",
+    "answers": ["முந்திரிப்பருப்பு"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 32,
+    "question": "விசாரணை",
+    "answers": ["விசாரணை"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 33,
+    "question": "நாடாளுமன்றம்",
+    "answers": ["நாடாளுமன்றம்"],
+    "score": 10,
+    "additions":[]
+  }
+]

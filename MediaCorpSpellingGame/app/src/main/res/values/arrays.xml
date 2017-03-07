@@ -6,4 +6,9 @@
         <item>Session 3</item>
         <item>Session 4</item>
     </array>
+
+    <array name="sessions_semi">
+        <item>Session 1</item>
+        <item>Session 2</item>
+    </array>
 </resources>

@@ -23,20 +23,20 @@ public class BaseActivity extends Activity {
         //super.onBackPressed();
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-        if (!GameRepo.getInstance().isDataReady() && GameRepo.getInstance().getCurrentDataSetId() >= 0) {
-
-            final ProgressDialog dialog = ProgressDialog.show(this, "Preparing...", "Please wait...", true, false);
-
-            GameRepo.getInstance().loadDataIfNull(BaseActivity.this, new GameRepo.GameDataCallback() {
-                @Override
-                public void onLoadingFinished(List<Section> games, List<Question> questions) {
-                    dialog.dismiss();
-                }
-            });
-        }
-    }
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//
+//        if (!GameRepo.getInstance().isDataReady() && GameRepo.getInstance().getCurrentDataSetId() >= 0) {
+//
+//            final ProgressDialog dialog = ProgressDialog.show(this, "Preparing...", "Please wait...", true, false);
+//
+//            GameRepo.getInstance().loadDataIfNull(BaseActivity.this, new GameRepo.GameDataCallback() {
+//                @Override
+//                public void onLoadingFinished(List<Section> games, List<Question> questions) {
+//                    dialog.dismiss();
+//                }
+//            });
+//        }
+//    }
 }
