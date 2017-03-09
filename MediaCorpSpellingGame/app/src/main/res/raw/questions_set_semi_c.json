@@ -1,0 +1,240 @@
+[
+  {
+    "id": 0,
+    "question": "ஒழுங்கீனம்",
+    "answers": ["ஒழுங்கீனம்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 1,
+    "question": "அந்திப்பொழுது",
+    "answers": ["அந்திப்பொழுது"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 2,
+    "question": "தெருவோரம்",
+    "answers": ["தெருவோரம்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 3,
+    "question": "நையப்புடை",
+    "answers": ["நையப்புடை"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 4,
+    "question": "ஊர்க்காவலர்",
+    "answers": ["ஊர்க்காவலர்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 5,
+    "question": "முருங்கைக்காய்",
+    "answers": ["முருங்கைக்காய்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 6,
+    "question": "துயிலெழு",
+    "answers": ["துயிலெழு"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 7,
+    "question": "கயிற்றாட்டம்",
+    "answers": ["கயிற்றாட்டம்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 8,
+    "question": "மின்தூக்கி",
+    "answers": ["மின்தூக்கி"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 9,
+    "question": "பந்து",
+    "answers": ["பந்து", "கைப்பந்து"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 10,
+    "question": "படிக்கட்டு",
+    "answers": ["படிக்கட்டு", "படி"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 11,
+    "question": "மூக்குக்கண்ணாடி",
+    "answers": ["மூக்குக்கண்ணாடி", "கண்ணாடி"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 12,
+    "question": "பொத்தான்",
+    "answers": ["பொத்தான்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 13,
+    "question": "கால்சட்டை",
+    "answers": ["கால்சட்டை"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 14,
+    "question": "சுவர்",
+    "answers": ["சுவர்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 15,
+    "question": "வியர்வை",
+    "answers": ["வியர்வை"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 16,
+    "question": "செடி",
+    "answers": ["செடி", "புதர்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 17,
+    "question": "சிரிப்பு",
+    "answers": ["சிரிப்பு", "புன்னகை"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 18,
+    "question": "பேராற்றல்",
+    "answers": ["பேராற்றல்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 19,
+    "question": "அரசகட்டளை",
+    "answers": ["அரசகட்டளை"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 20,
+    "question": "கீழ்த்தளம்",
+    "answers": ["கீழ்த்தளம்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 21,
+    "question": "பரப்பளவு",
+    "answers": ["பரப்பளவு"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 22,
+    "question": "அகமகிழ்ச்சி",
+    "answers": ["அகமகிழ்ச்சி"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 23,
+    "question": "கீழ்ப்படிதல்",
+    "answers": ["கீழ்ப்படிதல்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 24,
+    "question": "பெருமிதம்",
+    "answers": ["பெருமிதம்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 25,
+    "question": "இசைக்கருவி",
+    "answers": ["இசைக்கருவி"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 26,
+    "question": "பயனீட்டாளர்",
+    "answers": ["பயனீட்டாளர்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 27,
+    "question": "கரையோரம்",
+    "answers": ["கரையோரம்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 28,
+    "question": "அணைக்கட்டு",
+    "answers": ["அணைக்கட்டு"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 29,
+    "question": "செந்நிறம்",
+    "answers": ["செந்நிறம்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 30,
+    "question": "பறைசாற்று",
+    "answers": ["பறைசாற்று"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 31,
+    "question": "வேலைப்பளு",
+    "answers": ["வேலைப்பளு"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 32,
+    "question": "பேரிரைச்சல்",
+    "answers": ["பேரிரைச்சல்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 33,
+    "question": "பண்டமாற்று",
+    "answers": ["பண்டமாற்று"],
+    "score": 10,
+    "additions":[]
+  }
+]

@@ -2,7 +2,7 @@
   {
     "gameId": 0,
     "type": "1",
-    "time": 45,
+    "time": 30,
     "questionList": [
       0,
       1,
@@ -58,7 +58,7 @@
   {
     "gameId": 3,
     "type": "4",
-    "time": 60,
+    "time": 30,
     "questionList": [
       26,
       27,

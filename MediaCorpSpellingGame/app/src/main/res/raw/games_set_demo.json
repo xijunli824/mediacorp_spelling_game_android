@@ -40,5 +40,16 @@
     "questionCount": 1,
     "gameInstruction": "சொல்லைக் கண்டுபிடித்து எழுது",
     "questionInstruction": "சொல்லைக் கண்டுபிடித்து எழுது"
+  },
+  {
+    "gameId": 3,
+    "type": "4",
+    "time": 30,
+    "questionList": [
+      12
+    ],
+    "questionCount": 8,
+    "gameInstruction": "சொல்லைக் கண்டுபிடித்து எழுது",
+    "questionInstruction": "சொல்லைக் கண்டுபிடித்து எழுது"
   }
 ]

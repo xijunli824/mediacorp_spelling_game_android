@@ -25,7 +25,7 @@
         android:paddingLeft="8dp"
         android:paddingRight="8dp"
         android:privateImeOptions="nm"
-        android:textSize="20sp"
+        android:textSize="22sp"
         tools:text="Pineapple">
 
         <requestFocus />
@@ -38,7 +38,7 @@
         android:layout_alignLeft="@+id/etAnswer"
         android:layout_below="@+id/etAnswer"
         android:padding="8dp"
-        android:textSize="16sp"
+        android:textSize="20sp"
         tools:text="Papaya" />
 
 </merge>
