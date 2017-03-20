@@ -1,6 +1,7 @@
 package com.media2359.mediacorpspellinggame.game.typeB;
 
 import android.app.Fragment;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
@@ -258,8 +259,13 @@ public class TypeBGameFragment extends Fragment implements AnswerBoxAdapter.Resu
     }
 
     private void finishThisGame() {
-        GameProgressManager.getInstance().increaseSectionScore(getActivity(), sectionScore);
-        ((GameActivity) getActivity()).showGameSummaryPage();
+        CommonUtils.makeHoldOnAlertDialog(getActivity(), getString(R.string.game_b_proceed_message), getString(R.string.game_b_proceed_title), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                GameProgressManager.getInstance().increaseSectionScore(getActivity(), sectionScore);
+                ((GameActivity) getActivity()).showGameSummaryPage();
+            }
+        }).show();
     }
 
     private void onSubmitButtonClick() {

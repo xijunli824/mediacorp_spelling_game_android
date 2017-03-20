@@ -94,7 +94,7 @@ public class TypeAWaitingFragment extends Fragment {
             public void onClick(View v) {
                 String gameType = getArguments().getString(ARGS_GAME_TYPE);
 
-                if (gameType == null || gameType.isEmpty() || gameType.equalsIgnoreCase("2")){
+                if (gameType == null || gameType.isEmpty() || gameType.equalsIgnoreCase("1")){
                     throw new IllegalArgumentException("Game Type is not supported");
                 }
 

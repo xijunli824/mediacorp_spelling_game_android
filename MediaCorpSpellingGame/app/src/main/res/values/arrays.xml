@@ -12,4 +12,8 @@
         <item>Session 2</item>
         <item>Session 3</item>
     </array>
+
+    <array name="sessions_final_sample">
+        <item>Sample Final Session</item>
+    </array>
 </resources>

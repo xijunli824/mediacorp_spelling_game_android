@@ -14,6 +14,7 @@ import com.media2359.mediacorpspellinggame.factory.GameProgressManager;
 import com.media2359.mediacorpspellinggame.factory.GameRepo;
 import com.media2359.mediacorpspellinggame.game.typeA.TypeAWaitingFragment;
 import com.media2359.mediacorpspellinggame.game.typeB.TypeBWaitingFragment;
+import com.media2359.mediacorpspellinggame.game.typeE.TypeEPictureFragment;
 import com.media2359.mediacorpspellinggame.utils.ActivityUtils;
 
 import butterknife.ButterKnife;
@@ -57,7 +58,7 @@ public class GameActivity extends BaseActivity {
     public void showNextQuestion() {
         String gameType = getCurrentGame().getType();
 
-        if (gameType.equalsIgnoreCase("2")) {
+        if (gameType.equalsIgnoreCase("1")) {
             showNextMultiQuestionsFragment();
         } else if (gameType.equalsIgnoreCase("5")) {
             showNextGame5Fragment();
@@ -75,7 +76,7 @@ public class GameActivity extends BaseActivity {
             return;
         }
 
-        replaceFragment(TypeAWaitingFragment.newInstance(null, "5"));
+        replaceFragment(TypeEPictureFragment.newInstance());
 
         GameProgressManager.getInstance().setLastAttemptedQuestionPos(nextQuestionPos);
     }

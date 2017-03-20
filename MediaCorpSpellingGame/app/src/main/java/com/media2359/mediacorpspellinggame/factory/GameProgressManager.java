@@ -32,7 +32,7 @@ public class GameProgressManager {
 
     private int[] sectionTimes;
 
-    private String[] gameTypes = {"A", "B", "C", "D", "E"};
+    private String[] gameTypes = {"1", "2", "3", "4", "5"};
 
     private GameProgressManager() {
         newGame();

@@ -1,0 +1,149 @@
+[
+  {
+    "id": 0,
+    "question": "சறுக்குமரம்",
+    "answers": ["சறுக்குமரம்", "சறுக்கு"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 1,
+    "question": "பந்து",
+    "answers": ["பந்து", "கைப்பந்து"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 2,
+    "question": "பட்டம்",
+    "answers": ["பட்டம்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 3,
+    "question": "ஏணிப்படி",
+    "answers": ["ஏணிப்படி", "ஏணி"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 4,
+    "question": "குச்சி",
+    "answers": ["குச்சி", "கழி", "கம்பு", "கோல்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 5,
+    "question": "மணல்",
+    "answers": ["மணல்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 6,
+    "question": "பாய்",
+    "answers": ["பாய்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 7,
+    "question": "தொப்பி",
+    "answers": ["தொப்பி", "குல்லா"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 8,
+    "question": "மிதவை",
+    "answers": ["மிதவை"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 9,
+    "question": "பலகை",
+    "answers": ["பலகை", "மரப்பலகை"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 10,
+    "question": "குற்றங்கடிதல்",
+    "answers": ["குற்றங்கடிதல்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 11,
+    "question": "ஏற்றத்தாழ்வு",
+    "answers": ["ஏற்றத்தாழ்வு"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 12,
+    "question": "தென்னம்பாளை",
+    "answers": ["தென்னம்பாளை"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 13,
+    "question": "தேரோட்டம்",
+    "answers": ["தேரோட்டம்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 14,
+    "question": "கழிவுநீர்",
+    "answers": ["கழிவுநீர்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 15,
+    "question": "எழுதுகோல்",
+    "answers": ["எழுதுகோல்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 16,
+    "question": "நன்னடத்தை",
+    "answers": ["நன்னடத்தை"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 17,
+    "question": "பொழுதுபோக்கு",
+    "answers": ["பொழுதுபோக்கு"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 18,
+    "question": "தலையணை",
+    "answers": ["தலையணை"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 19,
+    "question": "வாரந்தோறும்",
+    "answers": ["வாரந்தோறும்"],
+    "score": 10,
+    "additions":[]
+  },
+  {
+    "id": 20,
+    "question": "இளவரசர்",
+    "answers": ["இளவரசர்"],
+    "score": 10,
+    "additions":[]
+  }
+]

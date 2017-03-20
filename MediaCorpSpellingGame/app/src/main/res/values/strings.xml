@@ -7,6 +7,7 @@
     <string name="abc_start_game">ஆரம்பம் </string>
     <string name="abc_proceed">Proceed</string>
     <string name="abc_go">தொடங்கு</string>
+    <string name="abc_edit">திருத்து</string>
     <string name="abc_password">Password</string>
     <string name="abc_current_score">புள்ளிகள்</string>
     <string name="question_count" formatted="false">கேள்வி எண்: %d/%d</string>
@@ -19,6 +20,16 @@
 
     <string name="game_a_error">தவறான பதில்</string>
     <string name="game_a_correct">"வாழ்த்துகள்\n சரியான விடை!"</string>
+
+    <string name="game_b_proceed_title">Hold On</string>
+    <string name="game_b_proceed_message">Do you want to proceed?</string>
+
+    <string name="game_e_proceed_title">Hold On</string>
+    <string name="game_e_mark_as_correct">Mark as CORRECT?</string>
+    <string name="game_e_mark_as_wrong">Mark as WRONG?</string>
+    
+    <string name="game_e_image_title">You have selected a category</string>
+    <string name="game_e_image_message">Are you sure?</string>
 
     <string name="hold_on_message">You have to wait for the other team to submit their answer before proceeding. (Only the coordinator is allowed to tap on proceed)</string>
 </resources>

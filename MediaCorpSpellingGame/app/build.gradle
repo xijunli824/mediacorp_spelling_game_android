@@ -16,8 +16,8 @@ android {
         applicationId "com.media2359.mediacorpspellinggame"
         minSdkVersion 21
         targetSdkVersion 25
-        versionCode 4
-        versionName "1.0.1"
+        versionCode 6
+        versionName "1.0.0-final-sample"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

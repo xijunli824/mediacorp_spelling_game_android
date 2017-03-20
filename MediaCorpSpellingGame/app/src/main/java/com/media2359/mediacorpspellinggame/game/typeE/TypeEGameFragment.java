@@ -2,8 +2,10 @@ package com.media2359.mediacorpspellinggame.game.typeE;
 
 import android.app.Fragment;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +13,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -79,18 +82,22 @@ public class TypeEGameFragment extends Fragment {
     Button btnEdit;
 
     @BindView(R.id.btnCorrect)
-    Button btnCorrect;
+    ImageButton btnCorrect;
 
     @BindView(R.id.btnWrong)
-    Button btnWrong;
+    ImageButton btnWrong;
 
     private boolean gameHasEnded = false;
+
+    //private boolean scoreHasBeenGiven = false;
 
     int timeTaken;
 
     int MAX_TIME;
 
     int sectionScore;
+
+    AlertDialog alertDialog;
 
     public static TypeEGameFragment newInstance() {
         Bundle args = new Bundle();
@@ -149,7 +156,9 @@ public class TypeEGameFragment extends Fragment {
 
     private void onTimeExpired() {
         clockView.pause();
-        onErrorClick();
+        //if (!scoreHasBeenGiven){
+            markAsError();
+        //}
         gameHasEnded = true;
     }
 
@@ -218,8 +227,12 @@ public class TypeEGameFragment extends Fragment {
 
     private void showScoreView() {
 
+        //scoreHasBeenGiven = true;
+
         btnCorrect.setClickable(false);
         btnWrong.setClickable(false);
+
+        etAnswer.setEnabled(false);
 
         clockView.setVisibility(View.GONE);
         flScoreCard.setVisibility(View.VISIBLE);
@@ -244,28 +257,64 @@ public class TypeEGameFragment extends Fragment {
 
     @OnClick(R.id.btnWrong)
     public void onErrorClick() {
+
+        if (alertDialog != null && alertDialog.isShowing())
+            alertDialog.dismiss();
+
+        alertDialog = CommonUtils.makeHoldOnAlertDialog(getActivity(), getString(R.string.game_e_mark_as_wrong), getString(R.string.game_e_proceed_title), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                markAsError();
+            }
+        });
+
+        alertDialog.show();
+    }
+
+    private void markAsError() {
         btnCorrect.setClickable(false);
         btnWrong.setClickable(false);
 
         tvResultInstruction.setVisibility(View.VISIBLE);
         tvResultInstruction.setText(getString(R.string.game_a_error));
 
+        etAnswer.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_cross, 0);
+
         sectionScore = 0;
+
+        btnCorrect.setVisibility(View.INVISIBLE);
+        btnWrong.setVisibility(View.VISIBLE);
 
         showScoreView();
     }
 
     @OnClick(R.id.btnCorrect)
     public void onCorrect() {
-        btnCorrect.setClickable(false);
-        btnWrong.setClickable(false);
 
-        tvResultInstruction.setVisibility(View.VISIBLE);
-        tvResultInstruction.setText(getString(R.string.game_a_correct));
+        if (alertDialog != null && alertDialog.isShowing())
+            alertDialog.dismiss();
 
-        sectionScore = QUESTION_SCORE;
+        alertDialog = CommonUtils.makeHoldOnAlertDialog(getActivity(), getString(R.string.game_e_mark_as_correct), getString(R.string.game_e_proceed_title), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                btnCorrect.setClickable(false);
+                btnWrong.setClickable(false);
 
-        showScoreView();
+                tvResultInstruction.setVisibility(View.VISIBLE);
+                tvResultInstruction.setText(getString(R.string.game_a_correct));
+
+                etAnswer.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_tick, 0);
+
+                sectionScore = QUESTION_SCORE;
+
+                btnWrong.setVisibility(View.INVISIBLE);
+                btnCorrect.setVisibility(View.VISIBLE);
+
+                showScoreView();
+            }
+        });
+
+        alertDialog.show();
     }
 
     @OnClick(R.id.btnNext)
@@ -280,7 +329,8 @@ public class TypeEGameFragment extends Fragment {
     @OnClick(R.id.btnSubmit)
     public void onSubmitClick() {
         timeTaken = (int) clockView.getElapsedTime();
-        clockView.pauseAnimationOnly();
+        //clockView.pauseAnimationOnly();
+        clockView.pause();
 
         btnSubmit.setEnabled(false);
         etAnswer.setEnabled(false);

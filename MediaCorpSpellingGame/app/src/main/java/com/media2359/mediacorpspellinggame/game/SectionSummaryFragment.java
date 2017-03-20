@@ -91,27 +91,22 @@ public class SectionSummaryFragment extends Fragment {
         // game index = 0 >> first game GAME A
         stGameA.setRightText(GameProgressManager.getInstance().getSectionScoreText(0));
 
-        if (gameIndex > 0){
+        if (gameIndex >= 1){
             stGameB.setVisibility(View.VISIBLE);
             stGameB.setRightText(GameProgressManager.getInstance().getSectionScoreText(1));
         }
 
-        if (gameIndex > 1){
+        if (gameIndex >= 2){
             stGameC.setVisibility(View.VISIBLE);
             stGameC.setRightText(GameProgressManager.getInstance().getSectionScoreText(2));
         }
 
-        if (gameIndex > 2){
-            stGameC.setVisibility(View.VISIBLE);
-            stGameC.setRightText(GameProgressManager.getInstance().getSectionScoreText(3));
-        }
-
-        if (gameIndex > 3) {
+        if (gameIndex >= 3){
             stGameD.setVisibility(View.VISIBLE);
-            stGameD.setRightText(GameProgressManager.getInstance().getSectionScoreText(4));
+            stGameD.setRightText(GameProgressManager.getInstance().getSectionScoreText(3));
         }
 
-        if (gameIndex > 5) {
+        if (gameIndex >= 4) {
             stGameE.setVisibility(View.VISIBLE);
             stGameE.setRightText(GameProgressManager.getInstance().getSectionScoreText(4));
         }

@@ -57,11 +57,16 @@ public class CommonUtils {
     }
 
     public static AlertDialog makeHoldOnAlertDialog(Context context, DialogInterface.OnClickListener onPositiveClick) {
+        return makeHoldOnAlertDialog(context, context.getString(R.string.hold_on_message), "Hold On", onPositiveClick);
+    }
+
+    public static AlertDialog makeHoldOnAlertDialog(Context context, String message, String title, DialogInterface.OnClickListener onPositiveClick) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setTitle("Hold On");
-        builder.setMessage(context.getString(R.string.hold_on_message));
-        builder.setPositiveButton("PROCEED", onPositiveClick);
-        builder.setCancelable(false);
+        builder.setTitle(title);
+        builder.setMessage(message);
+        builder.setPositiveButton("YES", onPositiveClick);
+        builder.setNegativeButton("CANCEL", null);
+        //builder.setCancelable(false);
         return builder.create();
     }
 

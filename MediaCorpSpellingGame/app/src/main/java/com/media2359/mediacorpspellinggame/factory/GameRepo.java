@@ -103,17 +103,17 @@ public class GameRepo {
 
         switch (currentDataSetId){
             case 0:
-                gameSetInputStream = context.getResources().openRawResource(R.raw.games_set_semi_final);
-                questionSetInputStream = context.getResources().openRawResource(R.raw.questions_set_semi_a);
+                gameSetInputStream = context.getResources().openRawResource(R.raw.games_set_final_sample);
+                questionSetInputStream = context.getResources().openRawResource(R.raw.questions_set_final_sample);
                 break;
-            case 1:
-                gameSetInputStream = context.getResources().openRawResource(R.raw.games_set_semi_final);
-                questionSetInputStream = context.getResources().openRawResource(R.raw.questions_set_semi_b);
-                break;
-            case 2:
-                gameSetInputStream = context.getResources().openRawResource(R.raw.games_set_semi_final);
-                questionSetInputStream = context.getResources().openRawResource(R.raw.questions_set_semi_c);
-                break;
+//            case 1:
+//                gameSetInputStream = context.getResources().openRawResource(R.raw.games_set_final);
+//                questionSetInputStream = context.getResources().openRawResource(R.raw.questions_set_semi_b);
+//                break;
+//            case 2:
+//                gameSetInputStream = context.getResources().openRawResource(R.raw.games_set_final);
+//                questionSetInputStream = context.getResources().openRawResource(R.raw.questions_set_semi_c);
+//                break;
 //            case 3:
 //                gameSetInputStream = context.getResources().openRawResource(R.raw.games_set_quarters);
 //                questionSetInputStream = context.getResources().openRawResource(R.raw.questions_set_d);

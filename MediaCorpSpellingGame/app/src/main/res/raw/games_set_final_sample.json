@@ -4,16 +4,16 @@
     "type": "1",
     "time": 240,
     "questionList": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
       8,
-      9,
-      10,
-      11,
-      12,
-      13,
-      14,
-      15,
-      16,
-      17
+      9
     ],
     "questionCount": 10,
     "gameInstruction": "படம் பார்த்து சொல் எழுது",
@@ -24,16 +24,9 @@
     "type": "2",
     "time": 30,
     "questionList": [
-      0,
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7
+      10
     ],
-    "questionCount": 8,
+    "questionCount": 1,
     "gameInstruction": "சொல்வதெழுதுதல்",
     "questionInstruction": "கேட்ட சொல்லை எழுது"
   },
@@ -42,16 +35,9 @@
     "type": "3",
     "time": 60,
     "questionList": [
-      18,
-      19,
-      20,
-      21,
-      22,
-      23,
-      24,
-      25
+      11
     ],
-    "questionCount": 8,
+    "questionCount": 1,
     "gameInstruction": "சொல்லைக் கண்டுபிடித்து எழுது",
     "questionInstruction": "சொல்லைக் கண்டுபிடித்து எழுது"
   },
@@ -60,16 +46,9 @@
     "type": "4",
     "time": 30,
     "questionList": [
-      26,
-      27,
-      28,
-      29,
-      30,
-      31,
-      32,
-      33
+      12
     ],
-    "questionCount": 8,
+    "questionCount": 1,
     "gameInstruction": "பிழையைத் திருத்தி எழுது",
     "questionInstruction": "பிழையைத் திருத்தி எழுது"
   },
@@ -78,16 +57,12 @@
     "type": "5",
     "time": 30,
     "questionList": [
-      26,
-      27,
-      28,
-      29,
-      30,
-      31,
-      32,
-      33
+      13,
+      14,
+      15,
+      16
     ],
-    "questionCount": 8,
+    "questionCount": 4,
     "gameInstruction": "பிழையைத் திருத்தி எழுது",
     "questionInstruction": "பிழையைத் திருத்தி எழுது"
   }
