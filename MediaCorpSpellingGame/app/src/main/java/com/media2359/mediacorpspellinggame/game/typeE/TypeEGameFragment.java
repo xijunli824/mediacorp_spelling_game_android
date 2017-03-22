@@ -155,11 +155,13 @@ public class TypeEGameFragment extends Fragment {
     }
 
     private void onTimeExpired() {
-        clockView.pause();
-        //if (!scoreHasBeenGiven){
-            markAsError();
-        //}
-        gameHasEnded = true;
+//        clockView.pause();
+//        //if (!scoreHasBeenGiven){
+//            markAsError();
+//        //}
+//        gameHasEnded = true;
+
+        onSubmitClick();
     }
 
     @Override
@@ -241,8 +243,13 @@ public class TypeEGameFragment extends Fragment {
 
         int gameId = ((GameActivity) getActivity()).getCurrentGame().getGameId();
 
-        String sectionScoreText = String.valueOf(GameProgressManager.getInstance().getSectionScore(gameId) + sectionScore);
-        String sectionTimeText = String.valueOf(GameProgressManager.getInstance().getSectionTime(gameId) + timeTaken);
+        int currentScore = GameProgressManager.getInstance().getSectionScore(gameId) + sectionScore;
+        String sectionScoreText = String.valueOf(currentScore);
+
+        //String sectionScoreText = GameProgressManager.getInstance().getSectionScoreText(gameId);
+        //String sectionTimeText = GameProgressManager.getInstance().getSectionTimeText(gameId);
+        int currentTime = GameProgressManager.getInstance().getSectionTime(gameId) + timeTaken;
+        String sectionTimeText = CommonUtils.convertSecondsIntegerToClockFormatString(currentTime);
 
         tvCardScore.setText(sectionScoreText);
         tvCardTime.setText(sectionTimeText);
